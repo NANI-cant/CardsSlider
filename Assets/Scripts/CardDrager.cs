@@ -1,34 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class CardSlider : MonoBehaviour {
-    [SerializeField] private Camera camera;
+public class CardDrager : MonoBehaviour {
+    [SerializeField] Camera camera;
     [SerializeField] private float freeMovementSpeed = 1f;
+    [Header("Debug")]
+    [SerializeField] private Color debugColor;
 
-    private bool isBlocked = false;
-    private bool canSlide = false;
+    private Card card;
+
+    private bool canDrag = false;
     private Inputs inputs;
-    private Transform transform;
-    private BoxCollider2D collider;
     private Vector2 startPosition;
     private Vector2 distanceToPointer;
+    private UnityAction<AnswerResult> OnStopSliding;
 
     private Vector2 pointerPosition => camera.ScreenToWorldPoint(inputs.CardSlider.TapPosition.ReadValue<Vector2>());
 
     private void Awake() {
         transform = GetComponent<Transform>();
         collider = GetComponent<BoxCollider2D>();
+        card = GetComponent<Card>();
         inputs = new Inputs();
         startPosition = transform.position;
     }
 
+
     private void OnEnable() {
         inputs.Enable();
-        inputs.CardSlider.Tap.started += ctx => CanSlide(IsTapOnCard());
-        inputs.CardSlider.Tap.canceled += ctx => CanSlide(false);
+        inputs.CardSlider.Tap.started += ctx => StartSliding(IsTapOnCard());
+        inputs.CardSlider.Tap.canceled += ctx => StopSliding();
     }
 
     private void OnDisable() {
@@ -36,15 +40,20 @@ public class CardSlider : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (isBlocked) {
-            return;
-        }
-        if (canSlide) {
+        if (isBlocked) { return; }
+
+        if (canDrag) {
             MoveToPointer();
         }
         else {
             GoBack();
         }
+    }
+
+    public void Initialize(Camera camera, AnswerChecker yesCheck, AnswerChecker noCheck) {
+        this.camera = camera;
+        OnStopSliding += yesCheck.Check;
+        OnStopSliding += noCheck.Check;
     }
 
     private void GoBack() {
@@ -66,16 +75,28 @@ public class CardSlider : MonoBehaviour {
 
     private bool IsTapOnCard() {
         Vector2 localTapPosition = transform.InverseTransformPoint(pointerPosition);
-        return Mathf.Abs(localTapPosition.x) < collider.bounds.extents.x && Mathf.Abs(localTapPosition.y) < collider.bounds.extents.y;
+        return Mathf.Abs(localTapPosition.x) < GetComponent<Collider>().bounds.extents.x && Mathf.Abs(localTapPosition.y) < GetComponent<Collider>().bounds.extents.y;
     }
 
-    private void CanSlide(bool value) {
-        canSlide = value;
+    private void StartSliding(bool isTapOnCard) {
+        if (!isTapOnCard) {
+            return;
+        }
+
+        Debug.Log("Start Sliding");
+        canDrag = true;
         distanceToPointer = pointerPosition - (Vector2)transform.position;
     }
 
+    private void StopSliding() {
+        Debug.Log("Stop Sliding");
+        canDrag = false;
+        AnswerResult result = new AnswerResult(transform.position, card);
+        OnStopSliding?.Invoke(result);
+    }
+
     private void OnDrawGizmos() {
-        Gizmos.color = Color.green;
+        Gizmos.color = debugColor;
         Gizmos.DrawLine(transform.position, startPosition);
     }
 }

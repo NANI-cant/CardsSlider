@@ -28,14 +28,6 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "TapDelta",
-                    "type": "Value",
-                    "id": "4d105780-565e-48b3-92a5-efcb6c3cdb2c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -69,17 +61,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "TapRadius",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f22e26fa-330e-4218-a0bb-a8788c004f68",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TapDelta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

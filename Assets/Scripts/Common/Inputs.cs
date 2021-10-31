@@ -41,14 +41,6 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""TapDelta"",
-                    ""type"": ""Value"",
-                    ""id"": ""4d105780-565e-48b3-92a5-efcb6c3cdb2c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -84,17 +76,6 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""action"": ""TapRadius"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f22e26fa-330e-4218-a0bb-a8788c004f68"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TapDelta"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -106,7 +87,6 @@ public class @Inputs : IInputActionCollection, IDisposable
         m_CardSlider_Tap = m_CardSlider.FindAction("Tap", throwIfNotFound: true);
         m_CardSlider_TapPosition = m_CardSlider.FindAction("TapPosition", throwIfNotFound: true);
         m_CardSlider_TapRadius = m_CardSlider.FindAction("TapRadius", throwIfNotFound: true);
-        m_CardSlider_TapDelta = m_CardSlider.FindAction("TapDelta", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -159,7 +139,6 @@ public class @Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_CardSlider_Tap;
     private readonly InputAction m_CardSlider_TapPosition;
     private readonly InputAction m_CardSlider_TapRadius;
-    private readonly InputAction m_CardSlider_TapDelta;
     public struct CardSliderActions
     {
         private @Inputs m_Wrapper;
@@ -167,7 +146,6 @@ public class @Inputs : IInputActionCollection, IDisposable
         public InputAction @Tap => m_Wrapper.m_CardSlider_Tap;
         public InputAction @TapPosition => m_Wrapper.m_CardSlider_TapPosition;
         public InputAction @TapRadius => m_Wrapper.m_CardSlider_TapRadius;
-        public InputAction @TapDelta => m_Wrapper.m_CardSlider_TapDelta;
         public InputActionMap Get() { return m_Wrapper.m_CardSlider; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,9 +164,6 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @TapRadius.started -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
                 @TapRadius.performed -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
                 @TapRadius.canceled -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
-                @TapDelta.started -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapDelta;
-                @TapDelta.performed -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapDelta;
-                @TapDelta.canceled -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapDelta;
             }
             m_Wrapper.m_CardSliderActionsCallbackInterface = instance;
             if (instance != null)
@@ -202,9 +177,6 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @TapRadius.started += instance.OnTapRadius;
                 @TapRadius.performed += instance.OnTapRadius;
                 @TapRadius.canceled += instance.OnTapRadius;
-                @TapDelta.started += instance.OnTapDelta;
-                @TapDelta.performed += instance.OnTapDelta;
-                @TapDelta.canceled += instance.OnTapDelta;
             }
         }
     }
@@ -214,6 +186,5 @@ public class @Inputs : IInputActionCollection, IDisposable
         void OnTap(InputAction.CallbackContext context);
         void OnTapPosition(InputAction.CallbackContext context);
         void OnTapRadius(InputAction.CallbackContext context);
-        void OnTapDelta(InputAction.CallbackContext context);
     }
 }
