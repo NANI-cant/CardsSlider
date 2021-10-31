@@ -15,11 +15,11 @@ public class @Inputs : IInputActionCollection, IDisposable
     ""name"": ""Inputs"",
     ""maps"": [
         {
-            ""name"": ""CardSlider"",
+            ""name"": ""CardDragger"",
             ""id"": ""20bc90a4-6c7d-433f-a319-a2f399bbfcec"",
             ""actions"": [
                 {
-                    ""name"": ""Tap"",
+                    ""name"": ""Take/Drop"",
                     ""type"": ""Button"",
                     ""id"": ""ab7f927c-c710-4c57-8794-91b2de65f6e5"",
                     ""expectedControlType"": ""Button"",
@@ -27,17 +27,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TapPosition"",
+                    ""name"": ""Dragging"",
                     ""type"": ""Value"",
                     ""id"": ""08c72410-e5b2-499b-9ae5-e54ca8f50864"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TapRadius"",
-                    ""type"": ""Value"",
-                    ""id"": ""6c608b9a-7e12-4cab-84c8-78d13288f862"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -51,7 +43,7 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Tap"",
+                    ""action"": ""Take/Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -62,18 +54,7 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TapPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cb6f7f01-f575-4839-9290-d0c087190dde"",
-                    ""path"": ""<Pointer>/radius"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TapRadius"",
+                    ""action"": ""Dragging"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -82,11 +63,10 @@ public class @Inputs : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // CardSlider
-        m_CardSlider = asset.FindActionMap("CardSlider", throwIfNotFound: true);
-        m_CardSlider_Tap = m_CardSlider.FindAction("Tap", throwIfNotFound: true);
-        m_CardSlider_TapPosition = m_CardSlider.FindAction("TapPosition", throwIfNotFound: true);
-        m_CardSlider_TapRadius = m_CardSlider.FindAction("TapRadius", throwIfNotFound: true);
+        // CardDragger
+        m_CardDragger = asset.FindActionMap("CardDragger", throwIfNotFound: true);
+        m_CardDragger_TakeDrop = m_CardDragger.FindAction("Take/Drop", throwIfNotFound: true);
+        m_CardDragger_Dragging = m_CardDragger.FindAction("Dragging", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -133,58 +113,49 @@ public class @Inputs : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // CardSlider
-    private readonly InputActionMap m_CardSlider;
-    private ICardSliderActions m_CardSliderActionsCallbackInterface;
-    private readonly InputAction m_CardSlider_Tap;
-    private readonly InputAction m_CardSlider_TapPosition;
-    private readonly InputAction m_CardSlider_TapRadius;
-    public struct CardSliderActions
+    // CardDragger
+    private readonly InputActionMap m_CardDragger;
+    private ICardDraggerActions m_CardDraggerActionsCallbackInterface;
+    private readonly InputAction m_CardDragger_TakeDrop;
+    private readonly InputAction m_CardDragger_Dragging;
+    public struct CardDraggerActions
     {
         private @Inputs m_Wrapper;
-        public CardSliderActions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Tap => m_Wrapper.m_CardSlider_Tap;
-        public InputAction @TapPosition => m_Wrapper.m_CardSlider_TapPosition;
-        public InputAction @TapRadius => m_Wrapper.m_CardSlider_TapRadius;
-        public InputActionMap Get() { return m_Wrapper.m_CardSlider; }
+        public CardDraggerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TakeDrop => m_Wrapper.m_CardDragger_TakeDrop;
+        public InputAction @Dragging => m_Wrapper.m_CardDragger_Dragging;
+        public InputActionMap Get() { return m_Wrapper.m_CardDragger; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CardSliderActions set) { return set.Get(); }
-        public void SetCallbacks(ICardSliderActions instance)
+        public static implicit operator InputActionMap(CardDraggerActions set) { return set.Get(); }
+        public void SetCallbacks(ICardDraggerActions instance)
         {
-            if (m_Wrapper.m_CardSliderActionsCallbackInterface != null)
+            if (m_Wrapper.m_CardDraggerActionsCallbackInterface != null)
             {
-                @Tap.started -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTap;
-                @Tap.performed -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTap;
-                @Tap.canceled -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTap;
-                @TapPosition.started -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapPosition;
-                @TapPosition.performed -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapPosition;
-                @TapPosition.canceled -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapPosition;
-                @TapRadius.started -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
-                @TapRadius.performed -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
-                @TapRadius.canceled -= m_Wrapper.m_CardSliderActionsCallbackInterface.OnTapRadius;
+                @TakeDrop.started -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnTakeDrop;
+                @TakeDrop.performed -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnTakeDrop;
+                @TakeDrop.canceled -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnTakeDrop;
+                @Dragging.started -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
+                @Dragging.performed -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
+                @Dragging.canceled -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
             }
-            m_Wrapper.m_CardSliderActionsCallbackInterface = instance;
+            m_Wrapper.m_CardDraggerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Tap.started += instance.OnTap;
-                @Tap.performed += instance.OnTap;
-                @Tap.canceled += instance.OnTap;
-                @TapPosition.started += instance.OnTapPosition;
-                @TapPosition.performed += instance.OnTapPosition;
-                @TapPosition.canceled += instance.OnTapPosition;
-                @TapRadius.started += instance.OnTapRadius;
-                @TapRadius.performed += instance.OnTapRadius;
-                @TapRadius.canceled += instance.OnTapRadius;
+                @TakeDrop.started += instance.OnTakeDrop;
+                @TakeDrop.performed += instance.OnTakeDrop;
+                @TakeDrop.canceled += instance.OnTakeDrop;
+                @Dragging.started += instance.OnDragging;
+                @Dragging.performed += instance.OnDragging;
+                @Dragging.canceled += instance.OnDragging;
             }
         }
     }
-    public CardSliderActions @CardSlider => new CardSliderActions(this);
-    public interface ICardSliderActions
+    public CardDraggerActions @CardDragger => new CardDraggerActions(this);
+    public interface ICardDraggerActions
     {
-        void OnTap(InputAction.CallbackContext context);
-        void OnTapPosition(InputAction.CallbackContext context);
-        void OnTapRadius(InputAction.CallbackContext context);
+        void OnTakeDrop(InputAction.CallbackContext context);
+        void OnDragging(InputAction.CallbackContext context);
     }
 }

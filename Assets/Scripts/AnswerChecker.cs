@@ -4,12 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class AnswerChecker : MonoBehaviour {
+    [SerializeField] private CardDragger cardDrager;
     [SerializeField] private bool kindOfAnswer;
     [SerializeField] private float checkRadius;
     [Header("Debug")]
     [SerializeField] private Color debugColor;
 
     public UnityAction OnAnswerCheck;
+
+    private void OnEnable() {
+        cardDrager.OnCardDrop += Check;
+    }
+
+    private void OnDisable() {
+        cardDrager.OnCardDrop -= Check;
+    }
 
     public void Check(AnswerResult answerResult) {
         if (!IsCardNear(answerResult.CardPosition)) {

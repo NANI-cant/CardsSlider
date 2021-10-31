@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSpawner : MonoBehaviour {
-    [SerializeField] private Camera camera;
     [SerializeField] private Card cardTemplate;
     [SerializeField] private Vector2 spawnPosition;
     [SerializeField] private AnswerChecker yesCheck;

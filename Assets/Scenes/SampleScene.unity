@@ -130,8 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 122187331}
-  - component: {fileID: 122187334}
-  - component: {fileID: 122187333}
   - component: {fileID: 122187332}
   m_Layer: 0
   m_Name: CardDrager
@@ -166,46 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cda393b87b353e4fae5a0305b30dcfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeMovementSpeed: 1
-  debugColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &122187333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122187330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd9b6cdbd229894195b050ad7a7b6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &122187334
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122187330}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  camera: {fileID: 519420031}
+  whatIsCard:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,8 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06686612c8af44746ad68310f3eaef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
-  cardTemplate: {fileID: 4810929484619859777, guid: 6ce849ae72f9ed245b7bc852456be194,
+  cardTemplate: {fileID: 1298999616457120682, guid: 6ce849ae72f9ed245b7bc852456be194,
     type: 3}
   spawnPosition: {x: 0, y: -2}
   yesCheck: {fileID: 1052308131}
@@ -383,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ccf80e88de514459a899ed75eabd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardDrager: {fileID: 122187332}
   kindOfAnswer: 1
   checkRadius: 2
   debugColor: {r: 0.00627811, g: 0.6792453, b: 0, a: 1}
@@ -415,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ccf80e88de514459a899ed75eabd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardDrager: {fileID: 122187332}
   kindOfAnswer: 0
   checkRadius: 2
   debugColor: {r: 0.6792453, g: 0.032540504, b: 0, a: 1}
