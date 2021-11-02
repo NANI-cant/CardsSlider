@@ -150,7 +150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &122187332
 MonoBehaviour:
@@ -249,7 +249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &607419254
 GameObject:
@@ -283,8 +283,6 @@ MonoBehaviour:
   cardTemplate: {fileID: 1298999616457120682, guid: 6ce849ae72f9ed245b7bc852456be194,
     type: 3}
   spawnPosition: {x: 0, y: -2}
-  yesCheck: {fileID: 1052308131}
-  noCheck: {fileID: 1727182608}
   debugColor: {r: 0, g: 0.9604411, b: 1, a: 1}
   debugCardSize: {x: 3.8, y: 5.1}
 --- !u!4 &607419256
@@ -299,8 +297,51 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1005656251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1005656252}
+  - component: {fileID: 1005656253}
+  m_Layer: 0
+  m_Name: DEBUGManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1005656252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005656251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005656253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005656251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c2e019992e9f340b70a2d8be1f1556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052308129
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1052308131
 MonoBehaviour:
@@ -393,7 +434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091208232
 GameObject:
@@ -426,9 +467,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figuresBank: {fileID: 11400000, guid: c982921683be9ff4883e52d33d8795c4, type: 2}
   figuresCount: 3
-  targetFigure: {fileID: 0}
   targetFigureOnCardChance: 0.5
+  spawner: {fileID: 607419255}
+  yesCheck: {fileID: 1052308131}
+  noCheck: {fileID: 1727182608}
   debugChosenFigures: []
+  debugTargetFigure: {fileID: 0}
 --- !u!4 &2091208234
 Transform:
   m_ObjectHideFlags: 0
@@ -441,5 +485,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -5,30 +5,15 @@ using UnityEngine;
 public class CardSpawner : MonoBehaviour {
     [SerializeField] private Card cardTemplate;
     [SerializeField] private Vector2 spawnPosition;
-    [SerializeField] private AnswerChecker yesCheck;
-    [SerializeField] private AnswerChecker noCheck;
 
     [Header("Debug")]
     [SerializeField] private Color debugColor;
     [SerializeField] private Vector2 debugCardSize;
 
-    private void OnEnable() {
-        yesCheck.OnAnswerCheck += Spawn;
-        noCheck.OnAnswerCheck += Spawn;
-    }
-
-    private void OnDisable() {
-        yesCheck.OnAnswerCheck -= Spawn;
-        noCheck.OnAnswerCheck -= Spawn;
-    }
-
-    private void Start() {
-        Spawn();
-    }
-
-    private void Spawn() {
+    public void Spawn(List<FigureData> figures) {
         Card card = Instantiate(cardTemplate, spawnPosition, Quaternion.identity);
-        Debug.Log("Spawn new Card");
+        card.Initialize(figures);
+        Debug.Log("Card spawned");
     }
 
     private void OnDrawGizmos() {
