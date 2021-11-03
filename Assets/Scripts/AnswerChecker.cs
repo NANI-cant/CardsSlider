@@ -7,10 +7,12 @@ public class AnswerChecker : MonoBehaviour {
     [SerializeField] private CardDragger cardDrager;
     [SerializeField] private bool kindOfAnswer;
     [SerializeField] private float checkRadius;
+    [SerializeField] private LayerMask whatIsCard;
     [Header("Debug")]
     [SerializeField] private Color debugColor;
 
-    public UnityAction OnAnswerCheck;
+    public string targetId;
+    public UnityAction<bool> OnAnswerCheck;
 
     private void OnEnable() {
         cardDrager.OnCardDrop += Check;
@@ -20,16 +22,20 @@ public class AnswerChecker : MonoBehaviour {
         cardDrager.OnCardDrop -= Check;
     }
 
-    public void Check(AnswerResult answerResult) {
-        if (!IsCardNear(answerResult.CardPosition)) {
-            Debug.Log("Card dont near");
-            return;
+    public void Check(Card card) {
+        if (!IsCardNear(card.transform.position)) { return; }
+        card.Destroy();
+
+        bool isFigureOnCard = false;
+        foreach (var figure in card.Figures) {
+            if (figure.Id == targetId) {
+                isFigureOnCard = true;
+                break;
+            }
         }
 
-        Debug.Log("Card near");
-        answerResult.Card.Destroy();
-        Debug.Log("Answer " + kindOfAnswer);
-        OnAnswerCheck?.Invoke(); // пока просто удаляем и говорим что проверили
+        Debug.Log("Answer " + (isFigureOnCard == kindOfAnswer));
+        OnAnswerCheck?.Invoke(isFigureOnCard == kindOfAnswer);
     }
 
     private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= checkRadius;

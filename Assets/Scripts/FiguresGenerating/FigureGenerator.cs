@@ -6,6 +6,7 @@ public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank figuresBank;
     [SerializeField] private int figuresCount;
     [SerializeField] private float targetFigureOnCardChance = 0.5f;
+    [SerializeField] private TargetVisualizer visualizer;
     [SerializeField] private CardSpawner spawner;
     [SerializeField] private AnswerChecker yesCheck;
     [SerializeField] private AnswerChecker noCheck;
@@ -30,7 +31,7 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     [ContextMenu("Call Generate")]
-    private void Generate() {
+    private void Generate(bool arg = false) {
         FigureData[] chosenFigures = new FigureData[figuresCount];
         List<FigureData> allFigures = new List<FigureData>(figuresBank.Figures);
 
@@ -48,6 +49,9 @@ public class FigureGenerator : MonoBehaviour {
 
         debugChosenFigures = chosenFigures;
 
+        visualizer.SetImage(targetFigure.Sprite);
+        yesCheck.targetId = targetFigure.Id;
+        noCheck.targetId = targetFigure.Id;
         spawner.Spawn(new List<FigureData>(chosenFigures));
     }
 }

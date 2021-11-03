@@ -5,9 +5,10 @@ using UnityEngine;
 public class CardVisualizator : MonoBehaviour {
     [SerializeField] private Vector2 gridCenter;
     [SerializeField] private float cellSize;
+    [SerializeField] private SpriteRenderer figureTemplate;
     [Header("Debug")]
     [SerializeField] private Color debugColor;
-    [Range(0, 12)] [SerializeField] private int debugCellsCount;
+    [Range(1, 9)] [SerializeField] private int debugCellsCount;
     [SerializeField] private float debugCrosshairSize = 0.5f;
     [SerializeField] private List<Vector2> debugPositions;
 
@@ -15,6 +16,11 @@ public class CardVisualizator : MonoBehaviour {
 
     public void Visualize(List<FigureData> figures) {
         this.figures = figures;
+        List<Vector2> positions = CalculateGrid(figures.Count);
+        for (int i = 0; i < figures.Count; i++) {
+            SpriteRenderer spriteRenderer = Instantiate(figureTemplate, positions[i], Quaternion.identity, transform);
+            spriteRenderer.sprite = figures[i].Sprite;
+        }
     }
 
     private void OnDrawGizmos() {
@@ -24,7 +30,7 @@ public class CardVisualizator : MonoBehaviour {
         Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(0, 1, 0) * debugCrosshairSize);
         Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(0, -1, 0) * debugCrosshairSize);
 
-        List<Vector2> cellPositions = debugPositions = CalculateGrid(debugCellsCount);
+        List<Vector2> cellPositions = debugPositions = CalculateGrid(figures == null ? debugCellsCount : figures.Count);
         foreach (var cellPos in cellPositions) {
             Gizmos.DrawWireCube(cellPos, new Vector2(cellSize, cellSize));
         }
@@ -60,8 +66,8 @@ public class CardVisualizator : MonoBehaviour {
 
         int currentPosCount = positions.Count;
         for (int i = 0; i < currentPosCount; i++) {
-            Vector2 localPos = positions[i] - gridCenter;
-            Vector2 invercePos = gridCenter + localPos * -1f;
+            Vector2 localPos = positions[i] - gridCenter - (Vector2)transform.position;
+            Vector2 invercePos = gridCenter + (Vector2)transform.position + localPos * -1f;
             if (!positions.Contains(invercePos)) {
                 positions.Add(invercePos);
             }

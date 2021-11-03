@@ -6,4 +6,7 @@ using UnityEngine;
 public class FigureData : ScriptableObject {
     [SerializeField] private Sprite sprite;
     [SerializeField] private string id;
+
+    public Sprite Sprite => sprite;
+    public string Id => id;
 }
