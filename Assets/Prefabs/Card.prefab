@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4810929484619859776}
   - component: {fileID: 1298999616457120682}
   - component: {fileID: 3721763783838664282}
+  - component: {fileID: 3790462978452027780}
   - component: {fileID: 4810929484619859783}
   m_Layer: 8
   m_Name: Card
@@ -108,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4810929484619859778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4810929484178581464}
@@ -139,6 +140,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7aea13923140a4896aaa6bf4f5b57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freeSpeed: 2
+  CanMove: 1
+--- !u!114 &3790462978452027780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810929484619859778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aedcde3cd384545a7a5e65a13f2af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridCenter: {x: 0, y: 0}
+  cellSize: 0.75
+  figureTemplate: {fileID: -8204715418936069014, guid: 68134650805663b42aaa425ef93fa2ec,
+    type: 3}
+  debugColor: {r: 1, g: 1, b: 1, a: 1}
+  debugCellsCount: 1
+  debugCrosshairSize: 0.5
+  debugPositions:
+  - {x: 0, y: 0}
 --- !u!61 &4810929484619859783
 BoxCollider2D:
   m_ObjectHideFlags: 0

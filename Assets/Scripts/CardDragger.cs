@@ -13,7 +13,7 @@ public class CardDragger : MonoBehaviour {
     private Inputs inputs;
     private Vector2 distanceToPointer;
 
-    public UnityAction<AnswerResult> OnCardDrop;
+    public UnityAction<Card> OnCardDrop;
 
     private Vector2 pointerPosition => camera.ScreenToWorldPoint(inputs.CardDragger.Dragging.ReadValue<Vector2>());
 
@@ -59,8 +59,7 @@ public class CardDragger : MonoBehaviour {
 
         Debug.Log("Card Dropped");
         holdingCard.Mover.CanMove = true;
-        AnswerResult result = new AnswerResult(holdingCard.transform.position, holdingCard);
+        OnCardDrop?.Invoke(holdingCard);
         holdingCard = null;
-        OnCardDrop?.Invoke(result);
     }
 }
