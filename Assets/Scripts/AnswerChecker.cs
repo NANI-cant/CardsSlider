@@ -7,7 +7,6 @@ public class AnswerChecker : MonoBehaviour {
     [SerializeField] private CardDragger cardDrager;
     [SerializeField] private bool kindOfAnswer;
     [SerializeField] private float checkRadius;
-    [SerializeField] private LayerMask whatIsCard;
     [Header("Debug")]
     [SerializeField] private Color debugColor;
 
