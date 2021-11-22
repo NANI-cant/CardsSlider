@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSpawner : MonoBehaviour {
-    [SerializeField] private Card cardTemplate;
-    [SerializeField] private Vector2 spawnPosition;
+    [SerializeField] private Card _cardTemplate;
+    [SerializeField] private Vector2 _spawnPosition;
 
     [Header("Debug")]
-    [SerializeField] private Color debugColor;
-    [SerializeField] private Vector2 debugCardSize;
+    [SerializeField] private Color _debugColor;
+    [SerializeField] private Vector2 _debugCardSize;
 
     public void Spawn(List<FigureData> figures) {
-        Card card = Instantiate(cardTemplate, spawnPosition, Quaternion.identity);
+        Card card = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity);
         card.Initialize(figures);
         Debug.Log("Card spawned");
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = debugColor;
-        Gizmos.DrawWireCube(spawnPosition, debugCardSize);
+        Gizmos.color = _debugColor;
+        Gizmos.DrawWireCube(_spawnPosition, _debugCardSize);
     }
 }

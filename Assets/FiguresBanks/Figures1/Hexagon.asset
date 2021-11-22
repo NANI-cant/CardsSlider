@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8d83c5a3c02fd4d97a9d6c15e63af8, type: 3}
   m_Name: Hexagon
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 193bcf062caa2cc418f51980bc413130, type: 3}
-  id: hexagon
+  _sprite: {fileID: 21300000, guid: 193bcf062caa2cc418f51980bc413130, type: 3}
+  _id: hexagon

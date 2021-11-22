@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Constants {
-    public static readonly float epsilon = 0.001f;
+    public static readonly float Epsilon = 0.001f;
 }

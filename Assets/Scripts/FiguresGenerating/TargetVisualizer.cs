@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
 public class TargetVisualizer : MonoBehaviour {
-    private Image image;
+    private Image _image;
 
     private void Awake() {
-        image = GetComponent<Image>();
+        _image = GetComponent<Image>();
     }
 
     public void SetImage(Sprite sprite) {
-        image.sprite = sprite;
+        _image.sprite = sprite;
     }
 }

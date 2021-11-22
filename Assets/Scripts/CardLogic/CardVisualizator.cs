@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardVisualizator : MonoBehaviour {
-    [SerializeField] private Vector2 gridCenter;
-    [SerializeField] private float cellSize;
-    [SerializeField] private SpriteRenderer figureTemplate;
+    [SerializeField] private Vector2 _gridCenter;
+    [SerializeField] private float _cellSize;
+    [SerializeField] private SpriteRenderer _figureTemplate;
     [Header("Debug")]
-    [SerializeField] private Color debugColor;
-    [Range(1, 9)] [SerializeField] private int debugCellsCount;
-    [SerializeField] private float debugCrosshairSize = 0.5f;
-    [SerializeField] private List<Vector2> debugPositions;
+    [SerializeField] private Color _debugColor;
+    [Range(1, 9)] [SerializeField] private int _debugCellsCount;
+    [SerializeField] private float _debugCrosshairSize = 0.5f;
+    [SerializeField] private List<Vector2> _debugPositions;
 
-    private List<FigureData> figures;
+    private List<FigureData> _figures;
 
     public void Visualize(List<FigureData> figures) {
-        this.figures = figures;
+        _figures = figures;
         List<Vector2> positions = CalculateGrid(figures.Count);
         for (int i = 0; i < figures.Count; i++) {
-            SpriteRenderer spriteRenderer = Instantiate(figureTemplate, positions[i], Quaternion.identity, transform);
+            SpriteRenderer spriteRenderer = Instantiate(_figureTemplate, positions[i], Quaternion.identity, transform);
             spriteRenderer.sprite = figures[i].Sprite;
         }
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = debugColor;
-        Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(1, 0, 0) * debugCrosshairSize);
-        Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(-1, 0, 0) * debugCrosshairSize);
-        Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(0, 1, 0) * debugCrosshairSize);
-        Gizmos.DrawLine(transform.TransformPoint(gridCenter), transform.TransformPoint(gridCenter) + new Vector3(0, -1, 0) * debugCrosshairSize);
+        Gizmos.color = _debugColor;
+        Gizmos.DrawLine(transform.TransformPoint(_gridCenter), transform.TransformPoint(_gridCenter) + new Vector3(1, 0, 0) * _debugCrosshairSize);
+        Gizmos.DrawLine(transform.TransformPoint(_gridCenter), transform.TransformPoint(_gridCenter) + new Vector3(-1, 0, 0) * _debugCrosshairSize);
+        Gizmos.DrawLine(transform.TransformPoint(_gridCenter), transform.TransformPoint(_gridCenter) + new Vector3(0, 1, 0) * _debugCrosshairSize);
+        Gizmos.DrawLine(transform.TransformPoint(_gridCenter), transform.TransformPoint(_gridCenter) + new Vector3(0, -1, 0) * _debugCrosshairSize);
 
-        List<Vector2> cellPositions = debugPositions = CalculateGrid(figures == null ? debugCellsCount : figures.Count);
+        List<Vector2> cellPositions = _debugPositions = CalculateGrid(_figures == null ? _debugCellsCount : _figures.Count);
         foreach (var cellPos in cellPositions) {
-            Gizmos.DrawWireCube(cellPos, new Vector2(cellSize, cellSize));
+            Gizmos.DrawWireCube(cellPos, new Vector2(_cellSize, _cellSize));
         }
     }
 
     private List<Vector2> CalculateGrid(int cellsCount) {
         List<Vector2> positions = new List<Vector2>();
 
-        Vector2 startPos = transform.TransformPoint(gridCenter);
+        Vector2 startPos = transform.TransformPoint(_gridCenter);
         int remaindCellsCount = cellsCount;
         for (int i = 1; i > -1; i++) {
             if (remaindCellsCount <= 0) { break; }
@@ -47,14 +47,14 @@ public class CardVisualizator : MonoBehaviour {
 
             for (int j = 0; j < currentCellsCount; j++) {
                 Vector2 curPos = startPos;
-                curPos -= new Vector2((float)currentCellsCount * cellSize / 2 - cellSize / 2 - j * cellSize, -((i - 1) * cellSize));
+                curPos -= new Vector2((float)currentCellsCount * _cellSize / 2 - _cellSize / 2 - j * _cellSize, -((i - 1) * _cellSize));
                 positions.Add(curPos);
             }
 
             remaindCellsCount -= i * 2;
         }
 
-        float yOffset = cellSize / 2;
+        float yOffset = _cellSize / 2;
         float yPadding = positions[positions.Count - 1].y - positions[0].y;
         if (positions.Count > cellsCount / 2) {
             yOffset = 0;
@@ -66,8 +66,8 @@ public class CardVisualizator : MonoBehaviour {
 
         int currentPosCount = positions.Count;
         for (int i = 0; i < currentPosCount; i++) {
-            Vector2 localPos = positions[i] - gridCenter - (Vector2)transform.position;
-            Vector2 invercePos = gridCenter + (Vector2)transform.position + localPos * -1f;
+            Vector2 localPos = positions[i] - _gridCenter - (Vector2)transform.position;
+            Vector2 invercePos = _gridCenter + (Vector2)transform.position + localPos * -1f;
             if (!positions.Contains(invercePos)) {
                 positions.Add(invercePos);
             }

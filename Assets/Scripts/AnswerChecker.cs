@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class AnswerChecker : MonoBehaviour {
-    [SerializeField] private CardDragger cardDrager;
-    [SerializeField] private bool kindOfAnswer;
-    [SerializeField] private float checkRadius;
+    [SerializeField] private CardDragger _cardDrager;
+    [SerializeField] private bool _kindOfAnswer;
+    [SerializeField] private float _checkRadius;
     [Header("Debug")]
-    [SerializeField] private Color debugColor;
+    [SerializeField] private Color _debugColor;
 
-    public string targetId;
+    public string TargetId;
     public UnityAction<bool> OnAnswerCheck;
 
     private void OnEnable() {
-        cardDrager.OnCardDrop += Check;
+        _cardDrager.OnCardDrop += Check;
     }
 
     private void OnDisable() {
-        cardDrager.OnCardDrop -= Check;
+        _cardDrager.OnCardDrop -= Check;
     }
 
     public void Check(Card card) {
@@ -27,20 +27,20 @@ public class AnswerChecker : MonoBehaviour {
 
         bool isFigureOnCard = false;
         foreach (var figure in card.Figures) {
-            if (figure.Id == targetId) {
+            if (figure.Id == TargetId) {
                 isFigureOnCard = true;
                 break;
             }
         }
 
-        Debug.Log("Answer " + (isFigureOnCard == kindOfAnswer));
-        OnAnswerCheck?.Invoke(isFigureOnCard == kindOfAnswer);
+        Debug.Log("Answer " + (isFigureOnCard == _kindOfAnswer));
+        OnAnswerCheck?.Invoke(isFigureOnCard == _kindOfAnswer);
     }
 
-    private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= checkRadius;
+    private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= _checkRadius;
 
     private void OnDrawGizmos() {
-        Gizmos.color = debugColor;
-        Gizmos.DrawWireSphere(transform.position, checkRadius);
+        Gizmos.color = _debugColor;
+        Gizmos.DrawWireSphere(transform.position, _checkRadius);
     }
 }

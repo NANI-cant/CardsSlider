@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardMover : MonoBehaviour {
-    [SerializeField] private float freeSpeed = 2f;
+    [SerializeField] private float _freeSpeed = 2f;
 
-    private Vector2 startPosition;
-    private Transform transform;
+    private Vector2 _startPosition;
+    private Transform _transform;
 
     public bool CanMove = true;
 
     private void Awake() {
-        transform = GetComponent<Transform>();
+        _transform = GetComponent<Transform>();
     }
 
     private void Start() {
-        startPosition = transform.position;
+        _startPosition = _transform.position;
     }
 
     private void FixedUpdate() {
@@ -25,10 +25,10 @@ public class CardMover : MonoBehaviour {
     }
 
     private void GoBack() {
-        float distance = Mathf.Sqrt((startPosition - (Vector2)transform.position).sqrMagnitude);
-        if (distance <= Constants.epsilon) { return; }
+        float distance = Mathf.Sqrt((_startPosition - (Vector2)_transform.position).sqrMagnitude);
+        if (distance <= Constants.Epsilon) { return; }
 
-        Vector2 direction = startPosition - (Vector2)transform.position;
-        transform.Translate(direction * freeSpeed * Time.deltaTime);
+        Vector2 direction = _startPosition - (Vector2)_transform.position;
+        _transform.Translate(direction * _freeSpeed * Time.deltaTime);
     }
 }

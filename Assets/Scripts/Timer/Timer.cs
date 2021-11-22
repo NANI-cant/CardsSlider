@@ -4,60 +4,60 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Timer : MonoBehaviour {
-    [SerializeField] private float startTime;
-    [SerializeField] private TimerVizualizer vizualizer;
+    [SerializeField] private float _startTime;
+    [SerializeField] private TimerVizualizer _vizualizer;
     [Header("Debug")]
-    [SerializeField] private float debugRemaindedTime;
+    [SerializeField] private float _debugRemaindedTime;
 
-    private float remaindedTime;
-    private bool isRun = false;
+    private float _remaindedTime;
+    private bool _isRun = false;
 
     public UnityAction OnTimesUp;
 
-    public float RemaindedTime => remaindedTime;
+    public float RemaindedTime => _remaindedTime;
 
     private void Start() {
-        remaindedTime = startTime;
-        debugRemaindedTime = remaindedTime;
-        vizualizer.Visualize(remaindedTime);
+        _remaindedTime = _startTime;
+        _debugRemaindedTime = _remaindedTime;
+        _vizualizer.Visualize(_remaindedTime);
     }
 
     private void Update() {
-        if (isRun) {
+        if (_isRun) {
             Running();
         }
     }
 
     public void Add(float time) {
-        remaindedTime += time;
-        debugRemaindedTime = remaindedTime;
+        _remaindedTime += time;
+        _debugRemaindedTime = _remaindedTime;
     }
 
     public void Set(float time) {
-        remaindedTime = time;
-        debugRemaindedTime = remaindedTime;
+        _remaindedTime = time;
+        _debugRemaindedTime = _remaindedTime;
     }
 
     [ContextMenu("Run")]
     public void Run() {
-        if (!isRun) {
-            isRun = true;
+        if (!_isRun) {
+            _isRun = true;
         }
     }
 
     [ContextMenu("Stop")]
     private void Stop() {
-        if (isRun) {
-            isRun = false;
+        if (_isRun) {
+            _isRun = false;
             OnTimesUp?.Invoke();
         }
     }
 
     private void Running() {
-        remaindedTime -= Time.deltaTime;
-        vizualizer.Visualize(remaindedTime);
-        debugRemaindedTime = remaindedTime;
-        if (remaindedTime <= Constants.epsilon) {
+        _remaindedTime -= Time.deltaTime;
+        _vizualizer.Visualize(_remaindedTime);
+        _debugRemaindedTime = _remaindedTime;
+        if (_remaindedTime <= Constants.Epsilon) {
             Stop();
         }
     }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TimerVizualizer : MonoBehaviour {
-    private TextMeshProUGUI text;
+    private TextMeshProUGUI _text;
 
     private void Awake() {
-        text = GetComponent<TextMeshProUGUI>();
+        _text = GetComponent<TextMeshProUGUI>();
     }
 
     public void Visualize(float time) {
-        text.text = time.ToString("#0.00");
+        _text.text = time.ToString("#0.00");
     }
 }

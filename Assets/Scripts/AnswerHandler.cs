@@ -10,33 +10,33 @@ enum Mode {
 }
 
 public class AnswerHandler : MonoBehaviour {
-    [SerializeField] private Mode gameMode = Mode.Classic;
+    [SerializeField] private Mode _gameMode = Mode.Classic;
 
     [Header("Classic")]
-    [SerializeField] private float settingTime;
-    [SerializeField] private float addingScore;
-    [SerializeField] private uint takingLifes;
+    [SerializeField] private float _settingTime;
+    [SerializeField] private float _addingScore;
+    [SerializeField] private uint _takingLifes;
 
     [Header("References")]
-    [SerializeField] private Timer timer;
-    [SerializeField] private AnswerChecker yesCheck;
-    [SerializeField] private AnswerChecker noCheck;
+    [SerializeField] private Timer _timer;
+    [SerializeField] private AnswerChecker _yesCheck;
+    [SerializeField] private AnswerChecker _noCheck;
 
     private void OnEnable() {
-        yesCheck.OnAnswerCheck += ReactToAnswer;
-        noCheck.OnAnswerCheck += ReactToAnswer;
+        _yesCheck.OnAnswerCheck += ReactToAnswer;
+        _noCheck.OnAnswerCheck += ReactToAnswer;
     }
 
     private void OnDisable() {
-        yesCheck.OnAnswerCheck -= ReactToAnswer;
-        noCheck.OnAnswerCheck -= ReactToAnswer;
+        _yesCheck.OnAnswerCheck -= ReactToAnswer;
+        _noCheck.OnAnswerCheck -= ReactToAnswer;
     }
 
     private void ReactToAnswer(bool answer) {
-        timer.Run();
-        switch (gameMode) {
+        _timer.Run();
+        switch (_gameMode) {
             case Mode.Classic: {
-                    timer.Set(settingTime);
+                    _timer.Set(_settingTime);
                     break;
                 }
             default: {

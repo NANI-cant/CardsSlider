@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8d83c5a3c02fd4d97a9d6c15e63af8, type: 3}
   m_Name: Circle
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a81d4346140a309418f57f973f3af73b, type: 3}
-  id: circle
+  _sprite: {fileID: 21300000, guid: a81d4346140a309418f57f973f3af73b, type: 3}
+  _id: circle

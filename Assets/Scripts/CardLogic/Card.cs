@@ -6,23 +6,23 @@ using UnityEngine;
 [RequireComponent(typeof(CardMover))]
 [RequireComponent(typeof(CardVisualizator))]
 public class Card : MonoBehaviour {
-    private List<FigureData> figures;
+    private List<FigureData> _figures;
 
-    private CardMover mover;
-    private CardVisualizator visualizator;
+    private CardMover _mover;
+    private CardVisualizator _visualizator;
 
-    public CardMover Mover => mover;
-    public CardVisualizator Visualizator => visualizator;
-    public IEnumerable<FigureData> Figures => figures;
+    public CardMover Mover => _mover;
+    public CardVisualizator Visualizator => _visualizator;
+    public IEnumerable<FigureData> Figures => _figures;
 
     private void Awake() {
-        mover = GetComponent<CardMover>();
-        visualizator = GetComponent<CardVisualizator>();
+        _mover = GetComponent<CardMover>();
+        _visualizator = GetComponent<CardVisualizator>();
     }
 
     public void Initialize(List<FigureData> figures) {
-        this.figures = figures;
-        visualizator.Visualize(figures);
+        _figures = figures;
+        _visualizator.Visualize(figures);
     }
 
     public void Destroy() {
