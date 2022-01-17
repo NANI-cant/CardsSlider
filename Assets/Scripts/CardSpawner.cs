@@ -10,10 +10,16 @@ public class CardSpawner : MonoBehaviour {
     [SerializeField] private Color _debugColor;
     [SerializeField] private Vector2 _debugCardSize;
 
+    private Card _currentCard;
+
     public void Spawn(List<FigureData> figures) {
-        Card card = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity);
-        card.Initialize(figures);
+        _currentCard = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity);
+        _currentCard.Initialize(figures);
         Debug.Log("Card spawned");
+    }
+
+    public void DestroyCard() {
+        _currentCard.Destroy();
     }
 
     private void OnDrawGizmos() {

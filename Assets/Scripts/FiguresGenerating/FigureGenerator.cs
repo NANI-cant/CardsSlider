@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank _figuresBank;
@@ -10,28 +11,39 @@ public class FigureGenerator : MonoBehaviour {
     [SerializeField] private CardSpawner _spawner;
     [SerializeField] private AnswerChecker _yesCheck;
     [SerializeField] private AnswerChecker _noCheck;
+    [SerializeField] private Timer _timer;
     [Header("Debug")]
     [SerializeField] private FigureData[] _debugChosenFigures;
     [SerializeField] private FigureData _debugTargetFigure;
 
     private FigureData _targetFigure;
+    private UnityAction<bool> _generateBool;
+    private UnityAction _reGenerate;
 
     private void Start() {
         Generate();
     }
 
     private void OnEnable() {
-        _yesCheck.OnAnswerCheck += Generate;
-        _noCheck.OnAnswerCheck += Generate;
+        _generateBool = (arg) => Generate();
+        _reGenerate = () => {
+            _spawner.DestroyCard();
+            Generate();
+        };
+
+        _yesCheck.OnAnswerCheck += _generateBool;
+        _noCheck.OnAnswerCheck += _generateBool;
+        _timer.OnTimesUp += _reGenerate;
     }
 
     private void OnDisable() {
-        _yesCheck.OnAnswerCheck -= Generate;
-        _noCheck.OnAnswerCheck -= Generate;
+        _yesCheck.OnAnswerCheck -= _generateBool;
+        _noCheck.OnAnswerCheck -= _generateBool;
+        _timer.OnTimesUp -= _reGenerate;
     }
 
     [ContextMenu("Call Generate")]
-    private void Generate(bool arg = false) {
+    private void Generate() {
         FigureData[] chosenFigures = new FigureData[_figuresCount];
         List<FigureData> allFigures = new List<FigureData>(_figuresBank.Figures);
 
