@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+enum Answer {
+    Yes,
+    No
+}
+
 public class AnswerChecker : MonoBehaviour {
     [SerializeField] private CardDragger _cardDrager;
-    [SerializeField] private bool _kindOfAnswer;
+    [SerializeField] private Answer _kindOfAnswer;
     [SerializeField] private float _checkRadius;
     [Header("Debug")]
     [SerializeField] private Color _debugColor;
@@ -33,8 +38,8 @@ public class AnswerChecker : MonoBehaviour {
             }
         }
 
-        Debug.Log("Answer " + (isFigureOnCard == _kindOfAnswer));
-        OnAnswerCheck?.Invoke(isFigureOnCard == _kindOfAnswer);
+        Debug.Log("Answer " + (isFigureOnCard == (_kindOfAnswer == Answer.Yes)));
+        OnAnswerCheck?.Invoke(isFigureOnCard == (_kindOfAnswer == Answer.Yes));
     }
 
     private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= _checkRadius;
