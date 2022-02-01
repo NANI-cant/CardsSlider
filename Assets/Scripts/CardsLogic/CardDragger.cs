@@ -18,6 +18,7 @@ public class CardDragger : MonoBehaviour {
     private Vector2 pointerPosition => _camera.ScreenToWorldPoint(_inputs.CardDragger.Dragging.ReadValue<Vector2>());
 
     private void Awake() {
+        ServiceLocator.RegisterService<CardDragger>(this);
         _inputs = new Inputs();
     }
 
