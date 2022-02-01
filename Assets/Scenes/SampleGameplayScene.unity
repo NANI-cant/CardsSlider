@@ -154,9 +154,9 @@ RectTransform:
   m_Father: {fileID: 1791375392}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 322}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -638}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &28684349
@@ -357,7 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f0ed4857fa0714d9bae9938726017e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _answerHandler: {fileID: 1046153969}
+  _startLifes: 3
+  _maxFiguresCount: 8
+  _startFiguresCount: 1
+  _answersForAddFigure: 3
 --- !u!1 &472379954
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,9 +394,9 @@ RectTransform:
   m_Father: {fileID: 1791375392}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 181, y: 898}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -359, y: -62}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472379956
@@ -501,10 +504,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 472379954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435e5bc396c07bc4788cbda20881ba59, type: 3}
+  m_Script: {fileID: 11500000, guid: f3ef0ae255683c84bb251b429fb2dc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 472379956}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,13 +663,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameMode: 0
-  _currentLifes: 3
   _settingTime: 3
   _addingScore: 1
   _takingLifes: 1
-  _timer: {fileID: 1494591244}
-  _scoreUI: {fileID: 1842747729}
-  _lifesUI: {fileID: 472379958}
+  _score: {fileID: 1842747729}
+  _life: {fileID: 472379958}
 --- !u!4 &1046153970
 Transform:
   m_ObjectHideFlags: 0
@@ -990,10 +990,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1173,9 +1173,9 @@ RectTransform:
   m_Father: {fileID: 1791375392}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -181, y: 898}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 359, y: -62}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842747729
@@ -1187,10 +1187,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1842747725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7e91cee844b4b4d91218ce71300d88, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ea36d6086998f5479970af920d32f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1842747726}
 --- !u!1 &2091208232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,10 +1221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _figuresBank: {fileID: 11400000, guid: c982921683be9ff4883e52d33d8795c4, type: 2}
-  _figuresCount: 6
+  _figuresCount: 1
+  _maxFiguresCount: 0
+  _answersForAddFigure: 0
   _targetFigureOnCardChance: 0.5
   _visualizer: {fileID: 2142734417}
-  _timer: {fileID: 1494591244}
   _debugChosenFigures: []
   _debugTargetFigure: {fileID: 0}
 --- !u!4 &2091208234
@@ -1292,9 +1292,9 @@ RectTransform:
   m_Father: {fileID: 1791375392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 560}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2142734415

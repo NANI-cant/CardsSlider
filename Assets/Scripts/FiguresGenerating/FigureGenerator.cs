@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank _figuresBank;
     [SerializeField] private int _figuresCount;
+    [SerializeField] private int _maxFiguresCount;
+    [SerializeField] private int _answersForAddFigure;
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
     [SerializeField] private TargetVisualizer _visualizer;
     [Header("Debug")]
@@ -16,8 +18,9 @@ public class FigureGenerator : MonoBehaviour {
     private Timer _timer;
     private CardSpawner _spawner;
     private FigureData _targetFigure;
-    private UnityAction<bool> _generateBool;
+    //private UnityAction<bool> _generateBool;
     private UnityAction _reGenerate;
+    private int _remindAnswers;
 
     public UnityAction<FigureData> OnFigureGenerated;
 
@@ -31,20 +34,40 @@ public class FigureGenerator : MonoBehaviour {
         Generate();
     }
 
+    public void Initialize(int startFigures, int maxFiguresCount, int answersForAddFigure) {
+        _maxFiguresCount = maxFiguresCount;
+        _figuresCount = startFigures;
+        _answersForAddFigure = answersForAddFigure;
+        _remindAnswers = _answersForAddFigure;
+    }
+
     private void OnEnable() {
-        _generateBool = (arg) => Generate();
+        //_generateBool = (arg) => Generate();
         _reGenerate = () => {
             _spawner.DestroyCard();
             Generate();
         };
 
-        AnswerChecker.OnAnswerCheck += _generateBool;
+        AnswerChecker.OnAnswerCheck += HandleAnswer;
         _timer.OnTimesUp += _reGenerate;
     }
 
     private void OnDisable() {
-        AnswerChecker.OnAnswerCheck -= _generateBool;
+        AnswerChecker.OnAnswerCheck -= HandleAnswer;
         _timer.OnTimesUp -= _reGenerate;
+    }
+
+    private void HandleAnswer(bool answer) {
+        if (answer == true) {
+            _remindAnswers--;
+            if (_remindAnswers <= 0) {
+                if (_figuresCount < _maxFiguresCount) {
+                    _figuresCount++;
+                }
+                _remindAnswers = _answersForAddFigure;
+            }
+        }
+        Generate();
     }
 
     [ContextMenu("Call Generate")]
