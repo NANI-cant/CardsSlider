@@ -9,21 +9,23 @@ enum Answer {
 }
 
 public class AnswerChecker : MonoBehaviour {
-    [SerializeField] private CardDragger _cardDrager;
     [SerializeField] private Answer _kindOfAnswer;
     [SerializeField] private float _checkRadius;
     [Header("Debug")]
     [SerializeField] private Color _debugColor;
 
-    public string TargetId;
-    public UnityAction<bool> OnAnswerCheck;
+    private string _targetId;
+
+    public static UnityAction<bool> OnAnswerCheck;
 
     private void OnEnable() {
-        _cardDrager.OnCardDrop += Check;
+        ServiceLocator.GetService<CardDragger>().OnCardDrop += Check;
+        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated += SetTarget;
     }
 
     private void OnDisable() {
-        _cardDrager.OnCardDrop -= Check;
+        ServiceLocator.GetService<CardDragger>().OnCardDrop -= Check;
+        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated -= SetTarget;
     }
 
     public void Check(Card card) {
@@ -32,7 +34,7 @@ public class AnswerChecker : MonoBehaviour {
 
         bool isFigureOnCard = false;
         foreach (var figure in card.Figures) {
-            if (figure.Id == TargetId) {
+            if (figure.Id == _targetId) {
                 isFigureOnCard = true;
                 break;
             }
@@ -40,6 +42,10 @@ public class AnswerChecker : MonoBehaviour {
 
         Debug.Log("Answer " + (isFigureOnCard == (_kindOfAnswer == Answer.Yes)));
         OnAnswerCheck?.Invoke(isFigureOnCard == (_kindOfAnswer == Answer.Yes));
+    }
+
+    private void SetTarget(FigureData figure) {
+        _targetId = figure.Id;
     }
 
     private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= _checkRadius;

@@ -295,8 +295,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &122187332
 MonoBehaviour:
@@ -342,8 +342,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &420254375
 MonoBehaviour:
@@ -586,55 +586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &607419254
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 607419256}
-  - component: {fileID: 607419255}
-  m_Layer: 0
-  m_Name: CardSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &607419255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607419254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06686612c8af44746ad68310f3eaef4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardTemplate: {fileID: 1298999616457120682, guid: 6ce849ae72f9ed245b7bc852456be194,
-    type: 3}
-  _spawnPosition: {x: 0, y: -1.69}
-  _debugColor: {r: 0, g: 0.35026416, b: 0.9150943, a: 1}
-  _debugCardSize: {x: 3.8, y: 5.1}
---- !u!4 &607419256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607419254}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005656251
 GameObject:
@@ -664,7 +616,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1384957919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1005656253
@@ -714,8 +666,6 @@ MonoBehaviour:
   _addingScore: 1
   _takingLifes: 1
   _timer: {fileID: 1494591244}
-  _yesCheck: {fileID: 1052308131}
-  _noCheck: {fileID: 1727182608}
   _scoreUI: {fileID: 1842747729}
   _lifesUI: {fileID: 472379958}
 --- !u!4 &1046153970
@@ -729,8 +679,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052308129
 GameObject:
@@ -761,7 +711,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1052308131
 MonoBehaviour:
@@ -775,11 +725,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ccf80e88de514459a899ed75eabd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardDrager: {fileID: 122187332}
   _kindOfAnswer: 0
   _checkRadius: 4.5
   _debugColor: {r: 0.13593073, g: 0.6886792, b: 0, a: 1}
-  TargetId: 
+--- !u!1 &1384957918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384957919}
+  m_Layer: 0
+  m_Name: Common
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1384957919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384957918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1005656252}
+  - {fileID: 122187331}
+  - {fileID: 1480074385}
+  - {fileID: 2091208234}
+  - {fileID: 420254374}
+  - {fileID: 1494591245}
+  - {fileID: 1046153970}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480074382
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,8 +847,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1494591243
 GameObject:
@@ -908,8 +893,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727182607
 GameObject:
@@ -940,11 +925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ccf80e88de514459a899ed75eabd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardDrager: {fileID: 122187332}
   _kindOfAnswer: 1
   _checkRadius: 4.5
   _debugColor: {r: 0.8396226, g: 0, b: 0, a: 1}
-  TargetId: 
 --- !u!4 &1727182609
 Transform:
   m_ObjectHideFlags: 0
@@ -957,7 +940,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1791375388
 GameObject:
@@ -1054,7 +1037,7 @@ RectTransform:
   - {fileID: 1842747728}
   - {fileID: 472379955}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1218,6 +1201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091208234}
   - component: {fileID: 2091208233}
+  - component: {fileID: 2091208235}
   m_Layer: 0
   m_Name: FigureGenerator
   m_TagString: Untagged
@@ -1241,9 +1225,6 @@ MonoBehaviour:
   _figuresCount: 6
   _targetFigureOnCardChance: 0.5
   _visualizer: {fileID: 2142734417}
-  _spawner: {fileID: 607419255}
-  _yesCheck: {fileID: 1052308131}
-  _noCheck: {fileID: 1727182608}
   _timer: {fileID: 1494591244}
   _debugChosenFigures: []
   _debugTargetFigure: {fileID: 0}
@@ -1258,9 +1239,26 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1384957919}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2091208235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091208232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06686612c8af44746ad68310f3eaef4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardTemplate: {fileID: 1298999616457120682, guid: 6ce849ae72f9ed245b7bc852456be194,
+    type: 3}
+  _spawnPosition: {x: 0, y: -1.69}
+  _debugColor: {r: 0, g: 0.35026416, b: 0.9150943, a: 1}
+  _debugCardSize: {x: 3.8, y: 5.1}
 --- !u!1 &2142734413
 GameObject:
   m_ObjectHideFlags: 0

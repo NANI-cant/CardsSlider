@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    [SerializeField] AnswerHandler _answerHandler;
+    [SerializeField] private uint _startLifes;
+
+    private LifeCounter _life;
+
+    private void Awake() {
+        ServiceLocator.RegisterService<GameManager>(this);
+        _life = ServiceLocator.GetService<LifeCounter>();
+        _life.Initialize((int)_startLifes);
+    }
 
     private void OnEnable() {
-        _answerHandler.OnLifesEnd += EndGame;
+        _life.OnLifesOver += EndGame;
     }
 
     private void OnDisable() {
-        _answerHandler.OnLifesEnd -= EndGame;
+        _life.OnLifesOver -= EndGame;
     }
 
     private void EndGame() {

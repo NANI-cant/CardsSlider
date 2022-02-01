@@ -16,6 +16,10 @@ public class Timer : MonoBehaviour {
 
     public float RemaindedTime => _remaindedTime;
 
+    private void Awake() {
+        ServiceLocator.RegisterService<Timer>(this);
+    }
+
     private void Start() {
         _remaindedTime = _startTime;
         _debugRemaindedTime = _remaindedTime;

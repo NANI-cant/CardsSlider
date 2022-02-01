@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(CardSpawner))]
 public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank _figuresBank;
     [SerializeField] private int _figuresCount;
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
     [SerializeField] private TargetVisualizer _visualizer;
-    [SerializeField] private CardSpawner _spawner;
-    [SerializeField] private AnswerChecker _yesCheck;
-    [SerializeField] private AnswerChecker _noCheck;
-    [SerializeField] private Timer _timer;
     [Header("Debug")]
     [SerializeField] private FigureData[] _debugChosenFigures;
     [SerializeField] private FigureData _debugTargetFigure;
 
+    private Timer _timer;
+    private CardSpawner _spawner;
     private FigureData _targetFigure;
     private UnityAction<bool> _generateBool;
     private UnityAction _reGenerate;
+
+    public UnityAction<FigureData> OnFigureGenerated;
+
+    private void Awake() {
+        ServiceLocator.RegisterService<FigureGenerator>(this);
+        _spawner = GetComponent<CardSpawner>();
+        _timer = ServiceLocator.GetService<Timer>();
+    }
 
     private void Start() {
         Generate();
@@ -31,14 +38,12 @@ public class FigureGenerator : MonoBehaviour {
             Generate();
         };
 
-        _yesCheck.OnAnswerCheck += _generateBool;
-        _noCheck.OnAnswerCheck += _generateBool;
+        AnswerChecker.OnAnswerCheck += _generateBool;
         _timer.OnTimesUp += _reGenerate;
     }
 
     private void OnDisable() {
-        _yesCheck.OnAnswerCheck -= _generateBool;
-        _noCheck.OnAnswerCheck -= _generateBool;
+        AnswerChecker.OnAnswerCheck -= _generateBool;
         _timer.OnTimesUp -= _reGenerate;
     }
 
@@ -60,10 +65,8 @@ public class FigureGenerator : MonoBehaviour {
         }
 
         _debugChosenFigures = chosenFigures;
-
         _visualizer.SetImage(_targetFigure.Sprite);
-        _yesCheck.TargetId = _targetFigure.Id;
-        _noCheck.TargetId = _targetFigure.Id;
+        OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
     }
 }
