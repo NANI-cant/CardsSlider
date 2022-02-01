@@ -59,10 +59,11 @@ public class Timer : MonoBehaviour {
 
     private void Running() {
         _remaindedTime -= Time.deltaTime;
-        _vizualizer.Visualize(_remaindedTime);
         _debugRemaindedTime = _remaindedTime;
         if (_remaindedTime <= Constants.Epsilon) {
+            _remaindedTime = 0f;
             Stop();
         }
+        _vizualizer.Visualize(_remaindedTime);
     }
 }
