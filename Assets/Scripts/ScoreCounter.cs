@@ -9,6 +9,7 @@ public class ScoreCounter : MonoBehaviour {
     public int Score => _score;
 
     private void Awake() {
+        ServiceLocator.RegisterService<ScoreCounter>(this);
         _uGUI = GetComponent<TextMeshProUGUI>();
         ChangeUI();
     }

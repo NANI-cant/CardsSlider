@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    [Header("Game Mode")]
+    [SerializeField] private Mode _gameMode;
+
     [Header("Lifes")]
     [SerializeField] private uint _startLifes;
 
@@ -13,12 +17,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private uint _answersForAddFigure;
 
     private LifeCounter _life;
+    private ScoreCounter _score;
 
     private void Awake() {
         ServiceLocator.RegisterService<GameManager>(this);
+        _score = ServiceLocator.GetService<ScoreCounter>();
         _life = ServiceLocator.GetService<LifeCounter>();
         _life.Initialize((int)_startLifes);
         ServiceLocator.GetService<FigureGenerator>().Initialize((int)_startFiguresCount, (int)_maxFiguresCount, (int)_answersForAddFigure);
+        ServiceLocator.GetService<AnswerHandler>().Initialize(_gameMode);
     }
 
     private void OnEnable() {
@@ -30,6 +37,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void EndGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        EndGameResult endGameResult = new EndGameResult(_gameMode, _score.Score);
+        MainMenu.Load(endGameResult);
     }
 }
