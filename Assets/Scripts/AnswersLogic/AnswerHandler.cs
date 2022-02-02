@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-enum Mode {
+public enum Mode {
     Classic,
     Arcade,
     Hard,
@@ -26,6 +26,10 @@ public class AnswerHandler : MonoBehaviour {
     private void Awake() {
         ServiceLocator.RegisterService<AnswerHandler>(this);
         _timer = ServiceLocator.GetService<Timer>();
+    }
+
+    public void Initialize(Mode gameMode) {
+        _gameMode = gameMode;
     }
 
     private void OnEnable() {
