@@ -6,10 +6,9 @@ namespace StartMenu {
     public class Card : MonoBehaviour {
         [SerializeField] private Mode _gameMode = Mode.Classic;
 
-        [SerializeField] private TextMeshProUGUI _bestScoreLabel;
+        [SerializeField] private LocalizedText _bestScoreLabel;
         [SerializeField] private TextMeshProUGUI _bestScoreUI;
         private int? _bestScore;
-        private const string SAVEKEY = "ClassicBestScore";
 
         public Mode GameMode => _gameMode;
 
@@ -32,24 +31,24 @@ namespace StartMenu {
         }
 
         public bool TryToUpdateBestScore(int finalScore) {
-            _bestScore = PlayerPrefs.GetInt(SAVEKEY, 0);
+            _bestScore = PlayerPrefs.GetInt(SaveKey.ClassicScore, 0);
             if (finalScore <= _bestScore) {
                 ChangeBestScoreUI(false);
                 return false;
             }
 
             _bestScore = finalScore;
-            PlayerPrefs.SetInt(SAVEKEY, (int)_bestScore);
+            PlayerPrefs.SetInt(SaveKey.ClassicScore, (int)_bestScore);
             ChangeBestScoreUI(true);
             return true;
         }
 
         private void ChangeBestScoreUI(bool isNewBest) {
             if (isNewBest) {
-                _bestScoreLabel.text = "New Best!";
+                _bestScoreLabel.SetKey(LocalizationKey.NewBestScoreLabel);
             }
             else {
-                _bestScoreLabel.text = "Best:";
+                _bestScoreLabel.SetKey(LocalizationKey.BestScoreLabel);
             }
             _bestScoreUI.text = _bestScore.ToString();
         }

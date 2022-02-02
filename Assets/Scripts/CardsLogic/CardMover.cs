@@ -26,7 +26,10 @@ public class CardMover : MonoBehaviour {
 
     private void GoBack() {
         float distance = Mathf.Sqrt((_startPosition - (Vector2)_transform.position).sqrMagnitude);
-        if (distance <= Constants.Epsilon) { return; }
+        if (distance <= Constants.Epsilon) {
+            _transform.Translate(_startPosition - (Vector2)_transform.position);
+            return;
+        }
 
         Vector2 direction = _startPosition - (Vector2)_transform.position;
         _transform.Translate(direction * _freeSpeed * Time.deltaTime);

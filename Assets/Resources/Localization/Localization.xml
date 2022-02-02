@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Keys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Key Name="PlayButton">
+		<Translates>
+			<en-us>Play</en-us>
+			<ru>Играть</ru>
+		</Translates>
+	</Key>
+	<Key Name="BestScoreLabel">
+		<Translates>
+			<en-us>Best</en-us>
+			<ru>Рекорд</ru>
+		</Translates>
+	</Key>
+	<Key Name="NewBestScoreLabel">
+		<Translates>
+			<en-us>New Best!</en-us>
+			<ru>Новый Рекорд!</ru>
+		</Translates>
+	</Key>
+</Keys>
