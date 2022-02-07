@@ -18,7 +18,6 @@ public class FigureGenerator : MonoBehaviour {
     private Timer _timer;
     private CardSpawner _spawner;
     private FigureData _targetFigure;
-    //private UnityAction<bool> _generateBool;
     private UnityAction _reGenerate;
     private int _remindAnswers;
 
@@ -42,7 +41,6 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     private void OnEnable() {
-        //_generateBool = (arg) => Generate();
         _reGenerate = () => {
             _spawner.DestroyCard();
             Generate();

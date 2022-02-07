@@ -29,14 +29,14 @@ public class GameManager : MonoBehaviour {
     }
 
     private void OnEnable() {
-        _life.OnLifesOver += EndGame;
+        //_life.OnLifesOver += EndGame;
     }
 
     private void OnDisable() {
-        _life.OnLifesOver -= EndGame;
+        //_life.OnLifesOver -= EndGame;
     }
 
-    private void EndGame() {
+    public void EndGame() {
         EndGameResult endGameResult = new EndGameResult(_gameMode, _score.Score);
         MainMenu.Load(endGameResult);
     }
