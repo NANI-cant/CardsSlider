@@ -15,17 +15,17 @@ public class AnswerHandler : MonoBehaviour {
     [SerializeField] private float _settingTime;
     [SerializeField] private int _addingScore;
     [SerializeField] private int _takingLifes;
-
-    [Header("References")]
+    [Header("")]
     [SerializeField] private ScoreCounter _score;
     [SerializeField] private LifeCounter _life;
+    [SerializeField] private Timer _timer;
 
-    private Timer _timer;
     private UnityAction _reactFalse;
 
-    private void Awake() {
-        ServiceLocator.RegisterService<AnswerHandler>(this);
-        _timer = ServiceLocator.GetService<Timer>();
+    private void OnValidate() {
+        if (_settingTime < 0) _settingTime = 0;
+        if (_addingScore < 0) _addingScore = 0;
+        if (_takingLifes < 0) _takingLifes = 0;
     }
 
     public void Initialize(Mode gameMode) {

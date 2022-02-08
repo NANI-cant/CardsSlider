@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardVisualizator : MonoBehaviour {
+public class CardView : MonoBehaviour {
     [SerializeField] private Vector2 _gridCenter;
     [SerializeField] private float _cellSize;
     [SerializeField] private SpriteRenderer _figureTemplate;
+
     [Header("Debug")]
     [SerializeField] private Color _debugColor;
     [Range(1, 9)] [SerializeField] private int _debugCellsCount;
@@ -13,6 +14,10 @@ public class CardVisualizator : MonoBehaviour {
     [SerializeField] private List<Vector2> _debugPositions;
 
     private List<FigureData> _figures;
+
+    private void OnValidate() {
+        if (_cellSize < 0) _cellSize = 0;
+    }
 
     public void Visualize(List<FigureData> figures) {
         _figures = figures;

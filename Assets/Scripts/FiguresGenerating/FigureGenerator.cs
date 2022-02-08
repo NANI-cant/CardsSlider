@@ -9,13 +9,14 @@ public class FigureGenerator : MonoBehaviour {
     [SerializeField] private int _figuresCount;
     [SerializeField] private int _maxFiguresCount;
     [SerializeField] private int _answersForAddFigure;
+    [Range(0, 1)]
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
-    [SerializeField] private TargetVisualizer _visualizer;
+    [SerializeField] private TargetFigureView _view;
+    [SerializeField] private Timer _timer;
     [Header("Debug")]
     [SerializeField] private FigureData[] _debugChosenFigures;
     [SerializeField] private FigureData _debugTargetFigure;
 
-    private Timer _timer;
     private CardSpawner _spawner;
     private FigureData _targetFigure;
     private UnityAction _reGenerate;
@@ -23,10 +24,14 @@ public class FigureGenerator : MonoBehaviour {
 
     public UnityAction<FigureData> OnFigureGenerated;
 
+    private void OnValidate() {
+        if (_figuresCount < 1) _figuresCount = 1;
+        if (_maxFiguresCount < 1) _maxFiguresCount = 1;
+        if (_answersForAddFigure < 1) _answersForAddFigure = 1;
+    }
+
     private void Awake() {
-        ServiceLocator.RegisterService<FigureGenerator>(this);
         _spawner = GetComponent<CardSpawner>();
-        _timer = ServiceLocator.GetService<Timer>();
     }
 
     private void Start() {
@@ -86,7 +91,7 @@ public class FigureGenerator : MonoBehaviour {
         }
 
         _debugChosenFigures = chosenFigures;
-        _visualizer.SetImage(_targetFigure.Sprite);
+        _view.SetImage(_targetFigure.Sprite);
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
     }
