@@ -34,7 +34,7 @@ public class AnswerChecker : MonoBehaviour {
         _figureGenerator.OnFigureGenerated -= SetTarget;
     }
 
-    public void Check(Card card) {
+    private void Check(Card card) {
         if (!IsCardNear(card.transform.position)) { return; }
         card.Destroy();
 

@@ -32,14 +32,6 @@ public class GameManager : MonoBehaviour {
         FindObjectOfType<AnswerHandler>().Initialize(_gameMode);
     }
 
-    private void OnEnable() {
-        //_life.OnLifesOver += EndGame;
-    }
-
-    private void OnDisable() {
-        //_life.OnLifesOver -= EndGame;
-    }
-
     public void ExitGame() {
         EndGameResult endGameResult = new EndGameResult(_gameMode, _score.Score);
         MainMenu.Load(endGameResult);
