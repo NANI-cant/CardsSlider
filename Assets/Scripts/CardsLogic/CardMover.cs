@@ -10,6 +10,10 @@ public class CardMover : MonoBehaviour {
 
     public bool CanMove = true;
 
+    private void OnValidate() {
+        if (_freeSpeed < 0) _freeSpeed = 0;
+    }
+
     private void Awake() {
         _transform = GetComponent<Transform>();
     }

@@ -7,18 +7,18 @@ using UnityEngine.InputSystem;
 public class CardDragger : MonoBehaviour {
     [SerializeField] private Camera _camera;
     [SerializeField] private LayerMask _whatIsCard;
+    [SerializeField] private Game _game;
 
     private Card _holdingCard;
-
     private Inputs _inputs;
     private Vector2 _distanceToPointer;
+    private bool _canDrag = true;
 
     public UnityAction<Card> OnCardDrop;
 
-    private Vector2 pointerPosition => _camera.ScreenToWorldPoint(_inputs.CardDragger.Dragging.ReadValue<Vector2>());
+    private Vector2 _pointerPosition => _camera.ScreenToWorldPoint(_inputs.CardDragger.Dragging.ReadValue<Vector2>());
 
     private void Awake() {
-        ServiceLocator.RegisterService<CardDragger>(this);
         _inputs = new Inputs();
     }
 
@@ -26,10 +26,14 @@ public class CardDragger : MonoBehaviour {
         _inputs.Enable();
         _inputs.CardDragger.TakeDrop.started += ctx => TakeCard();
         _inputs.CardDragger.TakeDrop.canceled += ctx => DropCard();
+        _game.OnGameOver += ForbidDragging;
+        _game.OnSceneStart += AllowDragging;
     }
 
     private void OnDisable() {
         _inputs.Disable();
+        _game.OnGameOver -= ForbidDragging;
+        _game.OnSceneStart -= AllowDragging;
     }
 
     private void FixedUpdate() {
@@ -37,17 +41,18 @@ public class CardDragger : MonoBehaviour {
     }
 
     private void DragCard() {
-        if (_holdingCard == null) { return; }
+        if (!_canDrag) return;
+        if (_holdingCard == null) return;
 
-        _holdingCard.transform.position = pointerPosition - _distanceToPointer;
+        _holdingCard.transform.position = _pointerPosition - _distanceToPointer;
     }
 
     private void TakeCard() {
-        RaycastHit2D hitResult = Physics2D.Raycast(pointerPosition, Vector2.zero, float.MaxValue, _whatIsCard);
+        RaycastHit2D hitResult = Physics2D.Raycast(_pointerPosition, Vector2.zero, float.MaxValue, _whatIsCard);
         if (hitResult.collider != null) {
             _holdingCard = hitResult.collider.GetComponent<Card>();
             _holdingCard.Mover.CanMove = false;
-            _distanceToPointer = pointerPosition - (Vector2)_holdingCard.transform.position;
+            _distanceToPointer = _pointerPosition - (Vector2)_holdingCard.transform.position;
             Debug.Log("Card Taked");
         }
         else {
@@ -63,4 +68,7 @@ public class CardDragger : MonoBehaviour {
         OnCardDrop?.Invoke(_holdingCard);
         _holdingCard = null;
     }
+
+    private void ForbidDragging() => _canDrag = false;
+    private void AllowDragging() => _canDrag = true;
 }

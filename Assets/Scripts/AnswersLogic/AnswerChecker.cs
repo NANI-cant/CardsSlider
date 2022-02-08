@@ -11,6 +11,8 @@ enum Answer {
 public class AnswerChecker : MonoBehaviour {
     [SerializeField] private Answer _kindOfAnswer;
     [SerializeField] private float _checkRadius;
+    [SerializeField] private CardDragger _cardDragger;
+    [SerializeField] private FigureGenerator _figureGenerator;
     [Header("Debug")]
     [SerializeField] private Color _debugColor;
 
@@ -18,17 +20,21 @@ public class AnswerChecker : MonoBehaviour {
 
     public static UnityAction<bool> OnAnswerCheck;
 
+    private void OnValidate() {
+        if (_checkRadius < 0) _checkRadius = 0;
+    }
+
     private void OnEnable() {
-        ServiceLocator.GetService<CardDragger>().OnCardDrop += Check;
-        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated += SetTarget;
+        _cardDragger.OnCardDrop += Check;
+        _figureGenerator.OnFigureGenerated += SetTarget;
     }
 
     private void OnDisable() {
-        ServiceLocator.GetService<CardDragger>().OnCardDrop -= Check;
-        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated -= SetTarget;
+        _cardDragger.OnCardDrop -= Check;
+        _figureGenerator.OnFigureGenerated -= SetTarget;
     }
 
-    public void Check(Card card) {
+    private void Check(Card card) {
         if (!IsCardNear(card.transform.position)) { return; }
         card.Destroy();
 

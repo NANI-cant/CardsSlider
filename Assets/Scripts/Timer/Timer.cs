@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour {
     [SerializeField] private float _startTime;
-    [SerializeField] private TimerVizualizer _vizualizer;
+    [SerializeField] private TimerView _view;
+    [SerializeField] private Game _game;
     [Header("Debug")]
     [SerializeField] private float _debugRemaindedTime;
 
@@ -16,14 +17,22 @@ public class Timer : MonoBehaviour {
 
     public float RemaindedTime => _remaindedTime;
 
-    private void Awake() {
-        ServiceLocator.RegisterService<Timer>(this);
+    private void OnValidate() {
+        if (_startTime < 0) _startTime = 0;
     }
 
     private void Start() {
         _remaindedTime = _startTime;
         _debugRemaindedTime = _remaindedTime;
-        _vizualizer.Visualize(_remaindedTime);
+        _view.Visualize(_remaindedTime);
+    }
+
+    private void OnEnable() {
+        _game.OnGameOver += Stop;
+    }
+
+    private void OnDisable() {
+        _game.OnGameOver -= Stop;
     }
 
     private void Update() {
@@ -53,7 +62,6 @@ public class Timer : MonoBehaviour {
     private void Stop() {
         if (_isRun) {
             _isRun = false;
-            OnTimesUp?.Invoke();
         }
     }
 
@@ -63,7 +71,8 @@ public class Timer : MonoBehaviour {
         if (_remaindedTime <= Constants.Epsilon) {
             _remaindedTime = 0f;
             Stop();
+            OnTimesUp?.Invoke();
         }
-        _vizualizer.Visualize(_remaindedTime);
+        _view.Visualize(_remaindedTime);
     }
 }

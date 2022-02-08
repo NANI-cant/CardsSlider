@@ -11,7 +11,6 @@ public class LifeCounter : MonoBehaviour {
     public UnityAction OnLifesOver;
 
     private void Awake() {
-        ServiceLocator.RegisterService<LifeCounter>(this);
         _uGUI = GetComponent<TextMeshProUGUI>();
         ChangeUI();
     }

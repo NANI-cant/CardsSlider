@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class TimerVizualizer : MonoBehaviour {
+public class TimerView : MonoBehaviour {
     private TextMeshProUGUI _text;
 
     private void Awake() {

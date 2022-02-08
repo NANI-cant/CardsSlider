@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class TargetVisualizer : MonoBehaviour {
+public class TargetFigureView : MonoBehaviour {
     private Image _image;
 
     private void Awake() {

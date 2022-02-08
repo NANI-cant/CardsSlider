@@ -6,37 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [Header("Game Mode")]
-    [SerializeField] private Mode _gameMode;
+    [SerializeField] private Mode _gameMode = Mode.Classic;
 
     [Header("Lifes")]
-    [SerializeField] private uint _startLifes;
+    [SerializeField] private int _startLifes;
 
     [Header("Figure Generating")]
-    [SerializeField] private uint _maxFiguresCount;
-    [SerializeField] private uint _startFiguresCount;
-    [SerializeField] private uint _answersForAddFigure;
+    [SerializeField] private int _maxFiguresCount;
+    [SerializeField] private int _startFiguresCount;
+    [SerializeField] private int _answersForAddFigure;
 
-    private LifeCounter _life;
-    private ScoreCounter _score;
+    [SerializeField] private LifeCounter _life;
+    [SerializeField] private ScoreCounter _score;
+
+    private void OnValidate(){
+        if (_startLifes < 1) _startLifes = 1;
+        if (_startFiguresCount < 1) _startFiguresCount = 1;
+        if (_maxFiguresCount < 1) _maxFiguresCount = 1;
+        if (_answersForAddFigure < 1) _answersForAddFigure = 1;
+    }
 
     private void Awake() {
-        ServiceLocator.RegisterService<GameManager>(this);
-        _score = ServiceLocator.GetService<ScoreCounter>();
-        _life = ServiceLocator.GetService<LifeCounter>();
-        _life.Initialize((int)_startLifes);
-        ServiceLocator.GetService<FigureGenerator>().Initialize((int)_startFiguresCount, (int)_maxFiguresCount, (int)_answersForAddFigure);
-        ServiceLocator.GetService<AnswerHandler>().Initialize(_gameMode);
+        _life.Initialize(_startLifes);
+        FindObjectOfType<FigureGenerator>().Initialize(_startFiguresCount, _maxFiguresCount, _answersForAddFigure);
+        FindObjectOfType<AnswerHandler>().Initialize(_gameMode);
     }
 
-    private void OnEnable() {
-        _life.OnLifesOver += EndGame;
-    }
-
-    private void OnDisable() {
-        _life.OnLifesOver -= EndGame;
-    }
-
-    private void EndGame() {
+    public void ExitGame() {
         EndGameResult endGameResult = new EndGameResult(_gameMode, _score.Score);
         MainMenu.Load(endGameResult);
     }
