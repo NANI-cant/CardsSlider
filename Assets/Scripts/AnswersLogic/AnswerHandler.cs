@@ -53,7 +53,7 @@ public class AnswerHandler : MonoBehaviour {
                         _score.Add(_addingScore);
                     }
                     else {
-                        _life.Take(_takingLifes);
+                        _life.TryToTake(_takingLifes);
                     }
                     break;
                 }

@@ -13,7 +13,7 @@ public class CardSpawner : MonoBehaviour {
     private Card _currentCard;
 
     public void Spawn(List<FigureData> figures) {
-        _currentCard = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity);
+        _currentCard = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity, transform);
         _currentCard.Initialize(figures);
         Debug.Log("Card spawned");
     }

@@ -1,27 +1,21 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreCounter : MonoBehaviour {
+    [SerializeField] private ScoreView _view;
+
     private int _score = 0;
-    private TextMeshProUGUI _uGUI;
 
     public int Score => _score;
 
-    private void Awake() {
-        _uGUI = GetComponent<TextMeshProUGUI>();
-        ChangeUI();
+    private void Start() {
+        _view.ChangeUI(_score);
     }
 
     public bool Add(int score) {
         if (score <= 0) return false;
 
         _score += score;
-        ChangeUI();
+        _view.ChangeUI(_score);
         return true;
-    }
-
-    private void ChangeUI() {
-        _uGUI.text = _score.ToString();
     }
 }
