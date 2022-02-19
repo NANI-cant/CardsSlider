@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 [RequireComponent(typeof(CardSpawner))]
 public class FigureGenerator : MonoBehaviour {
@@ -12,10 +13,11 @@ public class FigureGenerator : MonoBehaviour {
     [Range(0, 1)]
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
     [SerializeField] private TargetFigureView _view;
-    [SerializeField] private Timer _timer;
     [Header("Debug")]
     [SerializeField] private FigureData[] _debugChosenFigures;
     [SerializeField] private FigureData _debugTargetFigure;
+
+    [Inject] private Timer _timer;
 
     private CardSpawner _spawner;
     private FigureData _targetFigure;

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class Game : MonoBehaviour {
-    [SerializeField] private LifeCounter _life;
+    [Inject] private LifeCounter _life;
 
     public UnityAction OnSceneStart;
     public UnityAction OnGameStart;

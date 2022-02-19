@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public enum Mode {
     Classic,
@@ -15,10 +16,10 @@ public class AnswerHandler : MonoBehaviour {
     [SerializeField] private float _settingTime;
     [SerializeField] private int _addingScore;
     [SerializeField] private int _takingLifes;
-    [Header("")]
-    [SerializeField] private ScoreCounter _score;
-    [SerializeField] private LifeCounter _life;
-    [SerializeField] private Timer _timer;
+    
+    [Inject] private Timer _timer;
+    [Inject] private LifeCounter _life;
+    [Inject] private ScoreCounter _score;
 
     private UnityAction _reactFalse;
 

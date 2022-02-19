@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class Timer : MonoBehaviour {
     [SerializeField] private float _startTime;
     [SerializeField] private TimerView _view;
-    [SerializeField] private Game _game;
-    [Header("Debug")]
-    [SerializeField] private float _debugRemaindedTime;
+
+    [Inject] private Game _game;
 
     private float _remaindedTime;
     private bool _isRun = false;
@@ -23,7 +23,6 @@ public class Timer : MonoBehaviour {
 
     private void Start() {
         _remaindedTime = _startTime;
-        _debugRemaindedTime = _remaindedTime;
         _view.Visualize(_remaindedTime);
     }
 
@@ -43,12 +42,10 @@ public class Timer : MonoBehaviour {
 
     public void Add(float time) {
         _remaindedTime += time;
-        _debugRemaindedTime = _remaindedTime;
     }
 
     public void Set(float time) {
         _remaindedTime = time;
-        _debugRemaindedTime = _remaindedTime;
     }
 
     [ContextMenu("Run")]
@@ -67,7 +64,6 @@ public class Timer : MonoBehaviour {
 
     private void Running() {
         _remaindedTime -= Time.deltaTime;
-        _debugRemaindedTime = _remaindedTime;
         if (_remaindedTime <= Constants.Epsilon) {
             _remaindedTime = 0f;
             Stop();

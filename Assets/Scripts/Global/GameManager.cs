@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameManager : MonoBehaviour {
     [Header("Game Mode")]
@@ -16,10 +17,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int _startFiguresCount;
     [SerializeField] private int _answersForAddFigure;
 
-    [SerializeField] private LifeCounter _life;
-    [SerializeField] private ScoreCounter _score;
+    [Inject] private LifeCounter _life;
+    [Inject] private ScoreCounter _score;
+    [Inject] private FigureGenerator _figureGenerator;
+    [Inject] private AnswerHandler _answerHandler;
 
-    private void OnValidate(){
+    private void OnValidate() {
         if (_startLifes < 1) _startLifes = 1;
         if (_startFiguresCount < 1) _startFiguresCount = 1;
         if (_maxFiguresCount < 1) _maxFiguresCount = 1;
@@ -28,8 +31,8 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         _life.Initialize(_startLifes);
-        FindObjectOfType<FigureGenerator>().Initialize(_startFiguresCount, _maxFiguresCount, _answersForAddFigure);
-        FindObjectOfType<AnswerHandler>().Initialize(_gameMode);
+        _figureGenerator.Initialize(_startFiguresCount, _maxFiguresCount, _answersForAddFigure);
+        _answerHandler.Initialize(_gameMode);
     }
 
     public void ExitGame() {
