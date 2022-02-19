@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class UIEvents : MonoBehaviour {
-    [SerializeField] private Game _game;
     [SerializeField] private UnityEvent _onSceneStart;
     [SerializeField] private UnityEvent _onGameStart;
     [SerializeField] private UnityEvent _onGameOver;
+
+    [Inject] private Game _game;
 
     private UnityAction _sceneStartInvoke;
     private UnityAction _gameStartInvoke;

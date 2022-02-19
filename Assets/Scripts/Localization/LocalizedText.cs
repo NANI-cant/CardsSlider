@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class LocalizedText : MonoBehaviour {
     [SerializeField] private string _localizationKey;
 
-    private TextMeshProUGUI _uGUI;
+    [Inject] private Localization _localization;
 
-    public TextMeshProUGUI UGUI => _uGUI;
+    private TextMeshProUGUI _uGUI;
 
     private void Awake() {
         _uGUI = GetComponent<TextMeshProUGUI>();
@@ -17,19 +18,19 @@ public class LocalizedText : MonoBehaviour {
     }
 
     private void OnEnable() {
-        LocalizationManager.OnLanguageChange += ChangeLanguage;
+        _localization.OnLanguageChange += ChangeLanguage;
     }
 
     private void OnDisable() {
-        LocalizationManager.OnLanguageChange -= ChangeLanguage;
+        _localization.OnLanguageChange -= ChangeLanguage;
     }
 
-    public void SetKey(string key){
+    public void SetKey(string key) {
         _localizationKey = key;
         ChangeLanguage();
     }
 
     private void ChangeLanguage() {
-        GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetLocalizedText(_localizationKey);
+        GetComponent<TextMeshProUGUI>().text = _localization.GetLocalizedText(_localizationKey);
     }
 }

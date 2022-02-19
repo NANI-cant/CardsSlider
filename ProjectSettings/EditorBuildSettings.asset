@@ -11,4 +11,37 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 7696a7b4d1f0e704fbf46b5211861321
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/SampleGame2 (Advanced)/Scenes/SpaceFighter.unity
+    guid: aea20ff1b07af644f9638d9c740ec0e0
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneTests/TestDestructionOrder/TestDestructionOrder2.unity
+    guid: d065ed24cd906b04f9d9764f76ccb48b
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneContractTests/Decorators/Scene1.unity
+    guid: 9561978599724fa4695e4683cf4af028
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneContractTests/AutoLoader/Scene1.unity
+    guid: 842c1766cf27f1e469d9d41b9f829ab7
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneContractTests/Decorators/Scene2.unity
+    guid: e51117d8dc00ad145a3097828d414398
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneTests/TestSceneContextEvents/TestSceneContextEvents.unity
+    guid: 6a6e139b8a4d4d544a3318c53b9ae3d6
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneTests/TestDestructionOrder/EmptyScene.unity
+    guid: f0b451bb575d6874db7cdbcfb24a45de
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/SampleGame1 (Beginner)/Asteroids.unity
+    guid: 1fbbab4d6f8dcbd4eb46075a8f4a68e4
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneContractTests/AutoLoader/Scene3.unity
+    guid: faa2053ed94777648896eb4be8f2b5c1
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneTests/TestDestructionOrder/TestDestructionOrder1.unity
+    guid: 91f1a89eec2339443a33e85d58a69325
+  - enabled: 1
+    path: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/SceneContractTests/AutoLoader/Scene2.unity
+    guid: e290c5ee5cba76840b3564b4fc30737c
   m_configObjects: {}

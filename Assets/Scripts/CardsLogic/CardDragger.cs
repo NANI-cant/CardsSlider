@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class CardDragger : MonoBehaviour {
     [SerializeField] private Camera _camera;
     [SerializeField] private LayerMask _whatIsCard;
-    [SerializeField] private Game _game;
+    
+    [Inject] private Game _game;
 
     private Card _holdingCard;
     private Inputs _inputs;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 enum Answer {
     Yes,
@@ -11,10 +12,9 @@ enum Answer {
 public class AnswerChecker : MonoBehaviour {
     [SerializeField] private Answer _kindOfAnswer;
     [SerializeField] private float _checkRadius;
-    [SerializeField] private CardDragger _cardDragger;
-    [SerializeField] private FigureGenerator _figureGenerator;
-    [Header("Debug")]
-    [SerializeField] private Color _debugColor;
+
+    [Inject] private CardDragger _cardDragger;
+    [Inject] private FigureGenerator _figureGenerator;
 
     private string _targetId;
 
@@ -57,7 +57,12 @@ public class AnswerChecker : MonoBehaviour {
     private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= _checkRadius;
 
     private void OnDrawGizmos() {
-        Gizmos.color = _debugColor;
+        if (_kindOfAnswer == Answer.Yes) {
+            Gizmos.color = Color.green;
+        }
+        else {
+            Gizmos.color = Color.red;
+        }
         Gizmos.DrawWireSphere(transform.position, _checkRadius);
     }
 }

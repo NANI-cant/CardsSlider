@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class ScoreConverter : MonoBehaviour {
     [Tooltip("Score умножается на коэффициент, результат - размер полученной валюты")]
@@ -10,7 +11,8 @@ public class ScoreConverter : MonoBehaviour {
     [SerializeField] private float _timeForConvert;
     [SerializeField] private TextMeshProUGUI _scoreUI;
     [SerializeField] private TextMeshProUGUI _bankUI;
-    [SerializeField] private ScoreCounter _scoreCounter;
+    
+    [Inject] private ScoreCounter _scoreCounter;
 
     private int _score;
     private int _bank;
