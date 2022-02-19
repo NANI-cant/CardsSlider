@@ -2,28 +2,27 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
 public class LifeCounter : MonoBehaviour {
+    [SerializeField] private LifeView _view;
+
     private int _lifes = 0;
-    private TextMeshProUGUI _uGUI;
 
     public int Lifes => _lifes;
     public UnityAction OnLifesOver;
 
-    private void Awake() {
-        _uGUI = GetComponent<TextMeshProUGUI>();
-        ChangeUI();
+    private void Start() {
+        _view.ChangeUI(_lifes);
     }
 
     public bool Initialize(int lifes) {
         if (lifes <= 0) return false;
 
         _lifes = lifes;
-        ChangeUI();
+        _view.ChangeUI(_lifes);
         return true;
     }
 
-    public bool Take(int lifes) {
+    public bool TryToTake(int lifes) {
         if (lifes <= 0) return false;
 
         _lifes -= lifes;
@@ -31,19 +30,15 @@ public class LifeCounter : MonoBehaviour {
             _lifes = 0;
             OnLifesOver?.Invoke();
         }
-        ChangeUI();
+        _view.ChangeUI(_lifes);
         return true;
     }
 
-    public bool Add(int lifes) {
+    public bool TryToAdd(int lifes) {
         if (lifes <= 0) return false;
 
         _lifes += lifes;
-        ChangeUI();
+        _view.ChangeUI(_lifes);
         return true;
-    }
-
-    private void ChangeUI() {
-        _uGUI.text = _lifes.ToString();
     }
 }

@@ -27,6 +27,7 @@ public class ScoreConverter : MonoBehaviour {
     public void StartConverting() {
         _score = _scoreCounter.Score;
         _bank = (int)(_score * _koefficient);
+        PlayerPrefs.SetInt(SaveKey.Bank, PlayerPrefs.GetInt(SaveKey.Bank) + _bank);
         _currentBank = 0;
         _currentScore = _score;
         _scoreUI.text = _score.ToString();
