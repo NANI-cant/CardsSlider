@@ -5,6 +5,10 @@ using Zenject;
 
 public class DragerInstaller : MonoInstaller {
     public override void InstallBindings() {
-        Container.Bind<CardDragger>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container
+            .Bind<CardDragger>()
+            .FromComponentInHierarchy()
+            .AsSingle()
+            .NonLazy();
     }
 }

@@ -7,9 +7,9 @@ namespace StartMenu {
     public class SceneEntryPoint : MonoBehaviour, ISceneLoadHandler<EndGameResult> {
 
         public void OnSceneLoaded(EndGameResult result) {
-            foreach (Card card in FindObjectsOfType<Card>()) {
-                if (card.GameMode == result.GameMode) {
-                    card.TryToUpdateBestScore(result.FinalScore);
+            foreach (GameModePanel panel in FindObjectsOfType<GameModePanel>()) {
+                if (panel.GameMode == result.GameMode) {
+                    panel.TryToUpdateBestScore(result.FinalScore);
                 }
             }
         }

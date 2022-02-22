@@ -1,10 +1,11 @@
+using StartMenu;
 using UnityEngine;
 using Zenject;
 
-public class AnswerHandlerInstaller : MonoInstaller {
+public class BankInstaller : MonoInstaller {
     public override void InstallBindings() {
         Container
-            .Bind<AnswerHandler>()
+            .Bind<Bank>()
             .FromComponentInHierarchy()
             .AsSingle()
             .NonLazy();
