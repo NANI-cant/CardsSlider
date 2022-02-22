@@ -12,6 +12,10 @@ namespace StartMenu {
         [SerializeField] private Button _buyButton;
         [SerializeField] private Button _selectButton;
 
+        private void Awake() {
+            _image.useSpriteMesh = true;
+        }
+
         public void SetName(string name) {
             _nameUGUI.text = name;
         }

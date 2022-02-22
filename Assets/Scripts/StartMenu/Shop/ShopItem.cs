@@ -17,16 +17,14 @@ namespace StartMenu {
         [Inject] private Bank _bank;
         [Inject] private FigureCollectionsHolder _banksHolder;
 
-#if UNITY_EDITOR
-        [SerializeField] private string DebugSaveKey;
-        public bool IsBase => _isBase;
-        public int Id => _id;
-#endif
-
         private bool _isBuyed;
         private ShopItemView _view;
 
 #if UNITY_EDITOR
+        [SerializeField] private string DebugSaveKey;
+        public bool IsBase => _isBase;
+        public int Id => _id;
+
         private void OnValidate() {
             if (_price < 0) _price = 0;
             if (_id < 0) _id = 0;
@@ -55,16 +53,16 @@ namespace StartMenu {
             _view.SetPrice(_price);
             _view.SetImage(_image);
 
-            _isBuyed = Convert.ToBoolean(PlayerPrefs.GetInt(SaveKey.ShopItemsId[_id], 0));
+            _isBuyed = new PlayerPrefs().GetBool(SaveKey.ShopItemsId[_id], false);
 
             UpdateState();
         }
 
         public void Buy() {
-            if (!CanBeBuyed()) return;
+            if (!CheckCanBeBuyed()) return;
             if (!_bank.TryToSpend(_price)) return;
 
-            PlayerPrefs.SetInt(SaveKey.ShopItemsId[_id], 1);
+            new PlayerPrefs().SetBool(SaveKey.ShopItemsId[_id], true);
             _isBuyed = true;
             _view.SetAlreadyBuyed();
 
@@ -77,7 +75,7 @@ namespace StartMenu {
         }
 
         private void UpdateState() {
-            if (CanBeBuyed()) {
+            if (CheckCanBeBuyed()) {
                 _view.SetBuyable();
             }
             else if (_isBuyed) {
@@ -88,7 +86,7 @@ namespace StartMenu {
             }
         }
 
-        private bool CanBeBuyed() {
+        private bool CheckCanBeBuyed() {
             if (_isBuyed) return false;
             if (_bank.CanSpend(_price)) return true;
             return false;
