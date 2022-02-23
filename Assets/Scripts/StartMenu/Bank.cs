@@ -3,10 +3,8 @@ using UnityEngine.Events;
 
 namespace StartMenu {
     public class Bank : MonoBehaviour {
-        [SerializeField] private BankView _view;
-
-        public UnityAction OnEarn;
-        public UnityAction OnSpend;
+        public UnityAction<int> OnEarn;
+        public UnityAction<int> OnSpend;
 
         private int _amount;
 
@@ -14,10 +12,6 @@ namespace StartMenu {
 
         private void Awake() {
             _amount = PlayerPrefs.GetInt(SaveKey.Bank, 0);
-        }
-
-        private void Start() {
-            _view.ChangeUI(_amount);
         }
 
         public bool CanSpend(int total) {
@@ -29,16 +23,14 @@ namespace StartMenu {
 
             _amount -= total;
             PlayerPrefs.SetInt(SaveKey.Bank, _amount);
-            _view.ChangeUI(_amount);
-            OnSpend?.Invoke();
+            OnSpend?.Invoke(Amount);
             return true;
         }
 
         public void Earn(int total) {
             _amount += total;
             PlayerPrefs.SetInt(SaveKey.Bank, _amount);
-            _view.ChangeUI(_amount);
-            OnEarn?.Invoke();
+            OnEarn?.Invoke(Amount);
         }
 
 #if UNITY_EDITOR

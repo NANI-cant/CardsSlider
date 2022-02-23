@@ -39,13 +39,13 @@ namespace StartMenu {
         }
 
         private void OnEnable() {
-            _bank.OnEarn += UpdateState;
-            _bank.OnSpend += UpdateState;
+            _bank.OnEarn += UpdateStateOverBank;
+            _bank.OnSpend += UpdateStateOverBank;
         }
 
         private void OnDisable() {
-            _bank.OnEarn -= UpdateState;
-            _bank.OnSpend -= UpdateState;
+            _bank.OnEarn -= UpdateStateOverBank;
+            _bank.OnSpend -= UpdateStateOverBank;
         }
 
         private void Start() {
@@ -55,11 +55,11 @@ namespace StartMenu {
 
             _isBuyed = new PlayerPrefs().GetBool(SaveKey.ShopItemsId[_id], false);
 
-            UpdateState();
+            UpdateStateOverBank(_bank.Amount);
         }
 
         public void Buy() {
-            if (!CheckCanBeBuyed()) return;
+            if (!CheckCanBeBuyedFor(_bank.Amount)) return;
             if (!_bank.TryToSpend(_price)) return;
 
             new PlayerPrefs().SetBool(SaveKey.ShopItemsId[_id], true);
@@ -74,8 +74,8 @@ namespace StartMenu {
             Debug.Log(this + " Selected");
         }
 
-        private void UpdateState() {
-            if (CheckCanBeBuyed()) {
+        private void UpdateStateOverBank(int bankCurrentAmount) {
+            if (CheckCanBeBuyedFor(bankCurrentAmount)) {
                 _view.SetBuyable();
             }
             else if (_isBuyed) {
@@ -86,9 +86,9 @@ namespace StartMenu {
             }
         }
 
-        private bool CheckCanBeBuyed() {
+        private bool CheckCanBeBuyedFor(int amount) {
             if (_isBuyed) return false;
-            if (_bank.CanSpend(_price)) return true;
+            if (amount >= _price) return true;
             return false;
         }
 

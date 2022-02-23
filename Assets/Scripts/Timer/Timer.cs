@@ -6,14 +6,14 @@ using Zenject;
 
 public class Timer : MonoBehaviour {
     [SerializeField] private float _startTime;
-    [SerializeField] private TimerView _view;
+
+    public UnityAction OnTimesUp;
+    public UnityAction<float> OnTimeChange;
 
     [Inject] private Game _game;
 
     private float _remaindedTime;
     private bool _isRun = false;
-
-    public UnityAction OnTimesUp;
 
     public float RemaindedTime => _remaindedTime;
 
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour {
 
     private void Start() {
         _remaindedTime = _startTime;
-        _view.Visualize(_remaindedTime);
+        OnTimeChange?.Invoke(RemaindedTime);
     }
 
     private void OnEnable() {
@@ -42,10 +42,12 @@ public class Timer : MonoBehaviour {
 
     public void Add(float time) {
         _remaindedTime += time;
+        OnTimeChange?.Invoke(RemaindedTime);
     }
 
     public void Set(float time) {
         _remaindedTime = time;
+        OnTimeChange?.Invoke(RemaindedTime);
     }
 
     [ContextMenu("Run")]
@@ -64,11 +66,11 @@ public class Timer : MonoBehaviour {
 
     private void Running() {
         _remaindedTime -= Time.deltaTime;
+        OnTimeChange?.Invoke(RemaindedTime);
         if (_remaindedTime <= Constants.Epsilon) {
             _remaindedTime = 0f;
             Stop();
             OnTimesUp?.Invoke();
         }
-        _view.Visualize(_remaindedTime);
     }
 }
