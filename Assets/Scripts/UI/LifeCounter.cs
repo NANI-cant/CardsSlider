@@ -3,22 +3,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class LifeCounter : MonoBehaviour {
-    [SerializeField] private LifeView _view;
+    public UnityAction OnLifesOver;
+    public UnityAction<int> OnLifesChange;
 
     private int _lifes = 0;
 
     public int Lifes => _lifes;
-    public UnityAction OnLifesOver;
-
-    private void Start() {
-        _view.ChangeUI(_lifes);
-    }
 
     public bool Initialize(int lifes) {
         if (lifes <= 0) return false;
 
         _lifes = lifes;
-        _view.ChangeUI(_lifes);
         return true;
     }
 
@@ -30,7 +25,7 @@ public class LifeCounter : MonoBehaviour {
             _lifes = 0;
             OnLifesOver?.Invoke();
         }
-        _view.ChangeUI(_lifes);
+        OnLifesChange?.Invoke(Lifes);
         return true;
     }
 
@@ -38,7 +33,7 @@ public class LifeCounter : MonoBehaviour {
         if (lifes <= 0) return false;
 
         _lifes += lifes;
-        _view.ChangeUI(_lifes);
+        OnLifesChange?.Invoke(Lifes);
         return true;
     }
 }

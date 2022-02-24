@@ -5,6 +5,10 @@ using Zenject;
 
 public class ScoreCounterInstaller : MonoInstaller {
     public override void InstallBindings() {
-        Container.Bind<ScoreCounter>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container
+            .Bind<ScoreCounter>()
+            .FromComponentInHierarchy()
+            .AsSingle()
+            .NonLazy();
     }
 }

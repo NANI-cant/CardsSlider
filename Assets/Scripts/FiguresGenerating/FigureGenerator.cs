@@ -12,19 +12,15 @@ public class FigureGenerator : MonoBehaviour {
     [SerializeField] private int _answersForAddFigure;
     [Range(0, 1)]
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
-    [SerializeField] private TargetFigureView _view;
-    [Header("Debug")]
-    [SerializeField] private FigureData[] _debugChosenFigures;
-    [SerializeField] private FigureData _debugTargetFigure;
 
-    [Inject] private Timer _timer;
+    public UnityAction<FigureData> OnFigureGenerated;
 
     private CardSpawner _spawner;
     private FigureData _targetFigure;
     private UnityAction _reGenerate;
     private int _remindAnswers;
 
-    public UnityAction<FigureData> OnFigureGenerated;
+    [Inject] private Timer _timer;
 
     private void OnValidate() {
         if (_figuresCount < 1) _figuresCount = 1;
@@ -92,8 +88,6 @@ public class FigureGenerator : MonoBehaviour {
             }
         }
 
-        _debugChosenFigures = chosenFigures;
-        _view.SetImage(_targetFigure.Sprite);
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
     }

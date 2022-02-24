@@ -3,11 +3,11 @@ using TMPro;
 using UnityEngine;
 
 namespace StartMenu {
-    public class Card : MonoBehaviour {
+    public class GameModePanel : MonoBehaviour {
         [SerializeField] private Mode _gameMode = Mode.Classic;
-
         [SerializeField] private LocalizedText _bestScoreLabel;
         [SerializeField] private TextMeshProUGUI _bestScoreUI;
+        
         private int? _bestScore;
 
         public Mode GameMode => _gameMode;

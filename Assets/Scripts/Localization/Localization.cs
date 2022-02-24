@@ -6,16 +6,16 @@ using UnityEngine.Events;
 public class Localization : MonoBehaviour {
     [SerializeField] private TextAsset _localizationXML;
 
-    private Dictionary<string, List<string>> _localizationMap;
-
-    public int SelectedLanguage;
     public UnityAction OnLanguageChange;
+
+    private Dictionary<string, List<string>> _localizationMap;
+    private int SelectedLanguage;
 
     public void Initialize() {
         if (_localizationMap == null) {
             SelectedLanguage = PlayerPrefs.GetInt(SaveKey.Language, 0);
         }
-        
+
         _localizationMap = new Dictionary<string, List<string>>();
 
         XmlDocument xml = new XmlDocument();
