@@ -782,7 +782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ff5f7df84cc284d989f20ed262cc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 1666074483}
 --- !u!4 &530883775
 Transform:
   m_ObjectHideFlags: 0
@@ -2458,6 +2457,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6321201032410383529, guid: fcd7b31d40f6d654e90366238900a843,
         type: 3}
+      propertyPath: _id
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321201032410383529, guid: fcd7b31d40f6d654e90366238900a843,
+        type: 3}
       propertyPath: _image
       value: 
       objectReference: {fileID: 21300000, guid: a81d4346140a309418f57f973f3af73b,
@@ -2471,6 +2475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _isBase
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321201032410383529, guid: fcd7b31d40f6d654e90366238900a843,
+        type: 3}
+      propertyPath: DebugSaveKey
+      value: BaseBankShopItem
       objectReference: {fileID: 0}
     - target: {fileID: 6321201032410383529, guid: fcd7b31d40f6d654e90366238900a843,
         type: 3}

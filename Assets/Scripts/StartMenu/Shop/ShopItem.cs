@@ -35,7 +35,9 @@ namespace StartMenu {
 
         private void Awake() {
             _view = GetComponent<ShopItemView>();
-            _isBuyed = _isBase;
+            if (IsBase) {
+                new PlayerPrefs().SetBool(SaveKey.ShopItemsId[_id], true);
+            }
         }
 
         private void OnEnable() {
