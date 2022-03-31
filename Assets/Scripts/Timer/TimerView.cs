@@ -1,15 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TimerView : MonoBehaviour {
     private TextMeshProUGUI _text;
 
-    [Inject] private Timer _timerModel;
+    private Timer _timerModel;
+
+    [Inject]
+    public void Construct(Timer timer) {
+        _timerModel = timer;
+    }
 
     private void Awake() {
         _text = GetComponent<TextMeshProUGUI>();

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +7,12 @@ namespace StartMenu {
     public class BankView : MonoBehaviour {
         private TextMeshProUGUI _uGUI;
 
-        [Inject] private Bank _bankModel;
+        private Bank _bankModel;
+
+        [Inject]
+        public void Construct(Bank bank) {
+            _bankModel = bank;
+        }
 
         private void Awake() {
             _uGUI = GetComponent<TextMeshProUGUI>();

@@ -1,34 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace StartMenu {
     [RequireComponent(typeof(ShopItemView))]
     public class ShopItem : MonoBehaviour, IBuyable, ISelectable {
         [SerializeField] private bool _isBase = false;
+        [Min(0)]
         [SerializeField] private int _id;
         [SerializeField] private string _localizationName;
+        [Min(0)]
         [SerializeField] private int _price;
         [SerializeField] private FiguresBank _figuresBank;
         [SerializeField] private Sprite _image;
 
-        [Inject] private Bank _bank;
-        [Inject] private FigureCollectionsHolder _banksHolder;
+        private Bank _bank;
+        private FigureCollectionsHolder _banksHolder;
 
         private bool _isBuyed;
         private ShopItemView _view;
 
-#if UNITY_EDITOR
-        [SerializeField] private string DebugSaveKey;
         public bool IsBase => _isBase;
         public int Id => _id;
 
+        [Inject]
+        public void Construct(Bank bank, FigureCollectionsHolder figureCollectionsHolder) {
+            _bank = bank;
+            _banksHolder = figureCollectionsHolder;
+        }
+
+#if UNITY_EDITOR
+        [SerializeField] private string DebugSaveKey;
+
         private void OnValidate() {
-            if (_price < 0) _price = 0;
-            if (_id < 0) _id = 0;
             if (_id > SaveKey.ShopItemsId.Length - 1) _id = SaveKey.ShopItemsId.Length - 1;
+
             DebugSaveKey = SaveKey.ShopItemsId[_id];
         }
 #endif

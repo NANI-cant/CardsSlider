@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +6,12 @@ using Zenject;
 public class LifeView : MonoBehaviour {
     private TextMeshProUGUI _uGUI;
 
-    [Inject] private LifeCounter _lifeModel;
+    private LifeCounter _lifeModel;
+
+    [Inject]
+    public void Construct(LifeCounter lifeCounter) {
+        _lifeModel = lifeCounter;
+    }
 
     private void Awake() {
         _uGUI = GetComponent<TextMeshProUGUI>();

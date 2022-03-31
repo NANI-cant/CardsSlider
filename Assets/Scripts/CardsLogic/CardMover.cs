@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CardMover : MonoBehaviour {
-    [SerializeField] private float _freeSpeed = 2f;
+    [Min(0)][SerializeField] private float _freeSpeed = 2f;
 
     private Vector2 _startPosition;
     private Transform _transform;
 
     public bool CanMove = true;
-
-    private void OnValidate() {
-        if (_freeSpeed < 0) _freeSpeed = 0;
-    }
 
     private void Awake() {
         _transform = GetComponent<Transform>();

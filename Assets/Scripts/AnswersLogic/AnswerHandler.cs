@@ -13,20 +13,21 @@ public class AnswerHandler : MonoBehaviour {
     [SerializeField] private Mode _gameMode = Mode.Classic;
 
     [Header("Classic")]
-    [SerializeField] private float _settingTime;
-    [SerializeField] private int _addingScore;
-    [SerializeField] private int _takingLifes;
-    
-    [Inject] private Timer _timer;
-    [Inject] private LifeCounter _life;
-    [Inject] private ScoreCounter _score;
+    [Min(0)][SerializeField] private float _settingTime;
+    [Min(0)][SerializeField] private int _addingScore;
+    [Min(0)][SerializeField] private int _takingLifes;
+
+    private Timer _timer;
+    private LifeCounter _life;
+    private ScoreCounter _score;
 
     private UnityAction _reactFalse;
 
-    private void OnValidate() {
-        if (_settingTime < 0) _settingTime = 0;
-        if (_addingScore < 0) _addingScore = 0;
-        if (_takingLifes < 0) _takingLifes = 0;
+    [Inject]
+    public void Construct(Timer timer, LifeCounter lifeCounter, ScoreCounter scoreCounter) {
+        _timer = timer;
+        _life = lifeCounter;
+        _score = scoreCounter;
     }
 
     public void Initialize(Mode gameMode) {

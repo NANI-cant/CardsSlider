@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,9 +6,14 @@ using Zenject;
 public class LocalizedText : MonoBehaviour {
     [SerializeField] private string _localizationKey;
 
-    [Inject] private Localization _localization;
+    private Localization _localization;
 
     private TextMeshProUGUI _uGUI;
+
+    [Inject]
+    public void Construct(Localization localization) {
+        _localization = localization;
+    }
 
     private void Awake() {
         _uGUI = GetComponent<TextMeshProUGUI>();

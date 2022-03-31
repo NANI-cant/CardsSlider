@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using Zenject;
 
 public class CardDragger : MonoBehaviour {
     [SerializeField] private Camera _camera;
     [SerializeField] private LayerMask _whatIsCard;
-    
-    [Inject] private Game _game;
+
+    private Game _game;
 
     private Card _holdingCard;
     private Inputs _inputs;
@@ -19,6 +16,11 @@ public class CardDragger : MonoBehaviour {
     public UnityAction<Card> OnCardDrop;
 
     private Vector2 _pointerPosition => _camera.ScreenToWorldPoint(_inputs.CardDragger.Dragging.ReadValue<Vector2>());
+
+    [Inject]
+    public void Construct(Game game) {
+        _game = game;
+    }
 
     private void Awake() {
         _inputs = new Inputs();

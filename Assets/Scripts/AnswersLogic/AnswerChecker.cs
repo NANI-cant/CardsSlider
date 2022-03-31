@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
@@ -11,17 +9,20 @@ enum Answer {
 
 public class AnswerChecker : MonoBehaviour {
     [SerializeField] private Answer _kindOfAnswer;
+    [Min(0)]
     [SerializeField] private float _checkRadius;
 
-    [Inject] private CardDragger _cardDragger;
-    [Inject] private FigureGenerator _figureGenerator;
+    private CardDragger _cardDragger;
+    private FigureGenerator _figureGenerator;
 
     private string _targetId;
 
     public static UnityAction<bool> OnAnswerCheck;
 
-    private void OnValidate() {
-        if (_checkRadius < 0) _checkRadius = 0;
+    [Inject]
+    public void Construct(CardDragger cardDragger, FigureGenerator figureGenerator) {
+        _cardDragger = cardDragger;
+        _figureGenerator = figureGenerator;
     }
 
     private void OnEnable() {
