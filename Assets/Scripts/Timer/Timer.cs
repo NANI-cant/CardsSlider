@@ -1,24 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
 public class Timer : MonoBehaviour {
-    [SerializeField] private float _startTime;
+    [Min(0)][SerializeField] private float _startTime;
 
     public UnityAction OnTimesUp;
     public UnityAction<float> OnTimeChange;
 
-    [Inject] private Game _game;
+    private Game _game;
 
     private float _remaindedTime;
     private bool _isRun = false;
 
     public float RemaindedTime => _remaindedTime;
 
-    private void OnValidate() {
-        if (_startTime < 0) _startTime = 0;
+    [Inject]
+    public void Construct(Game game) {
+        _game = game;
     }
 
     private void Start() {

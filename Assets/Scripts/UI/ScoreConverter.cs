@@ -1,18 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
 public class ScoreConverter : MonoBehaviour {
     [Tooltip("Score умножается на коэффициент, результат - размер полученной валюты")]
-    [SerializeField] private float _koefficient;
-    [SerializeField] private float _startDelay;
-    [SerializeField] private float _timeForConvert;
+    [Min(0)][SerializeField] private float _koefficient;
+    [Min(0)][SerializeField] private float _startDelay;
+    [Min(0.0001f)][SerializeField] private float _timeForConvert;
     [SerializeField] private TextMeshProUGUI _scoreUI;
     [SerializeField] private TextMeshProUGUI _bankUI;
-    
-    [Inject] private ScoreCounter _scoreCounter;
+
+    private ScoreCounter _scoreCounter;
 
     private int _score;
     private int _bank;
@@ -20,10 +19,9 @@ public class ScoreConverter : MonoBehaviour {
     private float _currentBank;
     private Coroutine _convertingRoutine;
 
-    private void OnValidate() {
-        if (_timeForConvert <= 0) _timeForConvert = 0.001f;
-        if (_koefficient < 0) _koefficient = 0;
-        if (_startDelay < 0) _startDelay = 0;
+    [Inject]
+    public void Construct(ScoreCounter scoreCounter) {
+        _scoreCounter = scoreCounter;
     }
 
     public void StartConverting() {

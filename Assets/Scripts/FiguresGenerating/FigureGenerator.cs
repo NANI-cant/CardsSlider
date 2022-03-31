@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
@@ -7,8 +6,11 @@ using Zenject;
 [RequireComponent(typeof(CardSpawner))]
 public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank _figuresBank;
+    [Min(1)]
     [SerializeField] private int _figuresCount;
+    [Min(1)]
     [SerializeField] private int _maxFiguresCount;
+    [Min(1)]
     [SerializeField] private int _answersForAddFigure;
     [Range(0, 1)]
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
@@ -20,12 +22,11 @@ public class FigureGenerator : MonoBehaviour {
     private UnityAction _reGenerate;
     private int _remindAnswers;
 
-    [Inject] private Timer _timer;
+    private Timer _timer;
 
-    private void OnValidate() {
-        if (_figuresCount < 1) _figuresCount = 1;
-        if (_maxFiguresCount < 1) _maxFiguresCount = 1;
-        if (_answersForAddFigure < 1) _answersForAddFigure = 1;
+    [Inject]
+    public void Construct(Timer timer) {
+        _timer = timer;
     }
 
     private void Awake() {

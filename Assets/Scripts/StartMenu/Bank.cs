@@ -34,18 +34,18 @@ namespace StartMenu {
         }
 
 #if UNITY_EDITOR
-        [ContextMenu("Earn10")]
+        [ContextMenu("Earn 10")]
         public void Earn10() => Earn(10);
-        [ContextMenu("Earn100")]
+        [ContextMenu("Earn 100")]
         public void Earn100() => Earn(100);
-        [ContextMenu("Earn1000")]
+        [ContextMenu("Earn 1000")]
         public void Earn1000() => Earn(1000);
 
-        [ContextMenu("Spend10")]
+        [ContextMenu("Spend 10")]
         public void Spend10() => TryToSpend(10);
-        [ContextMenu("Spend100")]
+        [ContextMenu("Spend 100")]
         public void Spend100() => TryToSpend(100);
-        [ContextMenu("Spend1000")]
+        [ContextMenu("Spend 1000")]
         public void Spend1000() => TryToSpend(1000);
 #endif
     }

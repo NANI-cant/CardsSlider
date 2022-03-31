@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using IJunior.TypedScenes;
+﻿using IJunior.TypedScenes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 public class GameManager : MonoBehaviour {
@@ -10,23 +7,24 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Mode _gameMode = Mode.Classic;
 
     [Header("Lifes")]
-    [SerializeField] private int _startLifes;
+    [Min(1)][SerializeField] private int _startLifes;
 
     [Header("Figure Generating")]
-    [SerializeField] private int _maxFiguresCount;
-    [SerializeField] private int _startFiguresCount;
-    [SerializeField] private int _answersForAddFigure;
+    [Min(1)][SerializeField] private int _maxFiguresCount;
+    [Min(1)][SerializeField] private int _startFiguresCount;
+    [Min(1)][SerializeField] private int _answersForAddFigure;
 
-    [Inject] private LifeCounter _life;
-    [Inject] private ScoreCounter _score;
-    [Inject] private FigureGenerator _figureGenerator;
-    [Inject] private AnswerHandler _answerHandler;
+    private LifeCounter _life;
+    private ScoreCounter _score;
+    private FigureGenerator _figureGenerator;
+    private AnswerHandler _answerHandler;
 
-    private void OnValidate() {
-        if (_startLifes < 1) _startLifes = 1;
-        if (_startFiguresCount < 1) _startFiguresCount = 1;
-        if (_maxFiguresCount < 1) _maxFiguresCount = 1;
-        if (_answersForAddFigure < 1) _answersForAddFigure = 1;
+    [Inject]
+    public void Construct(LifeCounter lifeCounter, ScoreCounter scoreCounter, FigureGenerator figureGenerator, AnswerHandler answerHandler) {
+        _life = lifeCounter;
+        _score = scoreCounter;
+        _figureGenerator = figureGenerator;
+        _answerHandler = answerHandler;
     }
 
     private void Awake() {

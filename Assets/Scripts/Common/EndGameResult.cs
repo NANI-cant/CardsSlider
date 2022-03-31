@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EndGameResult {
+﻿public class EndGameResult {
     private Mode _gameMode;
     private int _finalScore;
 

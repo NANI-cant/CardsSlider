@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
@@ -9,11 +7,16 @@ public class UIEvents : MonoBehaviour {
     [SerializeField] private UnityEvent _onGameStart;
     [SerializeField] private UnityEvent _onGameOver;
 
-    [Inject] private Game _game;
+    private Game _game;
 
     private UnityAction _sceneStartInvoke;
     private UnityAction _gameStartInvoke;
     private UnityAction _gameOverInvoke;
+
+    [Inject]
+    public void Construct(Game game) {
+        _game = game;
+    }
 
     private void OnEnable() {
         _sceneStartInvoke = () => _onSceneStart?.Invoke();

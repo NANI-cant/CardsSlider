@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -8,7 +6,12 @@ using Zenject;
 public class TargetFigureView : MonoBehaviour {
     private Image _image;
 
-    [Inject] private FigureGenerator _generator;
+    private FigureGenerator _generator;
+
+    [Inject]
+    public void Construct(FigureGenerator generator) {
+        _generator = generator;
+    }
 
     private void Awake() {
         _image = GetComponent<Image>();
