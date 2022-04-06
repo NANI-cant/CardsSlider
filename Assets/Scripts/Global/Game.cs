@@ -1,32 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using Zenject;
+﻿using UnityEngine.Events;
 
-public class Game : MonoBehaviour {
-    public UnityAction OnSceneStart;
+public class Game {
+    public UnityAction OnSceneLoad;
     public UnityAction OnGameStart;
     public UnityAction OnGameOver;
 
     private LifeCounter _life;
+    private GameStateMachine _gameStateMachine;
 
-    [Inject]
-    public void Construct(LifeCounter lifeCounter) {
+    public Game(LifeCounter lifeCounter, ScenesLoader scenesLoader, GameOverPanel gameOverPanel) {
         _life = lifeCounter;
-    }
-
-    private void OnEnable() {
-        _life.OnLifesOver += OnPlayerLifesOver;
-    }
-
-    private void OnDisable() {
-        _life.OnLifesOver -= OnPlayerLifesOver;
-    }
-
-    private void Start() {
-        OnSceneStart?.Invoke();
-    }
-
-    private void OnPlayerLifesOver() {
-        OnGameOver?.Invoke();
+        _gameStateMachine = new GameStateMachine(this, _life, scenesLoader, gameOverPanel);
     }
 }

@@ -24,9 +24,16 @@ public class FigureGenerator : MonoBehaviour {
 
     private Timer _timer;
 
+    private void OnValidate() {
+        if (_figuresCount > _maxFiguresCount) _figuresCount = _maxFiguresCount;
+    }
+
     [Inject]
-    public void Construct(Timer timer) {
+    public void Construct(Timer timer, GameplaySettings settings) {
         _timer = timer;
+        _figuresCount = settings.StartFiguresCount;
+        _maxFiguresCount = settings.MaxFiguresCount;
+        _answersForAddFigure = settings.AnswersForAddFigure;
     }
 
     private void Awake() {
@@ -35,13 +42,6 @@ public class FigureGenerator : MonoBehaviour {
 
     private void Start() {
         Generate();
-    }
-
-    public void Initialize(int startFigures, int maxFiguresCount, int answersForAddFigure) {
-        _maxFiguresCount = maxFiguresCount;
-        _figuresCount = startFigures;
-        _answersForAddFigure = answersForAddFigure;
-        _remindAnswers = _answersForAddFigure;
     }
 
     private void OnEnable() {

@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class LifeCounter : MonoBehaviour {
     public UnityAction OnLifesOver;
     public UnityAction<int> OnLifesChange;
 
-    private int _lifes = 0;
+    private int _lifes;
 
     public int Lifes => _lifes;
 
-    public bool Initialize(int lifes) {
-        if (lifes <= 0) return false;
-
-        _lifes = lifes;
-        return true;
+    [Inject]
+    public void Construct(GameplaySettings settings) {
+        _lifes = settings.StartLifes;
     }
 
     public bool TryToTake(int lifes) {

@@ -23,13 +23,13 @@ public class UIEvents : MonoBehaviour {
         _gameStartInvoke = () => _onGameStart?.Invoke();
         _gameOverInvoke = () => _onGameOver?.Invoke();
 
-        _game.OnSceneStart += _sceneStartInvoke;
+        _game.OnSceneLoad += _sceneStartInvoke;
         _game.OnGameStart += _gameStartInvoke;
         _game.OnGameOver += _gameOverInvoke;
     }
 
     private void OnDisable() {
-        _game.OnSceneStart -= _sceneStartInvoke;
+        _game.OnSceneLoad -= _sceneStartInvoke;
         _game.OnGameStart -= _gameStartInvoke;
         _game.OnGameOver -= _gameOverInvoke;
     }

@@ -4,8 +4,7 @@ using UnityEngine;
 using Zenject;
 
 public class ScoreConverter : MonoBehaviour {
-    [Tooltip("Score умножается на коэффициент, результат - размер полученной валюты")]
-    [Min(0)][SerializeField] private float _koefficient;
+    [Range(0,1)][SerializeField] private float _multiplier;
     [Min(0)][SerializeField] private float _startDelay;
     [Min(0.0001f)][SerializeField] private float _timeForConvert;
     [SerializeField] private TextMeshProUGUI _scoreUI;
@@ -20,13 +19,14 @@ public class ScoreConverter : MonoBehaviour {
     private Coroutine _convertingRoutine;
 
     [Inject]
-    public void Construct(ScoreCounter scoreCounter) {
+    public void Construct(ScoreCounter scoreCounter, GameplaySettings settings) {
         _scoreCounter = scoreCounter;
+        _multiplier = settings.ConvertMultiplier;
     }
 
     public void StartConverting() {
         _score = _scoreCounter.Score;
-        _bank = (int)(_score * _koefficient);
+        _bank = (int)(_score * _multiplier);
         PlayerPrefs.SetInt(SaveKey.Bank, PlayerPrefs.GetInt(SaveKey.Bank) + _bank);
         _currentBank = 0;
         _currentScore = _score;
