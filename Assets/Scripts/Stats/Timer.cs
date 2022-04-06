@@ -3,11 +3,10 @@ using UnityEngine.Events;
 using Zenject;
 
 public class Timer : MonoBehaviour {
-    [Min(0)][SerializeField] private float _startTime;
-
     public UnityAction OnTimesUp;
     public UnityAction<float> OnTimeChange;
 
+    private float _startTime;
     private Game _game;
 
     private float _remaindedTime;
@@ -16,8 +15,9 @@ public class Timer : MonoBehaviour {
     public float RemaindedTime => _remaindedTime;
 
     [Inject]
-    public void Construct(Game game) {
+    public void Construct(Game game, GameplaySettings settings) {
         _game = game;
+        _startTime = settings.StartTime;
     }
 
     private void Start() {

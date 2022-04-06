@@ -31,13 +31,13 @@ public class CardDragger : MonoBehaviour {
         _inputs.CardDragger.TakeDrop.started += ctx => TakeCard();
         _inputs.CardDragger.TakeDrop.canceled += ctx => DropCard();
         _game.OnGameOver += ForbidDragging;
-        _game.OnSceneStart += AllowDragging;
+        _game.OnSceneLoad += AllowDragging;
     }
 
     private void OnDisable() {
         _inputs.Disable();
         _game.OnGameOver -= ForbidDragging;
-        _game.OnSceneStart -= AllowDragging;
+        _game.OnSceneLoad -= AllowDragging;
     }
 
     private void FixedUpdate() {

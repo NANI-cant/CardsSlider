@@ -2,13 +2,6 @@
 using UnityEngine.Events;
 using Zenject;
 
-public enum Mode {
-    Classic,
-    Arcade,
-    Hard,
-    Relax,
-}
-
 public class AnswerHandler : MonoBehaviour {
     [SerializeField] private Mode _gameMode = Mode.Classic;
 
@@ -24,14 +17,15 @@ public class AnswerHandler : MonoBehaviour {
     private UnityAction _reactFalse;
 
     [Inject]
-    public void Construct(Timer timer, LifeCounter lifeCounter, ScoreCounter scoreCounter) {
+    public void Construct(Timer timer, LifeCounter lifeCounter, ScoreCounter scoreCounter, ClassicGameplaySettings settings) {
         _timer = timer;
         _life = lifeCounter;
         _score = scoreCounter;
-    }
 
-    public void Initialize(Mode gameMode) {
-        _gameMode = gameMode;
+        _gameMode = settings.Mode;
+        _settingTime = settings.SettingTime;
+        _addingScore = settings.AddingScore;
+        _takingLifes = settings.TakingLifes;
     }
 
     private void OnEnable() {
