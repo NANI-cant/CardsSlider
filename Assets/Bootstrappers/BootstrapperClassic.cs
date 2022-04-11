@@ -20,10 +20,16 @@ public class BootstrapperClassic : MonoInstaller {
 
     private Game _game;
     private ScenesLoader _scenesLoader;
+    private PlayerProgress _playerProgress;
+
+    [Inject]
+    public void Construct(PlayerProgress playerProgress) {
+        _playerProgress = playerProgress;
+    }
 
     public override void InstallBindings() {
         _scenesLoader = new ScenesLoader(_settings.Mode, _scoreCounter);
-        _game = new Game(_lifeCounter, _scenesLoader, _gameOverPanel);
+        _game = new Game(_lifeCounter, _scenesLoader, _gameOverPanel, _settings, _playerProgress, _scoreCounter);
 
         BindInstanceSingle<Game>(_game);
         BindInstanceSingle<ScenesLoader>(_scenesLoader);

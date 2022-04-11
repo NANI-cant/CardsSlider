@@ -3,17 +3,25 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Localization : MonoBehaviour {
+public class Localization {
     [SerializeField] private TextAsset _localizationXML;
 
-    public UnityAction OnLanguageChange;
+    public UnityAction LanguageChanged;
 
     private Dictionary<string, List<string>> _localizationMap;
-    private int SelectedLanguage;
+    private int _selectedLanguage;
+    private GameSettings _gameSettings;
 
-    public void Initialize() {
+    public Localization(TextAsset localizationXML, GameSettings gameSettings) {
+        _gameSettings = gameSettings;
+        _localizationXML = localizationXML;
+
+        InitializeMap();
+    }
+
+    private void InitializeMap() {
         if (_localizationMap == null) {
-            SelectedLanguage = PlayerPrefs.GetInt(SaveKey.Language, 0);
+            _selectedLanguage = _gameSettings.SelectedLanguage;
         }
 
         _localizationMap = new Dictionary<string, List<string>>();
@@ -32,24 +40,18 @@ public class Localization : MonoBehaviour {
         }
     }
 
+    public void ChangeLanguage(int language) {
+        _selectedLanguage = language;
+        _gameSettings.SelectedLanguage = language;
+        LanguageChanged?.Invoke();
+    }
+
     public string GetLocalizedText(string key) {
         if (_localizationMap.ContainsKey(key)) {
-            return _localizationMap[key][(SelectedLanguage)];
+            return _localizationMap[key][(_selectedLanguage)];
         }
         else {
             return "No Definition for key: " + key;
         }
-    }
-
-    [ContextMenu("Change Language")]
-    public void DebugChangeLanguage() {
-        if (SelectedLanguage == 0) {
-            SelectedLanguage = 1;
-        }
-        else {
-            SelectedLanguage = 0;
-        }
-        PlayerPrefs.SetInt(SaveKey.Language, SelectedLanguage);
-        OnLanguageChange?.Invoke();
     }
 }

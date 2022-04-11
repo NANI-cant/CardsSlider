@@ -1,10 +1,10 @@
 ﻿using IJunior.TypedScenes;
 
 public class ScenesLoader {
-    private Mode _gameMode;
+    private GameMode _gameMode;
     private ScoreCounter _score;
 
-    public ScenesLoader(Mode gameMode, ScoreCounter scoreCounter) {
+    public ScenesLoader(GameMode gameMode, ScoreCounter scoreCounter) {
         _gameMode = gameMode;
         _score = scoreCounter;
     }

@@ -7,7 +7,7 @@ public class ClassicGameplaySettings : GameplaySettings {
     [Min(0)][SerializeField] private int _addingScore = 1;
     [Min(0)][SerializeField] private int _takingLifes = 1;
 
-    public override Mode Mode => Mode.Classic;
+    public override GameMode Mode => GameMode.Classic;
     public float SettingTime => _settingTime;
     public int AddingScore => _addingScore;
     public int TakingLifes => _takingLifes;

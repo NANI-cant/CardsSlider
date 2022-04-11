@@ -4,7 +4,7 @@ using UnityEngine;
 using Zenject;
 
 public class ScoreConverter : MonoBehaviour {
-    [Range(0,1)][SerializeField] private float _multiplier;
+    [Range(0, 1)][SerializeField] private float _multiplier;
     [Min(0)][SerializeField] private float _startDelay;
     [Min(0.0001f)][SerializeField] private float _timeForConvert;
     [SerializeField] private TextMeshProUGUI _scoreUI;
@@ -27,7 +27,6 @@ public class ScoreConverter : MonoBehaviour {
     public void StartConverting() {
         _score = _scoreCounter.Score;
         _bank = (int)(_score * _multiplier);
-        PlayerPrefs.SetInt(SaveKey.Bank, PlayerPrefs.GetInt(SaveKey.Bank) + _bank);
         _currentBank = 0;
         _currentScore = _score;
         _scoreUI.text = _score.ToString();
