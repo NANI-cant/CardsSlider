@@ -1,48 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 [RequireComponent(typeof(CardSpawner))]
 public class FigureGenerator : MonoBehaviour {
     [SerializeField] private FiguresBank _figuresBank;
+    [Min(1)]
     [SerializeField] private int _figuresCount;
+    [Min(1)]
     [SerializeField] private int _maxFiguresCount;
+    [Min(1)]
     [SerializeField] private int _answersForAddFigure;
+    [Range(0, 1)]
     [SerializeField] private float _targetFigureOnCardChance = 0.5f;
-    [SerializeField] private TargetVisualizer _visualizer;
-    [Header("Debug")]
-    [SerializeField] private FigureData[] _debugChosenFigures;
-    [SerializeField] private FigureData _debugTargetFigure;
-
-    private Timer _timer;
-    private CardSpawner _spawner;
-    private FigureData _targetFigure;
-    //private UnityAction<bool> _generateBool;
-    private UnityAction _reGenerate;
-    private int _remindAnswers;
 
     public UnityAction<FigureData> OnFigureGenerated;
 
+    private CardSpawner _spawner;
+    private FigureData _targetFigure;
+    private UnityAction _reGenerate;
+    private int _remindAnswers;
+
+    private Timer _timer;
+
+    private void OnValidate() {
+        if (_figuresCount > _maxFiguresCount) _figuresCount = _maxFiguresCount;
+    }
+
+    [Inject]
+    public void Construct(Timer timer, GameplaySettings settings) {
+        _timer = timer;
+        _figuresCount = settings.StartFiguresCount;
+        _maxFiguresCount = settings.MaxFiguresCount;
+        _answersForAddFigure = settings.AnswersForAddFigure;
+    }
+
     private void Awake() {
-        ServiceLocator.RegisterService<FigureGenerator>(this);
         _spawner = GetComponent<CardSpawner>();
-        _timer = ServiceLocator.GetService<Timer>();
     }
 
     private void Start() {
         Generate();
     }
 
-    public void Initialize(int startFigures, int maxFiguresCount, int answersForAddFigure) {
-        _maxFiguresCount = maxFiguresCount;
-        _figuresCount = startFigures;
-        _answersForAddFigure = answersForAddFigure;
-        _remindAnswers = _answersForAddFigure;
-    }
-
     private void OnEnable() {
-        //_generateBool = (arg) => Generate();
         _reGenerate = () => {
             _spawner.DestroyCard();
             Generate();
@@ -87,8 +89,6 @@ public class FigureGenerator : MonoBehaviour {
             }
         }
 
-        _debugChosenFigures = chosenFigures;
-        _visualizer.SetImage(_targetFigure.Sprite);
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
     }

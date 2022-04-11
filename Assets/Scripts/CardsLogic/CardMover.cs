@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CardMover : MonoBehaviour {
-    [SerializeField] private float _freeSpeed = 2f;
+    [Min(0)][SerializeField] private float _freeSpeed = 2f;
 
     private Vector2 _startPosition;
     private Transform _transform;

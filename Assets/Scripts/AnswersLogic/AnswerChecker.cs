@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 enum Answer {
     Yes,
@@ -10,25 +9,33 @@ enum Answer {
 
 public class AnswerChecker : MonoBehaviour {
     [SerializeField] private Answer _kindOfAnswer;
+    [Min(0)]
     [SerializeField] private float _checkRadius;
-    [Header("Debug")]
-    [SerializeField] private Color _debugColor;
+
+    private CardDragger _cardDragger;
+    private FigureGenerator _figureGenerator;
 
     private string _targetId;
 
     public static UnityAction<bool> OnAnswerCheck;
 
+    [Inject]
+    public void Construct(CardDragger cardDragger, FigureGenerator figureGenerator) {
+        _cardDragger = cardDragger;
+        _figureGenerator = figureGenerator;
+    }
+
     private void OnEnable() {
-        ServiceLocator.GetService<CardDragger>().OnCardDrop += Check;
-        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated += SetTarget;
+        _cardDragger.OnCardDrop += Check;
+        _figureGenerator.OnFigureGenerated += SetTarget;
     }
 
     private void OnDisable() {
-        ServiceLocator.GetService<CardDragger>().OnCardDrop -= Check;
-        ServiceLocator.GetService<FigureGenerator>().OnFigureGenerated -= SetTarget;
+        _cardDragger.OnCardDrop -= Check;
+        _figureGenerator.OnFigureGenerated -= SetTarget;
     }
 
-    public void Check(Card card) {
+    private void Check(Card card) {
         if (!IsCardNear(card.transform.position)) { return; }
         card.Destroy();
 
@@ -51,7 +58,12 @@ public class AnswerChecker : MonoBehaviour {
     private bool IsCardNear(Vector2 cardPosition) => Mathf.Sqrt(((Vector2)transform.position - cardPosition).sqrMagnitude) <= _checkRadius;
 
     private void OnDrawGizmos() {
-        Gizmos.color = _debugColor;
+        if (_kindOfAnswer == Answer.Yes) {
+            Gizmos.color = Color.green;
+        }
+        else {
+            Gizmos.color = Color.red;
+        }
         Gizmos.DrawWireSphere(transform.position, _checkRadius);
     }
 }

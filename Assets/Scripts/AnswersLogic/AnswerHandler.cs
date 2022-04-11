@@ -1,35 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-
-public enum Mode {
-    Classic,
-    Arcade,
-    Hard,
-    Relax,
-}
+using Zenject;
 
 public class AnswerHandler : MonoBehaviour {
     [SerializeField] private Mode _gameMode = Mode.Classic;
 
     [Header("Classic")]
-    [SerializeField] private float _settingTime;
-    [SerializeField] private int _addingScore;
-    [SerializeField] private int _takingLifes;
-
-    [Header("References")]
-    [SerializeField] private ScoreCounter _score;
-    [SerializeField] private LifeCounter _life;
+    [Min(0)][SerializeField] private float _settingTime;
+    [Min(0)][SerializeField] private int _addingScore;
+    [Min(0)][SerializeField] private int _takingLifes;
 
     private Timer _timer;
+    private LifeCounter _life;
+    private ScoreCounter _score;
+
     private UnityAction _reactFalse;
 
-    private void Awake() {
-        ServiceLocator.RegisterService<AnswerHandler>(this);
-        _timer = ServiceLocator.GetService<Timer>();
-    }
+    [Inject]
+    public void Construct(Timer timer, LifeCounter lifeCounter, ScoreCounter scoreCounter, ClassicGameplaySettings settings) {
+        _timer = timer;
+        _life = lifeCounter;
+        _score = scoreCounter;
 
-    public void Initialize(Mode gameMode) {
-        _gameMode = gameMode;
+        _gameMode = settings.Mode;
+        _settingTime = settings.SettingTime;
+        _addingScore = settings.AddingScore;
+        _takingLifes = settings.TakingLifes;
     }
 
     private void OnEnable() {
@@ -53,7 +49,7 @@ public class AnswerHandler : MonoBehaviour {
                         _score.Add(_addingScore);
                     }
                     else {
-                        _life.Take(_takingLifes);
+                        _life.TryToTake(_takingLifes);
                     }
                     break;
                 }
