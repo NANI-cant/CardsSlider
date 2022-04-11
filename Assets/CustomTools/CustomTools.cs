@@ -28,35 +28,35 @@ public class CustomTools : ScriptableWizard {
         }
     }
 
-    [MenuItem("CustomTools/ValidateShopItems #&s")]
-    static void ValidateShopItems() {
-        Debug.Log("Shop items validation: start");
-        bool isOK = true;
-        List<ShopItem> items = new List<ShopItem>(FindObjectsOfType<ShopItem>());
-        items = new List<ShopItem>(items.OrderBy(it => it.Id));
+    // [MenuItem("CustomTools/ValidateShopItems #&s")]
+    // static void ValidateShopItems() {
+    //     Debug.Log("Shop items validation: start");
+    //     bool isOK = true;
+    //     List<ShopItem> items = new List<ShopItem>(FindObjectsOfType<ShopItem>());
+    //     items = new List<ShopItem>(items.OrderBy(it => it.Id));
 
-        for (int i = 0; i < items.Count - 1; i++) {
-            if (items[i].Id == items[i + 1].Id) {
-                Debug.LogError(items[i] + " and " + items[i + 1] + " have same Id");
-                isOK = false;
-            }
-        }
+    //     for (int i = 0; i < items.Count - 1; i++) {
+    //         if (items[i].Id == items[i + 1].Id) {
+    //             Debug.LogError(items[i] + " and " + items[i + 1] + " have same Id");
+    //             isOK = false;
+    //         }
+    //     }
 
-        int baseCount = items.Count(si => si.IsBase);
-        if (baseCount == 0) {
-            isOK = false;
-            Debug.LogError("0 base shop item, must be 1");
-        }
-        else if (baseCount > 1) {
-            isOK = false;
-            Debug.LogError(">1 base shop item, must be 1");
-        }
+    //     int baseCount = items.Count(si => si.IsBase);
+    //     if (baseCount == 0) {
+    //         isOK = false;
+    //         Debug.LogError("0 base shop item, must be 1");
+    //     }
+    //     else if (baseCount > 1) {
+    //         isOK = false;
+    //         Debug.LogError(">1 base shop item, must be 1");
+    //     }
 
-        if (isOK) {
-            Debug.Log("Shop items validation: success");
-        }
-        else {
-            Debug.LogError("Shop items validation: failure, check console logs");
-        }
-    }
+    //     if (isOK) {
+    //         Debug.Log("Shop items validation: success");
+    //     }
+    //     else {
+    //         Debug.LogError("Shop items validation: failure, check console logs");
+    //     }
+    // }
 }

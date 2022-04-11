@@ -21,11 +21,11 @@ public class LocalizedText : MonoBehaviour {
     }
 
     private void OnEnable() {
-        _localization.OnLanguageChange += ChangeLanguage;
+        _localization.LanguageChanged += ChangeLanguage;
     }
 
     private void OnDisable() {
-        _localization.OnLanguageChange -= ChangeLanguage;
+        _localization.LanguageChanged -= ChangeLanguage;
     }
 
     public void SetKey(string key) {

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using Zenject;
 
 public class AnswerHandler : MonoBehaviour {
-    [SerializeField] private Mode _gameMode = Mode.Classic;
+    [SerializeField] private GameMode _gameMode = GameMode.Classic;
 
     [Header("Classic")]
     [Min(0)][SerializeField] private float _settingTime;
@@ -43,7 +43,7 @@ public class AnswerHandler : MonoBehaviour {
         _timer.Set(_settingTime);
         _timer.Run();
         switch (_gameMode) {
-            case Mode.Classic: {
+            case GameMode.Classic: {
                     if (answer) {
                         _timer.Set(_settingTime);
                         _score.Add(_addingScore);

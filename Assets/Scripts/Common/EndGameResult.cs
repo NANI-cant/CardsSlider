@@ -1,11 +1,11 @@
 ﻿public class EndGameResult {
-    private Mode _gameMode;
+    private GameMode _gameMode;
     private int _finalScore;
 
-    public Mode GameMode => _gameMode;
+    public GameMode GameMode => _gameMode;
     public int FinalScore => _finalScore;
 
-    public EndGameResult(Mode gameMode, int finalScore) {
+    public EndGameResult(GameMode gameMode, int finalScore) {
         _gameMode = gameMode;
         _finalScore = finalScore;
     }

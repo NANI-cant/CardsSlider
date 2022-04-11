@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace StartMenu {
     public class Bank : MonoBehaviour {
@@ -7,11 +8,14 @@ namespace StartMenu {
         public UnityAction<int> OnSpend;
 
         private int _amount;
+        private PlayerProgress _progress;
 
         public int Amount => _amount;
 
-        private void Awake() {
-            _amount = PlayerPrefs.GetInt(SaveKey.Bank, 0);
+        [Inject]
+        public void Construct(PlayerProgress progress) {
+            _progress = progress;
+            _amount = _progress.GetBank();
         }
 
         public bool CanSpend(int total) {
@@ -22,14 +26,14 @@ namespace StartMenu {
             if (!CanSpend(total)) return false;
 
             _amount -= total;
-            PlayerPrefs.SetInt(SaveKey.Bank, _amount);
+            _progress.SaveBank(_amount);
             OnSpend?.Invoke(Amount);
             return true;
         }
 
         public void Earn(int total) {
             _amount += total;
-            PlayerPrefs.SetInt(SaveKey.Bank, _amount);
+            _progress.SaveBank(_amount);
             OnEarn?.Invoke(Amount);
         }
 
