@@ -7,7 +7,7 @@ namespace StartMenu {
         public void OnSceneLoaded(EndGameResult result) {
             foreach (GameModePanel panel in FindObjectsOfType<GameModePanel>()) {
                 if (panel.GameMode == result.GameMode) {
-                    panel.TryToUpdateBestScore(result.FinalScore);
+                    panel.UpdateBestScore(result.FinalScore);
                 }
             }
         }

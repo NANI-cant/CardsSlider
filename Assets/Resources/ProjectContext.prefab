@@ -48,7 +48,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: -7390696862614503366}
   _installerPrefabs: []
-  _parentNewObjectsUnderContext: 1
+  _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
   _settings:
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4087120046499653794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75199be87ef2bae4496145c01623fe98, type: 3}
+  m_Script: {fileID: 11500000, guid: 81fb54e0789a34e4b91584608a023066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationTemplate: {fileID: 1418503139184343165, guid: f80c98a11c9a32f45b4308cce2b931f5,
-    type: 3}
+  _gameSettings: {fileID: 11400000, guid: 0322062f01d1ebe4caedf23cf0c16fd7, type: 2}
+  _localizationXML: {fileID: 4900000, guid: 254cb611b160a504bb1f856779a95bba, type: 3}

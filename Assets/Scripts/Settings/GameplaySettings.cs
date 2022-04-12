@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum Mode {
+public enum GameMode {
     Classic,
     Arcade,
     Hard,
@@ -27,7 +27,7 @@ public abstract class GameplaySettings : ScriptableObject {
     public int MaxFiguresCount => _maxFiguresCount;
     public int AnswersForAddFigure => _answersForAddFigure;
 
-    public abstract Mode Mode { get; }
+    public abstract GameMode Mode { get; }
 
     protected virtual void OnValidate() {
         if (_startFiguresCount > _maxFiguresCount) _startFiguresCount = _maxFiguresCount;

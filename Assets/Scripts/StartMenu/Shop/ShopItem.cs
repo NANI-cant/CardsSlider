@@ -1,103 +1,50 @@
 ﻿using UnityEngine;
-using Zenject;
+using UnityEngine.Events;
 
 namespace StartMenu {
-    [RequireComponent(typeof(ShopItemView))]
     public class ShopItem : MonoBehaviour, IBuyable, ISelectable {
-        [SerializeField] private bool _isBase = false;
-        [Min(0)]
-        [SerializeField] private int _id;
-        [SerializeField] private string _localizationName;
-        [Min(0)]
-        [SerializeField] private int _price;
-        [SerializeField] private FiguresBank _figuresBank;
-        [SerializeField] private Sprite _image;
+        public UnityAction ConditionChanged;
 
+        private ItemData _itemData;
         private Bank _bank;
         private FigureCollectionsHolder _banksHolder;
+        private PlayerProgress _progress;
 
-        private bool _isBuyed;
-        private ShopItemView _view;
+        public ItemData ItemData => _itemData;
 
-        public bool IsBase => _isBase;
-        public int Id => _id;
-
-        [Inject]
-        public void Construct(Bank bank, FigureCollectionsHolder figureCollectionsHolder) {
+        public void Construct(Bank bank, FigureCollectionsHolder figureCollectionsHolder, PlayerProgress progress, ItemData itemData) {
             _bank = bank;
             _banksHolder = figureCollectionsHolder;
-        }
-
-#if UNITY_EDITOR
-        [SerializeField] private string DebugSaveKey;
-
-        private void OnValidate() {
-            if (_id > SaveKey.ShopItemsId.Length - 1) _id = SaveKey.ShopItemsId.Length - 1;
-
-            DebugSaveKey = SaveKey.ShopItemsId[_id];
-        }
-#endif
-
-        private void Awake() {
-            _view = GetComponent<ShopItemView>();
-            if (IsBase) {
-                new PlayerPrefs().SetBool(SaveKey.ShopItemsId[_id], true);
-            }
-        }
-
-        private void OnEnable() {
-            _bank.OnEarn += UpdateStateOverBank;
-            _bank.OnSpend += UpdateStateOverBank;
-        }
-
-        private void OnDisable() {
-            _bank.OnEarn -= UpdateStateOverBank;
-            _bank.OnSpend -= UpdateStateOverBank;
+            _progress = progress;
+            _itemData = itemData;
         }
 
         private void Start() {
-            _view.SetName(_localizationName);
-            _view.SetPrice(_price);
-            _view.SetImage(_image);
-
-            _isBuyed = new PlayerPrefs().GetBool(SaveKey.ShopItemsId[_id], false);
-
-            UpdateStateOverBank(_bank.Amount);
+            if (_itemData.IsAvailable) {
+                _progress.SetShopItemAvailable(_itemData);
+            }
+            _itemData.IsAvailable = _progress.IsShopItemAvailable(_itemData);
+            ConditionChanged?.Invoke();
         }
 
         public void Buy() {
             if (!CheckCanBeBuyedFor(_bank.Amount)) return;
-            if (!_bank.TryToSpend(_price)) return;
+            if (!_bank.TryToSpend(_itemData.BasePrice)) return;
 
-            new PlayerPrefs().SetBool(SaveKey.ShopItemsId[_id], true);
-            _isBuyed = true;
-            _view.SetAlreadyBuyed();
+            _progress.SetShopItemAvailable(_itemData);
+            _itemData.IsAvailable = true;
 
-            Debug.Log(this + " Buyed");
+            ConditionChanged?.Invoke();
         }
 
         public void Select() {
-            _banksHolder.SelectBank(_figuresBank);
-            Debug.Log(this + " Selected");
-        }
-
-        private void UpdateStateOverBank(int bankCurrentAmount) {
-            if (CheckCanBeBuyedFor(bankCurrentAmount)) {
-                _view.SetBuyable();
-            }
-            else if (_isBuyed) {
-                _view.SetAlreadyBuyed();
-            }
-            else {
-                _view.SetNotEnoughMoney();
-            }
+            _banksHolder.SelectBank(_itemData.FiguresCollection);
         }
 
         private bool CheckCanBeBuyedFor(int amount) {
-            if (_isBuyed) return false;
-            if (amount >= _price) return true;
+            if (_itemData.IsAvailable) return false;
+            if (amount >= _itemData.BasePrice) return true;
             return false;
         }
-
     }
 }
