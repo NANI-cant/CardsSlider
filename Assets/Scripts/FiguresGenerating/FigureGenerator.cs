@@ -5,7 +5,7 @@ using Zenject;
 
 [RequireComponent(typeof(CardSpawner))]
 public class FigureGenerator : MonoBehaviour {
-    [SerializeField] private FiguresBank _figuresBank;
+    [SerializeField] private FiguresCollection _figuresBank;
     [Min(1)]
     [SerializeField] private int _figuresCount;
     [Min(1)]

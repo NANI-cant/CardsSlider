@@ -7,12 +7,12 @@ public class ItemData : ScriptableObject {
     [SerializeField] private string _localizationKey;
     [Min(0)]
     [SerializeField] private int _basePrice;
-    [SerializeField] private FiguresBank _figuresCollection;
+    [SerializeField] private FiguresCollection _figuresCollection;
     [SerializeField] private Sprite _icon;
 
     public ItemId Id => _id;
     public string LocalizationKey => _localizationKey;
     public int BasePrice => _basePrice;
-    public FiguresBank FiguresCollection => _figuresCollection;
+    public FiguresCollection FiguresCollection => _figuresCollection;
     public Sprite Icon => _icon;
 }

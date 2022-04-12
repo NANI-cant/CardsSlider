@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerProgress {
     private readonly string Score = "Score";
@@ -11,7 +10,7 @@ public class PlayerProgress {
 
     public void AddBank(int value) {
         if (value <= 0) return;
-        
+
         SaveBank(GetBank() + value);
     }
 

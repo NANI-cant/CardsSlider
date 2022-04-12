@@ -3,9 +3,9 @@ using UnityEngine.Events;
 using Zenject;
 
 public class FigureCollectionsHolder : MonoBehaviour {
-    public UnityAction<FiguresBank> CollectionChanged;
+    public UnityAction<FiguresCollection> CollectionChanged;
 
-    private FiguresBank _selectedCollection;
+    private FiguresCollection _selectedCollection;
     private GameSettings _gameSettings;
 
     [Inject]
@@ -18,7 +18,7 @@ public class FigureCollectionsHolder : MonoBehaviour {
         SelectBank(_selectedCollection);
     }
 
-    public void SelectBank(FiguresBank bank) {
+    public void SelectBank(FiguresCollection bank) {
         _selectedCollection = bank;
         _gameSettings.SelectedFiguresCollection = _selectedCollection;
         CollectionChanged?.Invoke(_selectedCollection);
