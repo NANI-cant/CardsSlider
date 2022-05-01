@@ -2,7 +2,8 @@ using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-public class MovingBetweenTwoPoints : MonoBehaviour {
+
+public class MovingFigures : MonoBehaviour {
 
     [SerializeField] private Vector2 _endPointFormal;
 
@@ -27,16 +28,27 @@ public class MovingBetweenTwoPoints : MonoBehaviour {
 
     private void Start() {
         _startPoint = _rectTransform.localPosition;
-        Calculate();
-        MoveToOtherPoint();
+        // Calculate();
+        // MoveToOtherPoint();
         // MoveToAnotherPoint();
     }
 
-    private void Update(){
+    private void Update() {
+        // Calculate();
+        // MoveToOtherPoint();
+        // MoveToAnotherPoint();
+    }
+
+    public void ToBorder(){
         Calculate();
         MoveToOtherPoint();
-        //MoveToAnotherPoint();
     }
+
+    public void ToStartPosition() {
+        Calculate();
+        MoveToAnotherPoint();
+    }
+
 
     private void Calculate(){
         float heightFactor = _camera.pixelHeight / 1920f;
