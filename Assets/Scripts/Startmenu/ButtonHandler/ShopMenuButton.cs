@@ -11,14 +11,14 @@ public class ShopMenuButton : MonoBehaviour
     }
 
     private void OnEnable(){
-        buttonMenuSections.onClick.AddListener(MoveFiguresToBorder);
+        buttonMenuSections.onClick.AddListener(MoveFiguresOutOfBorder);
     }
 
     private void OnDisable(){
-        buttonMenuSections.onClick.RemoveListener(MoveFiguresToBorder);
+        buttonMenuSections.onClick.RemoveListener(MoveFiguresOutOfBorder);
     }
 
-    public void MoveFiguresToBorder(){
+    public void MoveFiguresOutOfBorder(){
         foreach(MovableFigures figure in figures){
             figure.MoveOutOfBorder();
         }
