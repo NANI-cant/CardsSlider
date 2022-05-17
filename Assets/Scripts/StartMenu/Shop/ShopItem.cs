@@ -1,34 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using Zenject;
 
 namespace StartMenu {
     public class ShopItem : MonoBehaviour, IBuyable, ISelectable {
-        [SerializeField] private ItemData _itemData;
-
         public UnityAction ConditionChanged;
 
+        private ItemData _itemData;
         private Bank _bank;
         private FigureCollectionsHolder _banksHolder;
         private PlayerProgress _progress;
 
         public ItemData ItemData => _itemData;
 
-        [Inject]
-        public void Construct(Bank bank, FigureCollectionsHolder figureCollectionsHolder, PlayerProgress progress) {
+        public void Construct(Bank bank, FigureCollectionsHolder figureCollectionsHolder, PlayerProgress progress, ItemData itemData) {
             _bank = bank;
             _banksHolder = figureCollectionsHolder;
             _progress = progress;
+            _itemData = itemData;
         }
 
-        private void Awake() {
+        private void Start() {
             if (_itemData.IsAvailable) {
                 _progress.SetShopItemAvailable(_itemData);
             }
             _itemData.IsAvailable = _progress.IsShopItemAvailable(_itemData);
-        }
-
-        private void Start() {
             ConditionChanged?.Invoke();
         }
 
@@ -40,12 +35,10 @@ namespace StartMenu {
             _itemData.IsAvailable = true;
 
             ConditionChanged?.Invoke();
-            Debug.Log(this + " Buyed");
         }
 
         public void Select() {
             _banksHolder.SelectBank(_itemData.FiguresCollection);
-            Debug.Log(this + " Selected");
         }
 
         private bool CheckCanBeBuyedFor(int amount) {

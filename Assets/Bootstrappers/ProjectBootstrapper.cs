@@ -7,14 +7,14 @@ public class ProjectBootstrapper : MonoInstaller {
 
     private Localization _localization;
     private PlayerProgress _playerProgress;
+    private AssetsAccess _assetsAccess;
 
     public override void InstallBindings() {
         _localization = new Localization(_localizationXML, _gameSettings);
         _playerProgress = new PlayerProgress();
-
         BindInstanceSingle<GameSettings>(_gameSettings);
-        BindInstanceSingle<Localization>(_localization);
         BindInstanceSingle<PlayerProgress>(_playerProgress);
+        BindInstanceSingle<AssetsAccess>(_assetsAccess);
     }
 
     private T InstantiatePrefab<T>(T template) where T : MonoBehaviour {

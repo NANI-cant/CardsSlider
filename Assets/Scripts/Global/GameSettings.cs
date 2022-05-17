@@ -4,7 +4,7 @@
 public class GameSettings : ScriptableObject {
     [Range(0, 100)]
     [SerializeField] private float _volume;
-    [SerializeField] public FiguresBank SelectedFiguresCollection;
+    [SerializeField] public FiguresCollection SelectedFiguresCollection;
     [SerializeField] public int SelectedLanguage;
 
 

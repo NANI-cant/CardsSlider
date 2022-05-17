@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _volume: 0
-  SelectedFiguresCollection: {fileID: 11400000, guid: 965d1f57ce92c8b489c8e39294c4ec89,
+  SelectedFiguresCollection: {fileID: 11400000, guid: 30e3072687b8e6545a7d23787294b3e3,
     type: 2}
   SelectedLanguage: 0

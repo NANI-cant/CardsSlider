@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Global/GameSettings.cs.meta
 guid: 357b92f3fddc4f243a1913c53aa4c07c
+========
+guid: 8c1caca49e1eedd48a171ed4faa8da52
+>>>>>>>> master:Assets/Scripts/Services/AssetsAccess.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -14,7 +14,6 @@ namespace StartMenu {
 
         private Bank _bank;
 
-        [Inject]
         public void Construct(Bank bank) {
             _bank = bank;
         }
@@ -27,7 +26,6 @@ namespace StartMenu {
             _shopItem.ConditionChanged += UpdateUI;
             _bank.OnEarn += OnBankChangeAmount;
             _bank.OnSpend += OnBankChangeAmount;
-            
             _buyButton.onClick.AddListener(_shopItem.Buy);
             _selectButton.onClick.AddListener(_shopItem.Select);
         }

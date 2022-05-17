@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/StartMenu/Shop/ItemDatasets.meta
 guid: abb0faf9e10268648a26e4b37bbdd60e
 folderAsset: yes
 DefaultImporter:
+========
+guid: 0322062f01d1ebe4caedf23cf0c16fd7
+NativeFormatImporter:
+>>>>>>>> master:Assets/Resources/SavingUnits/GameSettings.asset.meta
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

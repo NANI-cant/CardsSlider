@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Bootstrappers/ProjectBootstrapper.cs.meta
-guid: 81fb54e0789a34e4b91584608a023066
+<<<<<<<< HEAD:Assets/Scripts/Global/GameSettings.cs.meta
+guid: 418e77a47cffd4c42a04563798bdecce
 ========
-guid: 357b92f3fddc4f243a1913c53aa4c07c
->>>>>>>> master:Assets/Scripts/Global/GameSettings.cs.meta
+guid: 8c1caca49e1eedd48a171ed4faa8da52
+>>>>>>>> master:Assets/Scripts/Services/AssetsAccess.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

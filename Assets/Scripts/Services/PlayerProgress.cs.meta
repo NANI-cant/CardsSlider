@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Services/PlayerProgress.cs.meta
 guid: 1ebd9a5f3c35f9441901ad0ad23ef68f
+========
+guid: 81fb54e0789a34e4b91584608a023066
+>>>>>>>> master:Assets/Bootstrappers/ProjectBootstrapper.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

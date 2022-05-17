@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SVGfigures.meta
 guid: caab22a586e4635489019401727a7284
+========
+guid: c4fd90cee3b1c59489f0a502d5b6cc2b
+>>>>>>>> master:Assets/Resources/SavingUnits/ItemDatasets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
