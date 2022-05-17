@@ -416,7 +416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.5, y: -0.93}
+  _pointOnBorderFormal: {x: -0.01, y: -1.05}
+  _pointOutOfBorderFormal: {x: 0, y: -1.5}
 --- !u!1 &145783838
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.74, y: 0.9}
+  _pointOnBorderFormal: {x: -0.44, y: -0.89}
+  _pointOutOfBorderFormal: {x: -0.45, y: -1.5}
 --- !u!1 &169392271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointOnBorderFormal: {x: -0.5, y: 0.95}
+  _pointOutOfBorderFormal: {x: -0.5, y: 1.5}
 --- !u!1 &368067023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.89, y: -0.89}
+  _pointOnBorderFormal: {x: 0.94, y: -0.92}
+  _pointOutOfBorderFormal: {x: 1.5, y: -1}
 --- !u!1 &407560228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,7 +2560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 3, y: 0}
+  _pointOnBorderFormal: {x: 0.79, y: 0.81}
+  _pointOutOfBorderFormal: {x: 1.5, y: 1.5}
 --- !u!1 &555871677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,7 +2759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 1, y: 0.54}
+  _pointOnBorderFormal: {x: -1.06, y: 0.06}
+  _pointOutOfBorderFormal: {x: -1.5, y: 0.06}
 --- !u!1 &614256841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,7 +2841,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -1, y: -0.2}
+  _pointOnBorderFormal: {x: 0.92, y: 0.45}
+  _pointOutOfBorderFormal: {x: 1.5, y: 0.45}
 --- !u!1 &627904329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,6 +2924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointOnBorderFormal: {x: 0, y: 1}
+  _pointOutOfBorderFormal: {x: 0, y: 1.5}
 --- !u!1 &656117450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,7 +3228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -0.47, y: 0.95}
+  _pointOnBorderFormal: {x: -1.08, y: 0.74}
+  _pointOutOfBorderFormal: {x: -1.5, y: 0.74}
 --- !u!1 &778111619
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,7 +3310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.39, y: 0.96}
+  _pointOnBorderFormal: {x: -1.05, y: -0.27}
+  _pointOutOfBorderFormal: {x: -1.5, y: -0.3}
 --- !u!1 &781099002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,7 +3392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0, y: -0.92}
+  _pointOnBorderFormal: {x: 0.99, y: 0.68}
+  _pointOutOfBorderFormal: {x: 1.5, y: 0.7}
 --- !u!1 &820213147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,7 +3924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 1, y: 1}
+  _pointOnBorderFormal: {x: 3, y: 0}
+  _pointOutOfBorderFormal: {x: 3, y: 0}
 --- !u!1 &977674080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4135,7 +4147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.61, y: -0.76}
+  _pointOnBorderFormal: {x: -0.89, y: -0.76}
+  _pointOutOfBorderFormal: {x: -1.5, y: -1.5}
 --- !u!1 &1067363947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,7 +4487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.9, y: -0.09}
+  _pointOnBorderFormal: {x: 0.9, y: -0.03}
+  _pointOutOfBorderFormal: {x: 1.5, y: -0.03}
 --- !u!1 &1091863531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.95, y: 0.95}
+  _pointOnBorderFormal: {x: -0.86, y: -0.92}
+  _pointOutOfBorderFormal: {x: -1.5, y: -1.5}
 --- !u!1 &1099885326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,7 +4749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -1.1, y: 0.1}
+  _pointOnBorderFormal: {x: -0.94, y: 0.95}
+  _pointOutOfBorderFormal: {x: -1.5, y: -1.5}
 --- !u!1 &1167369608
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,7 +6081,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1422486418}
+      - m_Target: {fileID: 0}
         m_MethodName: MoveFiguresToBorder
         m_Mode: 1
         m_Arguments:
@@ -6093,9 +6109,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422486413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4aee29bcf1c814a877d572e6a096f6, type: 3}
+  m_Script: {fileID: 11500000, guid: e920a66e4764d8b429f940664f71cb39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  figures:
+  - {fileID: 968030869}
+  - {fileID: 627904333}
+  - {fileID: 1080379337}
+  - {fileID: 1490987302}
+  - {fileID: 361201886}
+  - {fileID: 1495475963}
+  - {fileID: 758223642}
+  - {fileID: 2100313589}
+  - {fileID: 611430049}
+  - {fileID: 1529885166}
+  - {fileID: 2063049080}
+  - {fileID: 117454598}
+  - {fileID: 401123681}
+  - {fileID: 778111623}
+  - {fileID: 2100416605}
+  - {fileID: 614256845}
+  - {fileID: 1736872430}
+  - {fileID: 1091863535}
+  - {fileID: 781099006}
+  - {fileID: 548963592}
+  - {fileID: 1160171757}
+  - {fileID: 2053956223}
+  - {fileID: 1574298805}
+  - {fileID: 1980812081}
+  - {fileID: 155889113}
+  - {fileID: 995901790}
 --- !u!1 &1434828421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6219,7 +6262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 1, y: 1}
+  _pointOnBorderFormal: {x: 0.95, y: 0.95}
+  _pointOutOfBorderFormal: {x: 1.3, y: 1.3}
 --- !u!1 &1495475959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,7 +6344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 1.12, y: -0.58}
+  _pointOnBorderFormal: {x: -1.17, y: 0.47}
+  _pointOutOfBorderFormal: {x: -1.5, y: 0.47}
 --- !u!1 &1529885162
 GameObject:
   m_ObjectHideFlags: 0
@@ -6381,7 +6426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -0.42, y: -1}
+  _pointOnBorderFormal: {x: -1.1, y: -0.67}
+  _pointOutOfBorderFormal: {x: -1.5, y: -0.67}
 --- !u!1 &1531535705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6686,7 +6732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -0.82, y: -0.89}
+  _pointOnBorderFormal: {x: 0.5, y: 0.97}
+  _pointOutOfBorderFormal: {x: 0.5, y: 1.5}
 --- !u!1 &1576925763
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,7 +7321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.94, y: -0.22}
+  _pointOnBorderFormal: {x: -0.61, y: -0.99}
+  _pointOutOfBorderFormal: {x: -0.6, y: -1.5}
 --- !u!1 &1787295624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7745,7 +7793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.93, y: 0.16}
+  _pointOnBorderFormal: {x: 0.59, y: -0.83}
+  _pointOutOfBorderFormal: {x: 0.6, y: -1.5}
 --- !u!1 &1981992318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8113,7 +8162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -0.48, y: -0.87}
+  _pointOnBorderFormal: {x: 0.82, y: -0.72}
+  _pointOutOfBorderFormal: {x: 1.5, y: -0.72}
 --- !u!1 &2063049076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8194,7 +8244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: -1.1, y: -0.67}
+  _pointOnBorderFormal: {x: 1.02, y: -0.48}
+  _pointOutOfBorderFormal: {x: 1.5, y: -0.48}
 --- !u!1 &2091862122
 GameObject:
   m_ObjectHideFlags: 0
@@ -8305,7 +8356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.02, y: 1}
+  _pointOnBorderFormal: {x: 0.92, y: 0.2}
+  _pointOutOfBorderFormal: {x: 1.5, y: 0.2}
 --- !u!1 &2100416601
 GameObject:
   m_ObjectHideFlags: 0
@@ -8386,7 +8438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointOnBorderFormal: {x: 0.94, y: 0}
+  _pointOnBorderFormal: {x: 0.4, y: -0.92}
+  _pointOutOfBorderFormal: {x: 0.4, y: -1.5}
 --- !u!1001 &6321201033782631363
 PrefabInstance:
   m_ObjectHideFlags: 0

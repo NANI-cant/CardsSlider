@@ -11,7 +11,6 @@ public class MovableFigures : MonoBehaviour {
 
     private const float TEMPLATE_SCREEN_HEIGHT = 1920f;
     private const float TEMPLATE_SCRENN_WIDTH = 1080f;
-
     private const float DURATION_ANIMATION = 0.5f;
 
     private RectTransform _rectTransform;
@@ -28,6 +27,7 @@ public class MovableFigures : MonoBehaviour {
 
     private void Awake() {
         _rectTransform = GetComponent<RectTransform>();
+        CalculateNewScreenSize();
     }
 
     private void Start() {
@@ -37,7 +37,6 @@ public class MovableFigures : MonoBehaviour {
     public void MoveToBorder() {
         Vector2 _endPoint;
 
-        CalculateNewScreenSize();
         _endPoint.x = _calculatedNewWidth * _pointOnBorderFormal.x;
         _endPoint.y = _calculatedNewHeight * _pointOnBorderFormal.y;
         _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
@@ -46,14 +45,12 @@ public class MovableFigures : MonoBehaviour {
     public void MoveOutOfBorder() {
         Vector2 _endPoint;
 
-        CalculateNewScreenSize();
         _endPoint.x = _calculatedNewWidth * _pointOutOfBorderFormal.x;
         _endPoint.y = _calculatedNewHeight * _pointOutOfBorderFormal.y;
         _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
     }
 
     public void MoveToStartPosition() {
-        CalculateNewScreenSize();
         _rectTransform.DOAnchorPos(_startPoint, DURATION_ANIMATION);
     }
 
