@@ -413,10 +413,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 117454594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0, y: -0.92}
+  _pointOnBorderFormal: {x: 0.5, y: -0.93}
 --- !u!1 &145783838
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,10 +713,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 155889109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.39, y: 0.96}
+  _pointOnBorderFormal: {x: 0.74, y: 0.9}
 --- !u!1 &169392271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,10 +1674,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 361201882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.47, y: 0.95}
+  _pointOnBorderFormal: {x: -0.5, y: 0.95}
 --- !u!1 &368067023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,10 +1785,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 401123677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.89, y: -0.89}
+  _pointOnBorderFormal: {x: 0.89, y: -0.89}
 --- !u!1 &407560228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,10 +2553,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 548963588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.72, y: 0.67}
+  _pointOnBorderFormal: {x: 3, y: 0}
 --- !u!1 &555871677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,10 +2751,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 611430045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -1.1, y: 0.1}
+  _pointOnBorderFormal: {x: 1, y: 0.54}
 --- !u!1 &614256841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,10 +2832,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 614256841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.94, y: 0}
+  _pointOnBorderFormal: {x: -1, y: -0.2}
 --- !u!1 &627904329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,10 +2913,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 627904329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.02, y: 1}
+  _pointOnBorderFormal: {x: 0, y: 1}
 --- !u!1 &656117450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,10 +3217,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 758223638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.93, y: 0.72}
+  _pointOnBorderFormal: {x: -0.47, y: 0.95}
 --- !u!1 &778111619
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,10 +3298,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 778111619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -1, y: -0.2}
+  _pointOnBorderFormal: {x: 0.39, y: 0.96}
 --- !u!1 &781099002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,10 +3379,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 781099002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 1, y: 0.54}
+  _pointOnBorderFormal: {x: 0, y: -0.92}
 --- !u!1 &820213147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,7 +3546,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 859967060}
+      - m_Target: {fileID: 0}
         m_MethodName: MoveFiguresToStart
         m_Mode: 1
         m_Arguments:
@@ -3574,7 +3574,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 859967055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c56401662e79845aeb324dee31d77d, type: 3}
+  m_Script: {fileID: 11500000, guid: e7788e3c3d7682148bfa6879ab7e1184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   figures:
@@ -3910,10 +3910,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 968030865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 3, y: 0}
+  _pointOnBorderFormal: {x: 1, y: 1}
 --- !u!1 &977674080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,10 +4132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 995901786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.74, y: 0.9}
+  _pointOnBorderFormal: {x: 0.61, y: -0.76}
 --- !u!1 &1067363947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4471,10 +4471,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1080379333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.94, y: -0.22}
+  _pointOnBorderFormal: {x: 0.9, y: -0.09}
 --- !u!1 &1091863531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,10 +4552,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091863531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.82, y: -0.89}
+  _pointOnBorderFormal: {x: 0.95, y: 0.95}
 --- !u!1 &1099885326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,10 +4731,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1160171753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.42, y: -1}
+  _pointOnBorderFormal: {x: -1.1, y: 0.1}
 --- !u!1 &1167369608
 GameObject:
   m_ObjectHideFlags: 0
@@ -6096,33 +6096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4aee29bcf1c814a877d572e6a096f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  figures:
-  - {fileID: 968030869}
-  - {fileID: 627904333}
-  - {fileID: 1080379337}
-  - {fileID: 1490987302}
-  - {fileID: 361201886}
-  - {fileID: 1495475963}
-  - {fileID: 758223642}
-  - {fileID: 2100313589}
-  - {fileID: 611430049}
-  - {fileID: 1529885166}
-  - {fileID: 2063049080}
-  - {fileID: 117454598}
-  - {fileID: 401123681}
-  - {fileID: 778111623}
-  - {fileID: 2100416605}
-  - {fileID: 614256845}
-  - {fileID: 1736872430}
-  - {fileID: 1091863535}
-  - {fileID: 781099006}
-  - {fileID: 548963592}
-  - {fileID: 1160171757}
-  - {fileID: 2053956223}
-  - {fileID: 1574298805}
-  - {fileID: 1980812081}
-  - {fileID: 155889113}
-  - {fileID: 995901790}
 --- !u!1 &1434828421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,10 +6216,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1490987298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.95, y: 0.95}
+  _pointOnBorderFormal: {x: 1, y: 1}
 --- !u!1 &1495475959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6324,10 +6297,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1495475959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -1.25, y: 0.45}
+  _pointOnBorderFormal: {x: 1.12, y: -0.58}
 --- !u!1 &1529885162
 GameObject:
   m_ObjectHideFlags: 0
@@ -6405,10 +6378,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1529885162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -1.1, y: -0.67}
+  _pointOnBorderFormal: {x: -0.42, y: -1}
 --- !u!1 &1531535705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,10 +6683,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574298801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.48, y: -0.87}
+  _pointOnBorderFormal: {x: -0.82, y: -0.89}
 --- !u!1 &1576925763
 GameObject:
   m_ObjectHideFlags: 0
@@ -7298,10 +7271,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736872426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.93, y: 0.16}
+  _pointOnBorderFormal: {x: 0.94, y: -0.22}
 --- !u!1 &1787295624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,17 +7618,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1947741256}
-        m_MethodName: MoveFiguresToBorder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &1947741255
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7673,7 +7635,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947741251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4aee29bcf1c814a877d572e6a096f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f29e4d2f969a94098f8319299d2103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   figures:
@@ -7780,10 +7742,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1980812077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.61, y: -0.76}
+  _pointOnBorderFormal: {x: 0.93, y: 0.16}
 --- !u!1 &1981992318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,10 +8110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053956219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: -0.92, y: 0.9}
+  _pointOnBorderFormal: {x: -0.48, y: -0.87}
 --- !u!1 &2063049076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,10 +8191,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063049076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 1.12, y: -0.58}
+  _pointOnBorderFormal: {x: -1.1, y: -0.67}
 --- !u!1 &2091862122
 GameObject:
   m_ObjectHideFlags: 0
@@ -8340,10 +8302,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2100313585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.83, y: 0.28}
+  _pointOnBorderFormal: {x: 0.02, y: 1}
 --- !u!1 &2100416601
 GameObject:
   m_ObjectHideFlags: 0
@@ -8421,10 +8383,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2100416601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a317b7c37fad43c4eb8d8a52a652a419, type: 3}
+  m_Script: {fileID: 11500000, guid: e072a118cb65592448799fba43628c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointFormal: {x: 0.5, y: -0.93}
+  _pointOnBorderFormal: {x: 0.94, y: 0}
 --- !u!1001 &6321201033782631363
 PrefabInstance:
   m_ObjectHideFlags: 0
