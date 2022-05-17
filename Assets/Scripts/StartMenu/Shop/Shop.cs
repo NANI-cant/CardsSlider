@@ -4,6 +4,10 @@ using Zenject;
 
 namespace StartMenu {
     public class Shop : MonoBehaviour {
+        [SerializeField] private ShopItem _shopItemTemplate;
+        [SerializeField] private Vector2 _itemsStart;
+        [SerializeField] private float _offsetBetweenItems;
+        
         [Header("Debug")]
         [SerializeField] RectTransform _shopItemRectTransform;
 

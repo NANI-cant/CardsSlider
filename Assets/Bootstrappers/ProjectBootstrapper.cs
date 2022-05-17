@@ -12,6 +12,9 @@ public class ProjectBootstrapper : MonoInstaller {
     public override void InstallBindings() {
         _localization = new Localization(_localizationXML, _gameSettings);
         _playerProgress = new PlayerProgress();
+        _assetsAccess = new AssetsAccess();
+
+        BindInstanceSingle<Localization>(_localization);
         BindInstanceSingle<GameSettings>(_gameSettings);
         BindInstanceSingle<PlayerProgress>(_playerProgress);
         BindInstanceSingle<AssetsAccess>(_assetsAccess);
