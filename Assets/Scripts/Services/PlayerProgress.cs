@@ -10,7 +10,7 @@ public class PlayerProgress {
 
     public void AddBank(int value) {
         if (value <= 0) return;
-
+        
         SaveBank(GetBank() + value);
     }
 

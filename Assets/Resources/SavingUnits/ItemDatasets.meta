@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/SavingUnits/ItemDatasets.meta
 guid: c4fd90cee3b1c59489f0a502d5b6cc2b
+========
+guid: abb0faf9e10268648a26e4b37bbdd60e
+>>>>>>>> master:Assets/Scripts/StartMenu/Shop/ItemDatasets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

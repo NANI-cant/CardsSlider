@@ -14,8 +14,8 @@ public class ProjectBootstrapper : MonoInstaller {
         _playerProgress = new PlayerProgress();
         _assetsAccess = new AssetsAccess();
 
-        BindInstanceSingle<GameSettings>(_gameSettings);
         BindInstanceSingle<Localization>(_localization);
+        BindInstanceSingle<GameSettings>(_gameSettings);
         BindInstanceSingle<PlayerProgress>(_playerProgress);
         BindInstanceSingle<AssetsAccess>(_assetsAccess);
     }

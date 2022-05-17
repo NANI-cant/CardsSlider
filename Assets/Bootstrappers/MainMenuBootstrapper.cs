@@ -5,6 +5,7 @@ namespace StartMenu {
     public class MainMenuBootstrapper : MonoInstaller {
         [SerializeField] private Bank _bank;
         [SerializeField] private FigureCollectionsHolder _figureCollectionsHolder;
+        [SerializeField] private Camera _mainCamera;
 
         private Fabric _fabric;
         private PlayerProgress _playerProgress;
@@ -20,6 +21,7 @@ namespace StartMenu {
             BindInstanceSingle<Fabric>(_fabric);
             BindInstanceSingle<Bank>(_bank);
             BindInstanceSingle<FigureCollectionsHolder>(_figureCollectionsHolder);
+            BindInstanceSingle<Camera>(_mainCamera);
         }
 
         private T BindInstanceSingle<T>(T instance) {
