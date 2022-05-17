@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364037bbae8d0294e9e1002dad3136f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _koefficient: 0.5
+  _multiplier: 0
   _startDelay: 1
   _timeForConvert: 1
   _scoreUI: {fileID: 385456220}
@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c943c60db5eec9849b56ddbd5b1ae93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _figuresBank: {fileID: 11400000, guid: c982921683be9ff4883e52d33d8795c4, type: 2}
+  _figuresBank: {fileID: 11400000, guid: 30e3072687b8e6545a7d23787294b3e3, type: 2}
   _figuresCount: 1
   _maxFiguresCount: 1
   _answersForAddFigure: 1
