@@ -9,8 +9,14 @@ public class ScenesLoader {
         _score = scoreCounter;
     }
 
-    public void LoadMenu() {
-        EndGameResult endGameResult = new EndGameResult(_gameMode, _score.Score);
+    public void LoadMenu(bool isGameInterrupted = false) {
+        EndGameResult endGameResult;
+        if (isGameInterrupted) {
+            endGameResult = new EndGameResult(_gameMode, 0);
+        }
+        else {
+            endGameResult = new EndGameResult(_gameMode, _score.Score);
+        }
         MainMenu.Load(endGameResult);
     }
 }

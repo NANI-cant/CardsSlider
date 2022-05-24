@@ -4,49 +4,56 @@ using Zenject;
 
 public class Timer : MonoBehaviour {
     public UnityAction OnTimesUp;
-    public UnityAction<float> OnTimeChange;
+    public UnityAction OnTimeChange;
 
-    private float _startTime;
+    private float _settedTime;
     private Game _game;
 
     private float _remaindedTime;
     private bool _isRun = false;
 
     public float RemaindedTime => _remaindedTime;
+    public float SettedTime => _settedTime;
 
     [Inject]
     public void Construct(Game game, GameplaySettings settings) {
         _game = game;
-        _startTime = settings.StartTime;
-    }
-
-    private void Start() {
-        _remaindedTime = _startTime;
-        OnTimeChange?.Invoke(RemaindedTime);
+        _settedTime = settings.StartTime;
+        _remaindedTime = _settedTime;
     }
 
     private void OnEnable() {
-        _game.OnGameOver += Stop;
+        _game.GameOver += Stop;
+        _game.GamePaused += Stop;
+        _game.GameStarted += Run;
     }
 
     private void OnDisable() {
-        _game.OnGameOver -= Stop;
+        _game.GameOver -= Stop;
+        _game.GamePaused -= Stop;
+        _game.GameStarted -= Run;
+    }
+
+    private void Start() {
+        _remaindedTime = _settedTime;
     }
 
     private void Update() {
         if (_isRun) {
-            Running();
+            ExecuteRunning();
         }
     }
 
     public void Add(float time) {
+        _settedTime += time;
         _remaindedTime += time;
-        OnTimeChange?.Invoke(RemaindedTime);
+        OnTimeChange?.Invoke();
     }
 
     public void Set(float time) {
+        _settedTime = time;
         _remaindedTime = time;
-        OnTimeChange?.Invoke(RemaindedTime);
+        OnTimeChange?.Invoke();
     }
 
     [ContextMenu("Run")]
@@ -63,9 +70,9 @@ public class Timer : MonoBehaviour {
         }
     }
 
-    private void Running() {
+    private void ExecuteRunning() {
         _remaindedTime -= Time.deltaTime;
-        OnTimeChange?.Invoke(RemaindedTime);
+        OnTimeChange?.Invoke();
         if (_remaindedTime <= Constants.Epsilon) {
             _remaindedTime = 0f;
             Stop();

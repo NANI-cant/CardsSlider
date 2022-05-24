@@ -29,7 +29,7 @@ public class GameEndingState : IEnterState {
 
     public void Enter() {
         _progress.AddBank((int)(_score.Score * _settings.ConvertMultiplier));
-        _game.OnGameOver?.Invoke();
+        _game.GameOver?.Invoke();
         _gameOverPanel.OkButton.onClick.AddListener(OnOkButtonClick);
     }
 

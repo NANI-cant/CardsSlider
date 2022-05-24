@@ -10,14 +10,12 @@ public class Fade : MonoBehaviour {
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    [ContextMenu("Show")]
     public void Show() {
         _canvasGroup.DOFade(1, _fadeDuration);
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
     }
 
-    [ContextMenu("Hide")]
     public void Hide() {
         _canvasGroup.DOFade(0, _fadeDuration);
         _canvasGroup.interactable = false;

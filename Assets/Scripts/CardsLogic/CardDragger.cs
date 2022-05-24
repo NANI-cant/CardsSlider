@@ -20,9 +20,6 @@ public class CardDragger : MonoBehaviour {
     [Inject]
     public void Construct(Game game) {
         _game = game;
-    }
-
-    private void Awake() {
         _inputs = new Inputs();
     }
 
@@ -30,14 +27,18 @@ public class CardDragger : MonoBehaviour {
         _inputs.Enable();
         _inputs.CardDragger.TakeDrop.started += ctx => TakeCard();
         _inputs.CardDragger.TakeDrop.canceled += ctx => DropCard();
-        _game.OnGameOver += ForbidDragging;
-        _game.OnSceneLoad += AllowDragging;
+        _game.GamePaused += ForbidDragging;
+        _game.GameOver += ForbidDragging;
+        _game.SceneLoaded += AllowDragging;
+        _game.GameStarted += AllowDragging;
     }
 
     private void OnDisable() {
         _inputs.Disable();
-        _game.OnGameOver -= ForbidDragging;
-        _game.OnSceneLoad -= AllowDragging;
+        _game.GamePaused -= ForbidDragging;
+        _game.GameOver -= ForbidDragging;
+        _game.SceneLoaded -= AllowDragging;
+        _game.GameStarted -= AllowDragging;
     }
 
     private void FixedUpdate() {

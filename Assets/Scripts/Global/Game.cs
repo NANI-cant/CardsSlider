@@ -1,11 +1,12 @@
 ﻿using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Game {
-    public UnityAction OnSceneLoad;
-    public UnityAction OnGameStart;
-    public UnityAction OnGameOver;
+    public UnityAction SceneLoaded;
+    public UnityAction GamePaused;
+    public UnityAction GameStarted;
+    public UnityAction GameOver;
 
-    private LifeCounter _life;
     private GameStateMachine _gameStateMachine;
 
     public Game(
@@ -14,9 +15,22 @@ public class Game {
         GameOverPanel gameOverPanel,
         GameplaySettings settings,
         PlayerProgress playerProgress,
-        ScoreCounter score
-        ) {
-        _life = lifeCounter;
-        _gameStateMachine = new GameStateMachine(this, _life, scenesLoader, gameOverPanel, settings, playerProgress, score);
+        ScoreCounter score,
+        Button continueButton,
+        Button pauseButton,
+        Button toMenuButton) {
+
+        _gameStateMachine = new GameStateMachine(
+            this,
+            lifeCounter,
+            scenesLoader,
+            gameOverPanel,
+            settings,
+            playerProgress,
+            score,
+            continueButton,
+            pauseButton,
+            toMenuButton
+        );
     }
 }

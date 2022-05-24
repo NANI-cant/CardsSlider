@@ -19,7 +19,6 @@ public class FigureGenerator : MonoBehaviour {
 
     private CardSpawner _spawner;
     private FigureData _targetFigure;
-    private UnityAction _reGenerate;
     private int _remindAnswers;
 
     private Timer _timer;
@@ -29,34 +28,32 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     [Inject]
-    public void Construct(Timer timer, GameplaySettings settings) {
+    public void Construct(Timer timer, GameplaySettings settings, GameSettings gameSettings) {
         _timer = timer;
         _figuresCount = settings.StartFiguresCount;
         _maxFiguresCount = settings.MaxFiguresCount;
         _answersForAddFigure = settings.AnswersForAddFigure;
+        _figuresBank = gameSettings.SelectedFiguresCollection;
     }
 
     private void Awake() {
         _spawner = GetComponent<CardSpawner>();
     }
 
-    private void Start() {
-        Generate();
-    }
-
     private void OnEnable() {
-        _reGenerate = () => {
-            _spawner.DestroyCard();
-            Generate();
-        };
+        
 
         AnswerChecker.OnAnswerCheck += HandleAnswer;
-        _timer.OnTimesUp += _reGenerate;
+        _timer.OnTimesUp += ReGenerate;
     }
 
     private void OnDisable() {
         AnswerChecker.OnAnswerCheck -= HandleAnswer;
-        _timer.OnTimesUp -= _reGenerate;
+        _timer.OnTimesUp -= ReGenerate;
+    }
+
+    private void Start() {
+        Generate();
     }
 
     private void HandleAnswer(bool answer) {
@@ -91,5 +88,10 @@ public class FigureGenerator : MonoBehaviour {
 
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
+    }
+
+    private void ReGenerate() {
+        _spawner.DestroyCard();
+        Generate();
     }
 }

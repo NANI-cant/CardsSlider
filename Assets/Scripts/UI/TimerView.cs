@@ -1,11 +1,10 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
+[RequireComponent(typeof(Slider))]
 public class TimerView : MonoBehaviour {
-    private TextMeshProUGUI _text;
-
+    private Slider _slider;
     private Timer _timerModel;
 
     [Inject]
@@ -14,7 +13,7 @@ public class TimerView : MonoBehaviour {
     }
 
     private void Awake() {
-        _text = GetComponent<TextMeshProUGUI>();
+        _slider = GetComponent<Slider>();
     }
 
     private void OnEnable() {
@@ -25,7 +24,15 @@ public class TimerView : MonoBehaviour {
         _timerModel.OnTimeChange -= ChangeUI;
     }
 
-    public void ChangeUI(float time) {
-        _text.text = time.ToString("#0.00");
+    private void Start() {
+        ChangeUI();
+    }
+
+    public void ChangeUI() {
+        float currentTime = _timerModel.RemaindedTime;
+        float maxTime = _timerModel.SettedTime;
+
+        _slider.maxValue = maxTime;
+        _slider.value = currentTime;
     }
 }
