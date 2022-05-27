@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameStateMachine : IStateMachine {
     private Dictionary<Type, IState> _states;
@@ -12,11 +13,14 @@ public class GameStateMachine : IStateMachine {
         GameOverPanel gameOverPanel,
         GameplaySettings settings,
         PlayerProgress playerProgress,
-        ScoreCounter score
-        ) {
+        ScoreCounter score,
+        Button continueButton,
+        Button pauseButton,
+        Button toMenuButton) {
         _states = new Dictionary<Type, IState> {
-            [typeof(GameRunningState)] = new GameRunningState(this, game, lifeCounter),
+            [typeof(GameRunningState)] = new GameRunningState(this, game, lifeCounter, pauseButton),
             [typeof(GameEndingState)] = new GameEndingState(this, game, scenesLoader, gameOverPanel, settings, playerProgress, score),
+            [typeof(GamePauseState)] = new GamePauseState(this, game,scenesLoader, continueButton, toMenuButton),
         };
         TranslateTo<GameRunningState>();
     }

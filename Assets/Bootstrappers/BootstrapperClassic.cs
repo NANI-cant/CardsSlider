@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class BootstrapperClassic : MonoInstaller {
@@ -17,6 +18,9 @@ public class BootstrapperClassic : MonoInstaller {
 
     [Header("UI")]
     [SerializeField] private GameOverPanel _gameOverPanel;
+    [SerializeField] private Button _pauseButton;
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private Button _toMenuButton;
 
     private Game _game;
     private ScenesLoader _scenesLoader;
@@ -29,7 +33,17 @@ public class BootstrapperClassic : MonoInstaller {
 
     public override void InstallBindings() {
         _scenesLoader = new ScenesLoader(_settings.Mode, _scoreCounter);
-        _game = new Game(_lifeCounter, _scenesLoader, _gameOverPanel, _settings, _playerProgress, _scoreCounter);
+        _game = new Game(
+            _lifeCounter,
+            _scenesLoader,
+            _gameOverPanel,
+            _settings,
+            _playerProgress,
+            _scoreCounter,
+            _continueButton,
+            _pauseButton,
+            _toMenuButton
+        );
 
         BindInstanceSingle<Game>(_game);
         BindInstanceSingle<ScenesLoader>(_scenesLoader);

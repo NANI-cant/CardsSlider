@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.VectorGraphics;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(SVGImage))]
 public class TargetFigureView : MonoBehaviour {
-    private Image _image;
+    private SVGImage _image;
 
     private FigureGenerator _generator;
 
@@ -14,7 +15,7 @@ public class TargetFigureView : MonoBehaviour {
     }
 
     private void Awake() {
-        _image = GetComponent<Image>();
+        _image = GetComponent<SVGImage>();
     }
 
     private void OnEnable() {
