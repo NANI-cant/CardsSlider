@@ -20,7 +20,7 @@ public class ShopMenuButton : MonoBehaviour
 
     public void MoveFiguresOutOfBorder(){
         foreach(MovableFigures figure in figures){
-            figure.MoveOutOfBorder();
+            figure.MoveForShopScreen();
         }
     }
 }

@@ -74,7 +74,7 @@ namespace StartMenu {
         private void SetBuyable() {
             _buyButton.gameObject.SetActive(true);
             _selectButton.gameObject.SetActive(false);
-            _priceUGUI.color = Color.white;
+            _priceUGUI.color = Color.black;
             _buyButton.interactable = true;
         }
 
