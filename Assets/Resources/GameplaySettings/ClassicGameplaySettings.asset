@@ -14,9 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTime: 3
   _startLifes: 3
+  _convertMultiplier: 0.5
   _startFiguresCount: 1
   _maxFiguresCount: 8
   _answersForAddFigure: 3
-  _settingTime: 3
   _addingScore: 1
   _takingLifes: 1
+  _timeOverScore:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: -0.0125
+      outSlope: -0.0125
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 200
+      value: 0.5
+      inSlope: -0.0125
+      outSlope: -0.0125
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
