@@ -32,11 +32,11 @@ namespace StartMenu {
         }
 
         public void UpdateBestScore(int finalScore) {
-            bool isNewBest = _progress.TryUpdateScore(_gameMode, finalScore, out _bestScore);
-            ChangeBestScoreUI(isNewBest);
+            _progress.TryUpdateScore(_gameMode, finalScore, out _bestScore);
+            ChangeBestScoreUI();
         }
 
-        private void ChangeBestScoreUI(bool isNewBest) {
+        private void ChangeBestScoreUI() {
             _bestScoreUI.text = _bestScore.ToString();
         }
     }
