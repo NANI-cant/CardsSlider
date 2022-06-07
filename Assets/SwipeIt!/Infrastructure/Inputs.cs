@@ -33,6 +33,14 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ba1df64-bf29-47ed-b08a-6edefc5a5c8b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""action"": ""Dragging"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66828a68-06ca-4b8d-8a62-871c36c4874d"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @Inputs : IInputActionCollection, IDisposable
         m_CardDragger = asset.FindActionMap("CardDragger", throwIfNotFound: true);
         m_CardDragger_TakeDrop = m_CardDragger.FindAction("Take/Drop", throwIfNotFound: true);
         m_CardDragger_Dragging = m_CardDragger.FindAction("Dragging", throwIfNotFound: true);
+        m_CardDragger_Slide = m_CardDragger.FindAction("Slide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @Inputs : IInputActionCollection, IDisposable
     private ICardDraggerActions m_CardDraggerActionsCallbackInterface;
     private readonly InputAction m_CardDragger_TakeDrop;
     private readonly InputAction m_CardDragger_Dragging;
+    private readonly InputAction m_CardDragger_Slide;
     public struct CardDraggerActions
     {
         private @Inputs m_Wrapper;
         public CardDraggerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @TakeDrop => m_Wrapper.m_CardDragger_TakeDrop;
         public InputAction @Dragging => m_Wrapper.m_CardDragger_Dragging;
+        public InputAction @Slide => m_Wrapper.m_CardDragger_Slide;
         public InputActionMap Get() { return m_Wrapper.m_CardDragger; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @Dragging.started -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
                 @Dragging.performed -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
                 @Dragging.canceled -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnDragging;
+                @Slide.started -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnSlide;
+                @Slide.performed -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnSlide;
+                @Slide.canceled -= m_Wrapper.m_CardDraggerActionsCallbackInterface.OnSlide;
             }
             m_Wrapper.m_CardDraggerActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @Dragging.started += instance.OnDragging;
                 @Dragging.performed += instance.OnDragging;
                 @Dragging.canceled += instance.OnDragging;
+                @Slide.started += instance.OnSlide;
+                @Slide.performed += instance.OnSlide;
+                @Slide.canceled += instance.OnSlide;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @Inputs : IInputActionCollection, IDisposable
     {
         void OnTakeDrop(InputAction.CallbackContext context);
         void OnDragging(InputAction.CallbackContext context);
+        void OnSlide(InputAction.CallbackContext context);
     }
 }

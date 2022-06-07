@@ -6,10 +6,7 @@ using Zenject;
 namespace StartMenu {
     public class GameModePanel : MonoBehaviour {
         [SerializeField] private GameMode _gameMode = GameMode.Classic;
-        [SerializeField] private LocalizedText _bestScoreLabel;
         [SerializeField] private TextMeshProUGUI _bestScoreUI;
-        [SerializeField] private string NewBestLocalizationKey = "NewBestScoreLabel";
-        [SerializeField] private string BestLocalizationKey = "BestScoreLabel";
 
         private int _bestScore;
         private PlayerProgress _progress;
@@ -35,17 +32,11 @@ namespace StartMenu {
         }
 
         public void UpdateBestScore(int finalScore) {
-            bool isNewBest = _progress.TryUpdateScore(_gameMode, finalScore, out _bestScore);
-            ChangeBestScoreUI(isNewBest);
+            _progress.TryUpdateScore(_gameMode, finalScore, out _bestScore);
+            ChangeBestScoreUI();
         }
 
-        private void ChangeBestScoreUI(bool isNewBest) {
-            if (isNewBest) {
-                _bestScoreLabel.SetKey(NewBestLocalizationKey);
-            }
-            else {
-                _bestScoreLabel.SetKey(BestLocalizationKey);
-            }
+        private void ChangeBestScoreUI() {
             _bestScoreUI.text = _bestScore.ToString();
         }
     }

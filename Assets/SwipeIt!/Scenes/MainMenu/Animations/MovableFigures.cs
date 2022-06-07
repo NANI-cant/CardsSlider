@@ -9,6 +9,9 @@ public class MovableFigures : MonoBehaviour {
     [Header("Out of border")]
     [SerializeField] private Vector2 _pointOutOfBorderFormal;
 
+    [Header("For shop")]
+    [SerializeField] private Vector2 _pointForShop;
+
     private const float TEMPLATE_SCREEN_HEIGHT = 1920f;
     private const float TEMPLATE_SCRENN_WIDTH = 1080f;
     private const float DURATION_ANIMATION = 0.5f;
@@ -47,6 +50,14 @@ public class MovableFigures : MonoBehaviour {
 
         _endPoint.x = _calculatedNewWidth * _pointOutOfBorderFormal.x;
         _endPoint.y = _calculatedNewHeight * _pointOutOfBorderFormal.y;
+        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
+    }
+
+    public void MoveForShopScreen(){
+        Vector2 _endPoint;
+
+         _endPoint.x = _calculatedNewWidth * _pointForShop.x;
+        _endPoint.y = _calculatedNewHeight * _pointForShop.y;
         _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
     }
 

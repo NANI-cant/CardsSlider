@@ -11,9 +11,7 @@ TrueTypeFontImporter:
   fontName: Manrope
   fontNames:
   - Manrope
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 3d39e93935cfaa54f96d11237df8d544, type: 3}
-  - {fileID: 12800000, guid: 5654255c759e7b940af76e3b45d640e9, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
