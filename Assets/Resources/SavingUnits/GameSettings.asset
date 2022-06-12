@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357b92f3fddc4f243a1913c53aa4c07c, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  _volume: 0
+  _musicVolume: 0.24
+  _soundsVolume: 0.49960724
   SelectedFiguresCollection: {fileID: 11400000, guid: b9c69793c5b4bf442b5727a1efcf1b99,
     type: 2}
   SelectedLanguage: 0
