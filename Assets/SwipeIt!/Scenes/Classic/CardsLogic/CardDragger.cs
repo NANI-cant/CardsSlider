@@ -11,36 +11,27 @@ public class CardDragger : MonoBehaviour {
     private Game _game;
 
     private Card _holdingCard;
-    private Inputs _inputs;
+    private IInputService _input;
     private Vector2 _distanceToPointer;
-    private bool _canDrag = true;
 
     public UnityAction<Card> OnCardDrop;
 
-    private Vector2 _pointerPosition => _camera.ScreenToWorldPoint(_inputs.CardDragger.Dragging.ReadValue<Vector2>());
+    private Vector2 _pointerPosition => _camera.ScreenToWorldPoint(_input.Position);
 
     [Inject]
-    public void Construct(Game game) {
+    public void Construct(Game game, IInputService input) {
         _game = game;
-        _inputs = new Inputs();
+        _input = input;
     }
 
     private void OnEnable() {
-        _inputs.Enable();
-        _inputs.CardDragger.TakeDrop.started += ctx => TakeCard();
-        _inputs.CardDragger.TakeDrop.canceled += ctx => DropCard();
-        _game.GamePaused += ForbidDragging;
-        _game.GameOver += ForbidDragging;
-        _game.SceneLoaded += AllowDragging;
-        _game.GameStarted += AllowDragging;
+        _input.Pressed += TakeCard;
+        _input.Canceled += DropCard;
     }
 
     private void OnDisable() {
-        _inputs.Disable();
-        _game.GamePaused -= ForbidDragging;
-        _game.GameOver -= ForbidDragging;
-        _game.SceneLoaded -= AllowDragging;
-        _game.GameStarted -= AllowDragging;
+        _input.Pressed -= TakeCard;
+        _input.Canceled -= DropCard;
     }
 
     private void FixedUpdate() {
@@ -48,7 +39,6 @@ public class CardDragger : MonoBehaviour {
     }
 
     private void DragCard() {
-        if (!_canDrag) return;
         if (_holdingCard == null) return;
 
         _holdingCard.transform.position = _railways.TranslateByDistance(_pointerPosition.x - _distanceToPointer.x);
@@ -76,7 +66,4 @@ public class CardDragger : MonoBehaviour {
         OnCardDrop?.Invoke(_holdingCard);
         _holdingCard = null;
     }
-
-    private void ForbidDragging() => _canDrag = false;
-    private void AllowDragging() => _canDrag = true;
 }

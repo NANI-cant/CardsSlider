@@ -16,11 +16,12 @@ public class GameStateMachine : IStateMachine {
         ScoreCounter score,
         Button continueButton,
         Button pauseButton,
-        Button toMenuButton) {
+        Button toMenuButton,
+        IInputService input) {
         _states = new Dictionary<Type, IState> {
-            [typeof(GameRunningState)] = new GameRunningState(this, game, lifeCounter, pauseButton),
-            [typeof(GameEndingState)] = new GameEndingState(this, game, scenesLoader, gameOverPanel, settings, playerProgress, score),
-            [typeof(GamePauseState)] = new GamePauseState(this, game,scenesLoader, continueButton, toMenuButton),
+            [typeof(GameRunningState)] = new GameRunningState(this, game, lifeCounter, pauseButton, input),
+            [typeof(GameEndState)] = new GameEndState(this, game, scenesLoader, gameOverPanel, settings, playerProgress, score, input),
+            [typeof(GamePauseState)] = new GamePauseState(this, game, scenesLoader, continueButton, toMenuButton, input),
         };
         TranslateTo<GameRunningState>();
     }

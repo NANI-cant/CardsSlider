@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -26,6 +27,7 @@ public class BootstrapperClassic : MonoInstaller {
     private Game _game;
     private ScenesLoader _scenesLoader;
     private PlayerProgress _playerProgress;
+    private IInputService _inputService;
 
     [Inject]
     public void Construct(PlayerProgress playerProgress) {
@@ -34,6 +36,8 @@ public class BootstrapperClassic : MonoInstaller {
 
     public override void InstallBindings() {
         _scenesLoader = new ScenesLoader(_settings.Mode, _scoreCounter);
+        _inputService = new PointerInput();
+
         _game = new Game(
             _lifeCounter,
             _scenesLoader,
@@ -43,10 +47,12 @@ public class BootstrapperClassic : MonoInstaller {
             _scoreCounter,
             _continueButton,
             _pauseButton,
-            _toMenuButton
+            _toMenuButton,
+            _inputService
         );
 
         BindInstanceSingle<Game>(_game);
+        BindInstanceSingle<IInputService>(_inputService);
         BindInstanceSingle<ScenesLoader>(_scenesLoader);
 
         BindInstanceSingle<GameplaySettings>(_settings);
@@ -61,6 +67,10 @@ public class BootstrapperClassic : MonoInstaller {
         BindInstanceSingle<ScoreCounter>(_scoreCounter);
         BindInstanceSingle<Timer>(_timer);
     }
+    
+    private void OnDestroy() {
+        (_inputService as IDisposable).Dispose();
+    }
 
     private T BindInstanceSingle<T>(T instance) {
         Container
@@ -69,4 +79,5 @@ public class BootstrapperClassic : MonoInstaller {
             .NonLazy();
         return instance;
     }
+
 }

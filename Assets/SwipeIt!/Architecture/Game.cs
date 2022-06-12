@@ -18,7 +18,8 @@ public class Game {
         ScoreCounter score,
         Button continueButton,
         Button pauseButton,
-        Button toMenuButton) {
+        Button toMenuButton,
+        IInputService input) {
 
         _gameStateMachine = new GameStateMachine(
             this,
@@ -30,7 +31,8 @@ public class Game {
             score,
             continueButton,
             pauseButton,
-            toMenuButton
+            toMenuButton,
+            input
         );
     }
 }

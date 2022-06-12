@@ -6,15 +6,18 @@ public class GameRunningState : IEnterState, IExitState {
     private Game _game;
     private LifeCounter _lifeCounter;
     private Button _pauseButton;
+    private IInputService _input;
 
-    public GameRunningState(GameStateMachine gameStateMachine, Game game, LifeCounter lifeCounter, Button pauseButton) {
+    public GameRunningState(GameStateMachine gameStateMachine, Game game, LifeCounter lifeCounter, Button pauseButton, IInputService input) {
         _gameStateMachine = gameStateMachine;
         _game = game;
         _lifeCounter = lifeCounter;
         _pauseButton = pauseButton;
+        _input = input;
     }
 
     public void Enter() {
+        _input.Enable();
         _pauseButton.onClick.AddListener(_gameStateMachine.TranslateTo<GamePauseState>);
         _lifeCounter.OnLifesOver += OnLifesOver;
         _game.SceneLoaded?.Invoke();
@@ -26,6 +29,6 @@ public class GameRunningState : IEnterState, IExitState {
     }
 
     private void OnLifesOver() {
-        _gameStateMachine.TranslateTo<GameEndingState>();
+        _gameStateMachine.TranslateTo<GameEndState>();
     }
 }

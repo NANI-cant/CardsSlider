@@ -1,6 +1,6 @@
 using System;
 
-public class GameEndingState : IEnterState {
+public class GameEndState : IEnterState {
     private GameStateMachine _gameStateMachine;
     private Game _game;
     private ScenesLoader _scenesLoader;
@@ -8,15 +8,17 @@ public class GameEndingState : IEnterState {
     private GameplaySettings _settings;
     private PlayerProgress _progress;
     private ScoreCounter _score;
+    private IInputService _input;
 
-    public GameEndingState(
+    public GameEndState(
         GameStateMachine gameStateMachine,
         Game game,
         ScenesLoader scenesLoader,
         GameOverPanel gameOverPanel,
         GameplaySettings settings,
         PlayerProgress playerProgress,
-        ScoreCounter score
+        ScoreCounter score,
+        IInputService input
     ) {
         _gameStateMachine = gameStateMachine;
         _game = game;
@@ -25,9 +27,11 @@ public class GameEndingState : IEnterState {
         _settings = settings;
         _progress = playerProgress;
         _score = score;
+        _input = input;
     }
 
     public void Enter() {
+        _input.Disable();
         _progress.AddBank((int)(_score.Score * _settings.ConvertMultiplier));
         _game.GameOver?.Invoke();
         _gameOverPanel.OkButton.onClick.AddListener(OnOkButtonClick);
