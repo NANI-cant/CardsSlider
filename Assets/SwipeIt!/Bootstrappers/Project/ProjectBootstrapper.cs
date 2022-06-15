@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -20,16 +21,6 @@ public class ProjectBootstrapper : MonoInstaller {
         BindInstanceSingle<AssetsAccess>(_assetsAccess);
     }
 
-    private T InstantiatePrefab<T>(T template) where T : MonoBehaviour {
-        T templateInstance = Container.InstantiatePrefabForComponent<T>(
-                template,
-                Vector3.zero,
-                Quaternion.identity,
-                null);
-
-        return templateInstance;
-    }
-
     private T BindInstanceSingle<T>(T instance) {
         Container
             .BindInstance<T>(instance)
@@ -38,4 +29,5 @@ public class ProjectBootstrapper : MonoInstaller {
 
         return instance;
     }
+
 }

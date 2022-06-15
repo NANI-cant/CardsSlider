@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ namespace StartMenu {
 
         private Fabric _fabric;
         private PlayerProgress _playerProgress;
+        private IInputService _inputService;
 
         [Inject]
         public void Construct(PlayerProgress playerProgress) {
@@ -17,11 +19,17 @@ namespace StartMenu {
 
         public override void InstallBindings() {
             _fabric = new Fabric(_bank, _figureCollectionsHolder, _playerProgress);
+            _inputService = new PointerInput();
 
+            BindInstanceSingle<IInputService>(_inputService);
             BindInstanceSingle<Fabric>(_fabric);
             BindInstanceSingle<Bank>(_bank);
             BindInstanceSingle<FigureCollectionsHolder>(_figureCollectionsHolder);
             BindInstanceSingle<Camera>(_mainCamera);
+        }
+
+        private void OnDestroy() {
+            (_inputService as IDisposable).Dispose();
         }
 
         private T BindInstanceSingle<T>(T instance) {

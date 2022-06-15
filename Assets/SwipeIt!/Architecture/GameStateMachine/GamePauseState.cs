@@ -6,16 +6,19 @@ public class GamePauseState : IState, IEnterState, IExitState {
     private ScenesLoader _scenesLoader;
     private Button _continueButton;
     private Button _toMenuButton;
+    private IInputService _input;
 
-    public GamePauseState(GameStateMachine gameStateMachine, Game game, ScenesLoader scenesLoader, Button continueButton, Button toMenuButton) {
+    public GamePauseState(GameStateMachine gameStateMachine, Game game, ScenesLoader scenesLoader, Button continueButton, Button toMenuButton, IInputService input) {
         _gameStateMachine = gameStateMachine;
         _game = game;
         _scenesLoader = scenesLoader;
         _continueButton = continueButton;
         _toMenuButton = toMenuButton;
+        _input = input;
     }
 
     public void Enter() {
+        _input.Disable();
         _continueButton.onClick.AddListener(_gameStateMachine.TranslateTo<GameRunningState>);
         _toMenuButton.onClick.AddListener(OnGameInterrupted);
         _game.GamePaused?.Invoke();
