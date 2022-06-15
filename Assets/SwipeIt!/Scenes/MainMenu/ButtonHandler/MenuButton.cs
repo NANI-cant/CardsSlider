@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class MenuButton : MonoBehaviour
 {
     [SerializeField] private MovableFigures[] figures;
+    [SerializeField] private StartMenu.SwipeHandler _swipeHandler;
+
     private Button buttonMenuSections;
 
     private void Awake(){
@@ -12,16 +14,21 @@ public class MenuButton : MonoBehaviour
     }
 
     private void OnEnable(){
-        buttonMenuSections.onClick.AddListener(MoveFiguresToBorder);
+        buttonMenuSections.onClick.AddListener(OpenSettings);
     }
 
     private void OnDisable(){
-        buttonMenuSections.onClick.RemoveListener(MoveFiguresToBorder);
+        buttonMenuSections.onClick.RemoveListener(OpenSettings);
     }
 
     public void MoveFiguresToBorder(){
         foreach(MovableFigures figure in figures){
             figure.MoveToBorder();
         }
+    }
+
+    public void OpenSettings(){
+        _swipeHandler.enabled = false;
+        MoveFiguresToBorder();
     }
 }

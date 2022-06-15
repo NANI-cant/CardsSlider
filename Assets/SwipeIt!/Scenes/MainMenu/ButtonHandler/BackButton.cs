@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class BackButton : MonoBehaviour
 {
     [SerializeField] private MovableFigures[] figures;
+    [SerializeField] private StartMenu.SwipeHandler _swipeHandler;
+
     private Button backButton;
     
     private void Awake(){
@@ -12,11 +14,11 @@ public class BackButton : MonoBehaviour
     }
 
     private void OnEnable(){
-        backButton.onClick.AddListener(MoveFiguresToStart);
+        backButton.onClick.AddListener(GoBack);
     }
 
     private void OnDisable(){
-        backButton.onClick.RemoveListener(MoveFiguresToStart);
+        backButton.onClick.RemoveListener(GoBack);
     }
 
     public void MoveFiguresToStart(){
@@ -24,4 +26,9 @@ public class BackButton : MonoBehaviour
             figure.MoveToStartPosition();
         }
     }  
+
+    public void GoBack(){
+        _swipeHandler.enabled = true;
+        MoveFiguresToStart();
+    }
 }
