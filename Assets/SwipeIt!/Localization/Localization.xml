@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Keys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Key Name="SwipeToPlay">
+		<Translates>
+			<en-us>swipe to play</en-us>
+			<ru>проведите по экрану</ru>
+		</Translates>
+	</Key>
 	<Key Name="PlayButton">
 		<Translates>
 			<en-us>Play</en-us>
