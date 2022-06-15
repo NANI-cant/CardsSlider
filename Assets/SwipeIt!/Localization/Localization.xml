@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Keys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Key Name="SwipeToPlay">
+		<Translates>
+			<en-us>swipe to play</en-us>
+			<ru>проведите по экрану</ru>
+		</Translates>
+	</Key>
 	<Key Name="PlayButton">
 		<Translates>
 			<en-us>Play</en-us>
@@ -16,6 +22,54 @@
 		<Translates>
 			<en-us>New Best!</en-us>
 			<ru>Новый Рекорд!</ru>
+		</Translates>
+	</Key>
+	<Key Name="SettingsHeader">
+		<Translates>
+			<en-us>settings</en-us>
+			<ru>настройки</ru>
+		</Translates>
+	</Key>
+	<Key Name="SettingsBodyLanguageLabel">
+		<Translates>
+			<en-us>language</en-us>
+			<ru>язык</ru>
+		</Translates>
+	</Key>
+	<Key Name="SettingsBodyMusicLabel">
+		<Translates>
+			<en-us>music</en-us>
+			<ru>музыка</ru>
+		</Translates>
+	</Key>
+	<Key Name="SettingsBodySoundsLabel">
+		<Translates>
+			<en-us>sounds</en-us>
+			<ru>звуки</ru>
+		</Translates>
+	</Key>
+	<Key Name="PauseLabel">
+		<Translates>
+			<en-us>pause</en-us>
+			<ru>пауза</ru>
+		</Translates>
+	</Key>
+	<Key Name="PauseScreenMenuButton">
+		<Translates>
+			<en-us>menu</en-us>
+			<ru>меню</ru>
+		</Translates>
+	</Key>
+	<Key Name="ShopHeader">
+		<Translates>
+			<en-us>shop</en-us>
+			<ru>магазин</ru>
+		</Translates>
+	</Key>
+	<Key Name="ShopItemSelectButton">
+		<Translates>
+			<en-us>select</en-us>
+			<ru>выбрать</ru>
 		</Translates>
 	</Key>
 </Keys>
