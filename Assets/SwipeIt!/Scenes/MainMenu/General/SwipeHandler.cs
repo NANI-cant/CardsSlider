@@ -34,7 +34,7 @@ namespace StartMenu {
             if(swipe.Magnitude >= 150){
                 MoveFigures();
                 _canvasAnimation.Hide();
-                Invoke("StartGame", _delayForAnimation);
+                Invoke(nameof(StartGame), _delayForAnimation);
             }
         }
 
