@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 7895126034200865660}
   - component: {fileID: 6785771536618822724}
   - component: {fileID: 7642918168061407073}
+  - component: {fileID: 4477114961313412625}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -320,6 +321,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4477114961313412625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609835563906217286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d9f74a204fd2041a502045d245bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: PauseScreenMenuButton
 --- !u!1 &3547738162210145079
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +705,7 @@ GameObject:
   - component: {fileID: 4565764572144158848}
   - component: {fileID: 4565764572144158910}
   - component: {fileID: 4565764572144158911}
+  - component: {fileID: 6871559076367487495}
   m_Layer: 5
   m_Name: MusicText
   m_TagString: Untagged
@@ -814,6 +829,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6871559076367487495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565764572144158849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d9f74a204fd2041a502045d245bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: SettingsBodyMusicLabel
 --- !u!1 &4565764572186178309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1564,7 @@ GameObject:
   - component: {fileID: 4565764573165228310}
   - component: {fileID: 4565764573165228308}
   - component: {fileID: 4565764573165228309}
+  - component: {fileID: 4973010458260034706}
   m_Layer: 5
   m_Name: SoundsText
   m_TagString: Untagged
@@ -1659,6 +1688,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4973010458260034706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565764573165228311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d9f74a204fd2041a502045d245bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: SettingsBodySoundsLabel
 --- !u!1 &4565764573169354176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +1955,7 @@ GameObject:
   - component: {fileID: 8107620895422784876}
   - component: {fileID: 1570616977718730090}
   - component: {fileID: 809035774859976462}
+  - component: {fileID: 7955592117104050643}
   m_Layer: 5
   m_Name: PauseLabel
   m_TagString: Untagged
@@ -2036,6 +2079,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7955592117104050643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731670472975124004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d9f74a204fd2041a502045d245bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: PauseLabel
 --- !u!1 &8204278079786451935
 GameObject:
   m_ObjectHideFlags: 0
