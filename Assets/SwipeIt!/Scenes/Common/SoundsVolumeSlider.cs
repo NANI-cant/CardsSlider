@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,25 +8,25 @@ public class SoundsVolumeSlider : MonoBehaviour
     private Slider _slider;
     private GameSettings _gameSettings;
 
-    private void Awake(){
-        _slider = GetComponent<Slider>(); 
-        _slider.value = _gameSettings.SoundsVolume;
-    }
-
     [Inject]
     public void Construct(GameSettings gameSettings){
         _gameSettings = gameSettings;
     }
 
+    private void Awake(){
+        _slider = GetComponent<Slider>(); 
+        _slider.value = _gameSettings.SoundsVolume;
+    }
+
     private void OnEnable(){
-        _slider.onValueChanged.AddListener(OnValueSliderChanged);
+        _slider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
     private void OnDisable(){
-        _slider.onValueChanged.RemoveListener(OnValueSliderChanged);
+        _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
     }
 
-    private void OnValueSliderChanged(float value){
+    private void OnSliderValueChanged(float value){
         _gameSettings.SoundsVolume = value;
     }
 }

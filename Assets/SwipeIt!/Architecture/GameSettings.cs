@@ -14,7 +14,7 @@ public class GameSettings : ScriptableObject {
         get { return _musicVolume; }
         set {
             float rightValue = Mathf.Max(0f, value);
-            rightValue = Mathf.Min(rightValue, 100f);
+            rightValue = Mathf.Min(rightValue, 1f);
             _musicVolume = rightValue;
         }
     }
@@ -23,7 +23,7 @@ public class GameSettings : ScriptableObject {
         get { return _soundsVolume; }
         set {
             float rightValue = Mathf.Max(0f, value);
-            rightValue = Mathf.Min(rightValue, 100f);
+            rightValue = Mathf.Min(rightValue, 1f);
             _soundsVolume = rightValue;
         }
     }
