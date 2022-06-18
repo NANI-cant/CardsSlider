@@ -31,9 +31,6 @@ public class MovableFigures : MonoBehaviour {
     private void Awake() {
         _rectTransform = GetComponent<RectTransform>();
         CalculateNewScreenSize();
-    }
-
-    private void Start() {
         _startPoint = _rectTransform.localPosition;
     }
 
@@ -42,7 +39,16 @@ public class MovableFigures : MonoBehaviour {
 
         _endPoint.x = _calculatedNewWidth * _pointOnBorderFormal.x;
         _endPoint.y = _calculatedNewHeight * _pointOnBorderFormal.y;
-        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
+        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION).SetEase(Ease.OutCubic);
+    }
+
+    public void StartMove(){
+        Vector2 _startPointLocal;
+
+        _startPointLocal.x = _calculatedNewWidth * _pointOutOfBorderFormal.x;
+        _startPointLocal.y = _calculatedNewHeight * _pointOutOfBorderFormal.y;
+        _rectTransform.localPosition = _startPointLocal;
+        MoveToStartPosition();
     }
 
     public void MoveOutOfBorder() {
@@ -50,7 +56,7 @@ public class MovableFigures : MonoBehaviour {
 
         _endPoint.x = _calculatedNewWidth * _pointOutOfBorderFormal.x;
         _endPoint.y = _calculatedNewHeight * _pointOutOfBorderFormal.y;
-        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
+        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION).SetEase(Ease.OutCubic);
     }
 
     public void MoveForShopScreen(){
@@ -58,11 +64,11 @@ public class MovableFigures : MonoBehaviour {
 
          _endPoint.x = _calculatedNewWidth * _pointForShop.x;
         _endPoint.y = _calculatedNewHeight * _pointForShop.y;
-        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION);
+        _rectTransform.DOAnchorPos(_endPoint, DURATION_ANIMATION).SetEase(Ease.OutCubic);
     }
 
     public void MoveToStartPosition() {
-        _rectTransform.DOAnchorPos(_startPoint, DURATION_ANIMATION);
+        _rectTransform.DOAnchorPos(_startPoint, DURATION_ANIMATION).SetEase(Ease.OutCubic);
     }
 
     private void CalculateNewScreenSize() {

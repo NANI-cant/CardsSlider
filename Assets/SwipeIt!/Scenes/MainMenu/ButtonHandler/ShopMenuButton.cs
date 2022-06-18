@@ -1,32 +1,38 @@
-﻿using UnityEngine;
+﻿using StartMenu;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class ShopMenuButton : MonoBehaviour
-{
+public class ShopMenuButton : MonoBehaviour {
     [SerializeField] private MovableFigures[] figures;
-    [SerializeField] private StartMenu.SwipeHandler _swipeHandler;
-    
+
+    private SwipeHandler _swipeHandler;
     private Button buttonMenuSections;
 
-    private void Awake(){
+    [Inject]
+    public void Construct(SwipeHandler swipeHandler) {
+        _swipeHandler = swipeHandler;
+    }
+
+    private void Awake() {
         buttonMenuSections = GetComponent<Button>();
     }
 
-    private void OnEnable(){
+    private void OnEnable() {
         buttonMenuSections.onClick.AddListener(OpenShop);
     }
 
-    private void OnDisable(){
+    private void OnDisable() {
         buttonMenuSections.onClick.RemoveListener(OpenShop);
     }
 
-    public void MoveFiguresOutOfBorder(){
-        foreach(MovableFigures figure in figures){
+    private void MoveFiguresOutOfBorder() {
+        foreach (MovableFigures figure in figures) {
             figure.MoveForShopScreen();
         }
     }
 
-    public void OpenShop(){
+    private void OpenShop() {
         _swipeHandler.enabled = false;
         MoveFiguresOutOfBorder();
     }

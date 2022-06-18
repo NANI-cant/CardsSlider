@@ -72,4 +72,16 @@
 			<ru>выбрать</ru>
 		</Translates>
 	</Key>
+	<Key Name="GameOverTitle">
+		<Translates>
+			<en-us>game over</en-us>
+			<ru>конец игры</ru>
+		</Translates>
+	</Key>
+	<Key Name="OkText">
+		<Translates>
+			<en-us>ok</en-us>
+			<ru>ок</ru>
+		</Translates>
+	</Key>
 </Keys>

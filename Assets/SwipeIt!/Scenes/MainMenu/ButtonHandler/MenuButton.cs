@@ -1,33 +1,39 @@
-﻿using UnityEngine;
+﻿using StartMenu;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 [RequireComponent(typeof(Button))]
-public class MenuButton : MonoBehaviour
-{
+public class MenuButton : MonoBehaviour {
     [SerializeField] private MovableFigures[] figures;
-    [SerializeField] private StartMenu.SwipeHandler _swipeHandler;
 
+    private SwipeHandler _swipeHandler;
     private Button buttonMenuSections;
 
-    private void Awake(){
+    [Inject]
+    public void Construct(SwipeHandler swipeHandler) {
+        _swipeHandler = swipeHandler;
+    }
+
+    private void Awake() {
         buttonMenuSections = GetComponent<Button>();
     }
 
-    private void OnEnable(){
+    private void OnEnable() {
         buttonMenuSections.onClick.AddListener(OpenSettings);
     }
 
-    private void OnDisable(){
+    private void OnDisable() {
         buttonMenuSections.onClick.RemoveListener(OpenSettings);
     }
 
-    public void MoveFiguresToBorder(){
-        foreach(MovableFigures figure in figures){
+    private void MoveFiguresToBorder() {
+        foreach (MovableFigures figure in figures) {
             figure.MoveToBorder();
         }
     }
 
-    public void OpenSettings(){
+    private void OpenSettings() {
         _swipeHandler.enabled = false;
         MoveFiguresToBorder();
     }
