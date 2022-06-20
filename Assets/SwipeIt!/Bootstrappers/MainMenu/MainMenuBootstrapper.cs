@@ -7,6 +7,8 @@ namespace StartMenu {
         [SerializeField] private Bank _bank;
         [SerializeField] private FigureCollectionsHolder _figureCollectionsHolder;
         [SerializeField] private Camera _mainCamera;
+        [SerializeField] private GameModePanel _gameModePanel;
+        [SerializeField] private SwipeHandler _swipeHandler;
 
         private Fabric _fabric;
         private PlayerProgress _playerProgress;
@@ -26,6 +28,8 @@ namespace StartMenu {
             BindInstanceSingle<Bank>(_bank);
             BindInstanceSingle<FigureCollectionsHolder>(_figureCollectionsHolder);
             BindInstanceSingle<Camera>(_mainCamera);
+            BindInstanceSingle<GameModePanel>(_gameModePanel);
+            BindInstanceSingle<SwipeHandler>(_swipeHandler);
         }
 
         private void OnDestroy() {

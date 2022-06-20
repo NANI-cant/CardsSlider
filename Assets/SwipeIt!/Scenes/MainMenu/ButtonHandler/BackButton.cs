@@ -1,27 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+using StartMenu;
 
 [RequireComponent(typeof(Button))]
-public class BackButton : MonoBehaviour
-{
-    [SerializeField] private MovableFigures[] figures;
+public class BackButton : MonoBehaviour {
+    [SerializeField] private MovableFigure[] figures;
+
+    private SwipeHandler _swipeHandler;
     private Button backButton;
-    
-    private void Awake(){
+
+    [Inject]
+    public void Construct(SwipeHandler swipeHandler){
+        _swipeHandler = swipeHandler;
+    }
+
+    private void Awake() {
         backButton = GetComponent<Button>();
     }
 
-    private void OnEnable(){
-        backButton.onClick.AddListener(MoveFiguresToStart);
+    private void OnEnable() {
+        backButton.onClick.AddListener(GoBack);
     }
 
-    private void OnDisable(){
-        backButton.onClick.RemoveListener(MoveFiguresToStart);
+    private void OnDisable() {
+        backButton.onClick.RemoveListener(GoBack);
     }
 
-    public void MoveFiguresToStart(){
-        foreach(MovableFigures figure in figures){
+    private void MoveFiguresToStart() {
+        foreach (MovableFigure figure in figures) {
             figure.MoveToStartPosition();
         }
-    }  
+    }
+
+    private void GoBack() {
+        _swipeHandler.enabled = true;
+        MoveFiguresToStart();
+    }
 }

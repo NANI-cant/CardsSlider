@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3721763783838664282}
   - component: {fileID: 3790462978452027780}
   - component: {fileID: 4810929484619859783}
+  - component: {fileID: 2355037710234942651}
   m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
@@ -162,15 +163,7 @@ MonoBehaviour:
   _debugColor: {r: 0, g: 0, b: 0, a: 1}
   _debugCellsCount: 8
   _debugCrosshairSize: 0.1
-  _debugPositions:
-  - {x: -0.825, y: 2.1750002}
-  - {x: 0.825, y: 2.1750002}
-  - {x: -0.825, y: 0.72500014}
-  - {x: 0.825, y: 0.72500014}
-  - {x: -0.825, y: -0.7249999}
-  - {x: 0.825, y: -0.7249999}
-  - {x: -0.825, y: -2.1750002}
-  - {x: 0.825, y: -2.1750002}
+  _debugPositions: []
 --- !u!61 &4810929484619859783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,3 +190,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.8, y: 6.3}
   m_EdgeRadius: 0
+--- !u!225 &2355037710234942651
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810929484619859778}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

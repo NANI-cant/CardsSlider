@@ -4,12 +4,9 @@ using Zenject;
 
 public class LifeView : MonoBehaviour {
     [SerializeField] private RectTransform _lifeTemplate;
-    [SerializeField] private float _padding;
 
     private LifeCounter _lifeModel;
     private List<RectTransform> _lifes = new List<RectTransform>();
-
-    private float XOffset => _lifeTemplate.rect.width / 2;
 
     [Inject]
     public void Construct(LifeCounter lifeCounter) {
@@ -30,15 +27,13 @@ public class LifeView : MonoBehaviour {
 
     private void ChangeUI(int lifes) {
         ClearLifes();
-        DrawLifes(new Vector2(XOffset, 0f), lifes);
+        DrawLifes(lifes);
     }
 
-    private void DrawLifes(Vector2 pointer, int count) {
+    private void DrawLifes(int count) {
         for (int i = 0; i < count; i++) {
-            var life = Instantiate(_lifeTemplate, transform.position + new Vector3(1000,1000,0), Quaternion.identity, transform);
+            var life = Instantiate(_lifeTemplate, transform.position, Quaternion.identity, transform);
             _lifes.Add(life);
-            life.anchoredPosition = pointer;
-            pointer.x += _padding + _lifeTemplate.rect.width;
         }
     }
 
