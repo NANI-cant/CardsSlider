@@ -5,7 +5,7 @@ using StartMenu;
 
 [RequireComponent(typeof(Button))]
 public class BackButton : MonoBehaviour {
-    [SerializeField] private MovableFigures[] figures;
+    [SerializeField] private MovableFigure[] figures;
 
     private SwipeHandler _swipeHandler;
     private Button backButton;
@@ -28,7 +28,7 @@ public class BackButton : MonoBehaviour {
     }
 
     private void MoveFiguresToStart() {
-        foreach (MovableFigures figure in figures) {
+        foreach (MovableFigure figure in figures) {
             figure.MoveToStartPosition();
         }
     }

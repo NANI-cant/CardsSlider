@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SceneEntryPoint : MonoBehaviour
+public class GameplaySceneEntryPoint : MonoBehaviour
 {
-    [SerializeField] private MovableFigures[] _figures;
+    [SerializeField] private MovableFigure[] _figures;
     [SerializeField] private MovableCardFigure _card;
     [SerializeField] private CanvasGroup[] _canvasesFade;
 
@@ -17,7 +17,7 @@ public class SceneEntryPoint : MonoBehaviour
             canvas.DOFade(0, 0f);
             canvas.DOFade(1, FADE_DURATION);
         }
-        foreach(MovableFigures figure in _figures){
+        foreach(MovableFigure figure in _figures){
             figure.StartMove();
         }
         _card.StartAnimation();

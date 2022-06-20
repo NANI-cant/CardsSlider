@@ -6,7 +6,7 @@ namespace StartMenu {
         [SerializeField] private float _delayForAnimation = 1f;
         [SerializeField] private float _triggerMagnitudeValue;
         [SerializeField] private Fade[] _canvasesFade;
-        [SerializeField] private MovableFigures[] figures;
+        [SerializeField] private MovableFigure[] _figures;
         [SerializeField] private MovableCardFigure _cardFigure;
 
         [Header("Debug")]
@@ -43,14 +43,14 @@ namespace StartMenu {
 
         private void MoveFigures() {
             _cardFigure.RotateAndScale();
-            foreach (MovableFigures figure in figures) {
+            foreach (MovableFigure figure in _figures) {
                 figure.MoveOutOfBorder();
             }
         }
 
         private void OnSwipeAnimation(){
-            foreach(Fade _canvas in _canvasesFade){
-                _canvas.Hide();
+            foreach(Fade canvasFade in _canvasesFade){
+                canvasFade.Hide();
             }
             MoveFigures();
         }

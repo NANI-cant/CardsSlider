@@ -21,20 +21,24 @@ public class SceneEntryAnimation : MonoBehaviour {
     [Inject]
     public void Construct(CardSpawner spawner) {
         _spawner = spawner;
-    }
-
-    private void OnEnable() {
         _spawner.CardSpawned += OnCardSpawned;
     }
 
     private void Start() {
+        MoveOnStartPosition();
+        MoveOnEndPosition();
+    }
+
+    private void MoveOnStartPosition(){
         _targetFigure.localScale = _startScale;
         _timer.localScale = _startScale;
         _lifes.localScale = _startScale;
         _score.localScale = _startScale;
         _pauseButton.localScale = _startScale;
         _hud.DOFade(0, 0f);
+    }
 
+    private void MoveOnEndPosition(){
         _score.DOScale(_endScale, _durationAnimation);
         _lifes.DOScale(_endScale, _durationAnimation);
         _pauseButton.DOScale(_endScale, _durationAnimation);

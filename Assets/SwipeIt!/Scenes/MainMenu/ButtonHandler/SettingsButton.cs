@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class ShopMenuButton : MonoBehaviour {
-    [SerializeField] private MovableFigures[] figures;
+[RequireComponent(typeof(Button))]
+public class SettingsButton : MonoBehaviour {
+    [SerializeField] private MovableFigure[] figures;
 
     private SwipeHandler _swipeHandler;
     private Button buttonMenuSections;
@@ -19,21 +20,21 @@ public class ShopMenuButton : MonoBehaviour {
     }
 
     private void OnEnable() {
-        buttonMenuSections.onClick.AddListener(OpenShop);
+        buttonMenuSections.onClick.AddListener(OpenSettings);
     }
 
     private void OnDisable() {
-        buttonMenuSections.onClick.RemoveListener(OpenShop);
+        buttonMenuSections.onClick.RemoveListener(OpenSettings);
     }
 
-    private void MoveFiguresOutOfBorder() {
-        foreach (MovableFigures figure in figures) {
-            figure.MoveForShopScreen();
+    private void MoveFiguresToBorder() {
+        foreach (MovableFigure figure in figures) {
+            figure.MoveToBorder();
         }
     }
 
-    private void OpenShop() {
+    private void OpenSettings() {
         _swipeHandler.enabled = false;
-        MoveFiguresOutOfBorder();
+        MoveFiguresToBorder();
     }
 }

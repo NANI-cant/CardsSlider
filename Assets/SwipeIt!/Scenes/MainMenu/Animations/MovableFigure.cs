@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-public class MovableFigures : MonoBehaviour {
+public class MovableFigure : MonoBehaviour {
     [Header("To border")]
     [SerializeField] private Vector2 _pointOnBorderFormal;
 
