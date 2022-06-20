@@ -25,11 +25,11 @@ public class SceneEntryAnimation : MonoBehaviour {
     }
 
     private void Start() {
-        MoveOnStartPosition();
-        MoveOnEndPosition();
+        Prepare();
+        Execute();
     }
 
-    private void MoveOnStartPosition(){
+    private void Prepare(){
         _targetFigure.localScale = _startScale;
         _timer.localScale = _startScale;
         _lifes.localScale = _startScale;
@@ -38,7 +38,7 @@ public class SceneEntryAnimation : MonoBehaviour {
         _hud.DOFade(0, 0f);
     }
 
-    private void MoveOnEndPosition(){
+    private void Execute(){
         _score.DOScale(_endScale, _durationAnimation);
         _lifes.DOScale(_endScale, _durationAnimation);
         _pauseButton.DOScale(_endScale, _durationAnimation);

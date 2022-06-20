@@ -7842,7 +7842,7 @@ MonoBehaviour:
   _canvasesFade:
   - {fileID: 467969623}
   - {fileID: 1981992320}
-  figures:
+  _figures:
   - {fileID: 968030869}
   - {fileID: 627904333}
   - {fileID: 1080379337}
