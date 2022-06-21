@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 2NewItemData
   m_EditorClassIdentifier: 
   _id: 1
-  IsAvailable: 1
+  IsAvailable: 0
   _localizationKey: New
-  _basePrice: 123
+  _basePrice: 20
   _figuresCollection: {fileID: 11400000, guid: b9c69793c5b4bf442b5727a1efcf1b99, type: 2}
   _icon: {fileID: 21300000, guid: 7ff1216cf258a9441a3dc20f68c0ef45, type: 3}

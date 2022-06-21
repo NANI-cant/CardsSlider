@@ -1,23 +1,20 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace StartMenu {
     public class DEBUGManager : MonoBehaviour {
-        private Localization _localization;
-
-        [Inject]
-        public void Construct(Localization localization) {
-            _localization = localization;
-        }
-
         [ContextMenu("Clear All Prefs")]
         public void ClearAllPrefs() {
             PlayerPrefs.DeleteAll();
         }
 
-        [ContextMenu("Change Language Random")]
-        public void ChangeLanguageRandom() {
-            _localization.ChangeLanguage(Random.Range(0, 2));
+        [ContextMenu("SoldAllItems")]
+        public void SoldAllItems() {
+            ItemData[] itemsDataset = Resources.FindObjectsOfTypeAll<ItemData>();
+            foreach (var item in itemsDataset) {
+                item.IsAvailable = false;
+            }
+            ClearAllPrefs();
         }
     }
 }
