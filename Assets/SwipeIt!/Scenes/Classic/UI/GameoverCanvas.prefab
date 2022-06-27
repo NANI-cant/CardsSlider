@@ -508,8 +508,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2190841070381108782}
-  - component: {fileID: 2190841070381108780}
-  - component: {fileID: 2190841070381108783}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -538,36 +536,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 615.93}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2190841070381108780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190841070381108769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab472aead2168c4a914299e5e94c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _okButton: {fileID: 2190841071099555905}
---- !u!114 &2190841070381108783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190841070381108769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364037bbae8d0294e9e1002dad3136f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _multiplier: 0
-  _startDelay: 1
-  _timeForConvert: 1
-  _scoreUI: {fileID: 2190841070253306938}
-  _bankUI: {fileID: 2190841071833060326}
 --- !u!1 &2190841071056838198
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +550,8 @@ GameObject:
   - component: {fileID: 2190841071056838196}
   - component: {fileID: 2190841071056838199}
   - component: {fileID: 2190841071056838192}
+  - component: {fileID: 524495849591808779}
+  - component: {fileID: 5139472039763546496}
   m_Layer: 5
   m_Name: GameoverCanvas
   m_TagString: Untagged
@@ -678,7 +648,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2190841071056838198}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -695,6 +665,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeDuration: 1
+--- !u!114 &524495849591808779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190841071056838198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab472aead2168c4a914299e5e94c502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _okButton: {fileID: 2190841071099555905}
+--- !u!114 &5139472039763546496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190841071056838198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364037bbae8d0294e9e1002dad3136f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _multiplier: 0
+  _startDelay: 1
+  _timeForConvert: 1
+  _scoreUI: {fileID: 2190841070253306938}
+  _bankUI: {fileID: 2190841071833060326}
 --- !u!1 &2190841071099555907
 GameObject:
   m_ObjectHideFlags: 0
