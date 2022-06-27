@@ -34,6 +34,9 @@ public class GameEndState : IEnterState {
         _input.Disable();
         _progress.AddBank((int)(_score.Score * _settings.ConvertMultiplier));
         _game.GameOver?.Invoke();
+
+        _gameOverPanel.GetComponent<Fade>().Show();
+        _gameOverPanel.GetComponent<ScoreConverter>().StartConverting();
         _gameOverPanel.OkButton.onClick.AddListener(OnOkButtonClick);
     }
 
