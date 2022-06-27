@@ -9,7 +9,7 @@ public class FigureGenerator : MonoBehaviour {
     public UnityAction<FigureData> OnFigureGenerated;
 
     private int _figuresCount;
-    private int _maxFiguresCount; 
+    private int _maxFiguresCount;
     private int _answersForAddFigure;
     private int _remindAnswers;
 
@@ -30,12 +30,12 @@ public class FigureGenerator : MonoBehaviour {
 
     private void OnEnable() {
         AnswerChecker.OnAnswerCheck += HandleAnswer;
-        _timer.OnTimesUp += ReGenerate;
+        _timer.OnTimesUp += Generate;
     }
 
     private void OnDisable() {
         AnswerChecker.OnAnswerCheck -= HandleAnswer;
-        _timer.OnTimesUp -= ReGenerate;
+        _timer.OnTimesUp -= Generate;
     }
 
     private void Start() {
@@ -74,10 +74,5 @@ public class FigureGenerator : MonoBehaviour {
 
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
-    }
-
-    private void ReGenerate() {
-        _spawner.DestroyCard();
-        Generate();
     }
 }

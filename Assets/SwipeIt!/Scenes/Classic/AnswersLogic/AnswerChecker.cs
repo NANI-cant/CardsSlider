@@ -1,21 +1,24 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
 
 public class AnswerChecker : MonoBehaviour {
+    enum Answer {
+        Yes,
+        No
+    }
+
     [SerializeField] private Answer _kindOfAnswer;
     [SerializeField][Min(0)] private float _checkRadius;
     [Header("Debug")]
     [SerializeField] private bool _shouldLog = false;
 
+    public static UnityAction<bool> OnAnswerCheck;
+
     private CardDragger _cardDragger;
     private FigureGenerator _figureGenerator;
-
     private string _targetId;
-
-    public static UnityAction<bool> OnAnswerCheck;
 
     [Inject]
     public void Construct(CardDragger cardDragger, FigureGenerator figureGenerator) {
@@ -35,7 +38,6 @@ public class AnswerChecker : MonoBehaviour {
 
     private void Check(Card card) {
         if (!IsCardNear(card.transform.position)) { return; }
-        card.Destroy();
 
         bool isFigureOnCard = false;
         foreach (var figure in card.Figures) {
@@ -45,12 +47,11 @@ public class AnswerChecker : MonoBehaviour {
             }
         }
 
-        this.Do(() => Debug.Log("Answer " + (isFigureOnCard == (_kindOfAnswer == Answer.Yes))), when: _shouldLog);
-        OnAnswerCheck?.Invoke(isFigureOnCard == (_kindOfAnswer == Answer.Yes));
-    }
+        bool answerResult = isFigureOnCard == (_kindOfAnswer == Answer.Yes);
+        OnAnswerCheck?.Invoke(answerResult);
+        card.Hide(answerResult);
 
-    private void Do(object v, object when) {
-        throw new NotImplementedException();
+        this.Do(() => Debug.Log($"Answer {answerResult}"), when: _shouldLog);
     }
 
     private void SetTarget(FigureData figure) {
@@ -67,10 +68,5 @@ public class AnswerChecker : MonoBehaviour {
             Gizmos.color = Color.red;
         }
         Gizmos.DrawWireSphere(transform.position, _checkRadius);
-    }
-
-    enum Answer {
-        Yes,
-        No
     }
 }

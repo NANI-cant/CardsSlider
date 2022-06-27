@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1962673012253503059}
   - component: {fileID: 4456092927960230190}
   - component: {fileID: 7239522984338925095}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LifeKillingPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 4
       minScalar: 0
       maxCurve:
         serializedVersion: 2

@@ -16,15 +16,17 @@ public class CardSpawner : MonoBehaviour {
     private Card _currentCard;
 
     public void Spawn(List<FigureData> figures) {
+        HideOldCard();
+
         _currentCard = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity, transform);
         _currentCard.Initialize(figures);
         CardSpawned?.Invoke(_currentCard);
-        
+
         this.Do(() => Debug.Log("Card spawned"), when: _shouldLog);
     }
 
-    public void DestroyCard() {
-        _currentCard.Destroy();
+    public void HideOldCard() {
+        _currentCard?.Hide(false);
     }
 
     private void OnDrawGizmos() {
