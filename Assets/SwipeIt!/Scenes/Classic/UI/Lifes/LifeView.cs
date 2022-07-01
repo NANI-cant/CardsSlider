@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
 public class LifeView : MonoBehaviour {
     [SerializeField] private RectTransform _lifeTemplate;
     [SerializeField] private ParticleSystem _lifeKilling;
+
+    [Header("Tweening")]
+    [SerializeField] private ShakeOptions _shakeRotation;
 
     private LifeCounter _lifeModel;
     private Stack<RectTransform> _lifes = new Stack<RectTransform>();
@@ -32,6 +36,7 @@ public class LifeView : MonoBehaviour {
         int lifesDelta = CurrentLifes - lifes;
         if (lifesDelta > 0) {
             ClearLifes(lifesDelta);
+            TweenLifes();
         }
         else {
             DrawLifes(-lifesDelta);
@@ -50,6 +55,19 @@ public class LifeView : MonoBehaviour {
             var clearedLife = _lifes.Pop();
             Instantiate(_lifeKilling, clearedLife.transform.position, Quaternion.identity, transform);
             Destroy(clearedLife.gameObject);
+        }
+    }
+
+    private void TweenLifes() {
+        foreach (var life in _lifes) {
+            life
+                .DOShakeRotation(_shakeRotation.Duration, _shakeRotation.Strength, _shakeRotation.Vibrato)
+                .onUpdate += () => {
+                    Vector3 eulerRotation = life.rotation.eulerAngles;
+                    eulerRotation.x = 0f;
+                    eulerRotation.y = 0f;
+                    life.rotation = Quaternion.Euler(eulerRotation);
+                };
         }
     }
 }

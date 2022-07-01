@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(CardMover))]
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour {
-    private const float HIDEDURATION = 0.5f;
+    [SerializeField] private float _hideDuration = 0.5f;
 
     private List<FigureData> _figures;
     private CardMover _mover;
@@ -33,11 +33,11 @@ public class Card : MonoBehaviour {
 
         foreach (var renderer in renderers) {
             renderer.sortingOrder -= 2;
-            renderer.DOColor(hidingColor, HIDEDURATION);
+            renderer.DOColor(hidingColor, _hideDuration);
         }
-        transform.DOScale(Vector3.zero, HIDEDURATION);
+        transform.DOScale(Vector3.zero, _hideDuration);
 
-        Invoke(nameof(ExecuteDestroy), HIDEDURATION + 0.01f);
+        Invoke(nameof(ExecuteDestroy), _hideDuration + 0.01f);
     }
 
     private void ExecuteDestroy() => Destroy(gameObject);

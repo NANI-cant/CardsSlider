@@ -389,6 +389,12 @@ MonoBehaviour:
     type: 3}
   _lifeKilling: {fileID: 4456092927960230190, guid: cb774515d14f3494e8c0a5404ec90113,
     type: 3}
+  _shakeRotation:
+    Duration: 0.3
+    Strength: 90
+    Vibrato: 50
+    Randomness: 90
+    FadeOut: 1
 --- !u!1 &5296088512247971236
 GameObject:
   m_ObjectHideFlags: 0
