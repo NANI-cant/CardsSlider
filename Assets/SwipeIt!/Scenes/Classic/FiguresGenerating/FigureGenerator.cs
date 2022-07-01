@@ -39,6 +39,7 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     private void Start() {
+        _remindAnswers = _answersForAddFigure;
         Generate();
     }
 
