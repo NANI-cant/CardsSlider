@@ -373,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b16d1c2a7574b44a8be171ffe9c9d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _correct: {r: 0.8156863, g: 1, b: 0.822232, a: 1}
+  _wrong: {r: 1, g: 0.8285224, b: 0.8156863, a: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -383,7 +385,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.8196079, g: 0.81568635, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.8196079, g: 0.81568635, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1471,6 +1473,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3090789025081898676, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1600,6 +1618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037756270455719270, guid: bf560f9038124a34785c3cc21988d322,
+        type: 3}
+      propertyPath: _punchScale.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037756270455719270, guid: bf560f9038124a34785c3cc21988d322,
+        type: 3}
+      propertyPath: _punchScale.Elacticity
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8391753465146976910, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
