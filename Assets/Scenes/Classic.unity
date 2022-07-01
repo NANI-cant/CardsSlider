@@ -1471,7 +1471,7 @@ PrefabInstance:
     - target: {fileID: 8037756270155863141, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
       propertyPath: _punch.Elacticity
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8037756270240806167, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
