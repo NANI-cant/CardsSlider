@@ -11,7 +11,7 @@ public class CardSpawner : MonoBehaviour {
     [SerializeField] private Color _debugColor;
     [SerializeField] private Vector2 _debugCardSize;
 
-    public UnityAction<Card> CardSpawned;
+    public event UnityAction<Card> CardSpawned;
 
     private Card _currentCard;
 

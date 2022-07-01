@@ -5,10 +5,10 @@ public class CardMover : MonoBehaviour {
 
     private const float ACCURACITY = 0.001f;
 
+    public bool CanMove = true;
+
     private Vector2 _startPosition;
     private Transform _transform;
-
-    public bool CanMove = true;
 
     private void Awake() {
         _transform = GetComponent<Transform>();

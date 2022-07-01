@@ -2,7 +2,6 @@
 using UnityEngine.Events;
 using Zenject;
 
-
 public class AnswerChecker : MonoBehaviour {
     enum Answer {
         Yes,
@@ -14,7 +13,7 @@ public class AnswerChecker : MonoBehaviour {
     [Header("Debug")]
     [SerializeField] private bool _shouldLog = false;
 
-    public static UnityAction<bool> OnAnswerCheck;
+    public static event UnityAction<bool> AnswerChecked;
 
     private CardDragger _cardDragger;
     private FigureGenerator _figureGenerator;
@@ -48,7 +47,7 @@ public class AnswerChecker : MonoBehaviour {
         }
 
         bool answerResult = isFigureOnCard == (_kindOfAnswer == Answer.Yes);
-        OnAnswerCheck?.Invoke(answerResult);
+        AnswerChecked?.Invoke(answerResult);
         card.Hide(answerResult);
 
         this.Do(() => Debug.Log($"Answer {answerResult}"), when: _shouldLog);

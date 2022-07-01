@@ -6,7 +6,7 @@ using Zenject;
 public class FigureGenerator : MonoBehaviour {
     [SerializeField][Range(0, 1)] private float _targetFigureOnCardChance = 0.5f;
 
-    public UnityAction<FigureData> OnFigureGenerated;
+    public event UnityAction<FigureData> OnFigureGenerated;
 
     private int _figuresCount;
     private int _maxFiguresCount;
@@ -29,12 +29,12 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     private void OnEnable() {
-        AnswerChecker.OnAnswerCheck += HandleAnswer;
+        AnswerChecker.AnswerChecked += HandleAnswer;
         _timer.OnTimesUp += Generate;
     }
 
     private void OnDisable() {
-        AnswerChecker.OnAnswerCheck -= HandleAnswer;
+        AnswerChecker.AnswerChecked -= HandleAnswer;
         _timer.OnTimesUp -= Generate;
     }
 
