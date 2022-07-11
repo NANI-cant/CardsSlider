@@ -609,6 +609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa63237ed17886439370d4ea0a987db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _punch:
+    Punch: {x: 1, y: 1, z: 1}
+    Duration: 0.3
+    Vibrato: 10
+    Elacticity: 0.3
 --- !u!1 &8037756270240806187
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +801,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16027ac7af6122d44bc1e873ae2389df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _punchScale:
+    Punch: {x: 1, y: 1, z: 1}
+    Duration: 0.2
+    Vibrato: 10
+    Elacticity: 0.3
 --- !u!114 &615331913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,3 +974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fa6fb4de950da42ae009f22a2a72f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shakeOptions:
+    Duration: 10
+    Strength: 20
+    Vibrato: 10
+    Randomness: 90
+    FadeOut: 1

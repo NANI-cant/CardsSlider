@@ -771,7 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdb1961596ff54459a424efcac72eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetFigure: {fileID: 8037756268449434941}
   _timer: {fileID: 8037756268449434940}
   _lifes: {fileID: 8037756268449434939}
   _score: {fileID: 8037756268449434938}
@@ -1473,37 +1472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 615331913, guid: bf560f9038124a34785c3cc21988d322, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3090789025081898676, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430393089}
-    - target: {fileID: 8037756270155863141, guid: bf560f9038124a34785c3cc21988d322,
-        type: 3}
-      propertyPath: _punch.Duration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8037756270155863141, guid: bf560f9038124a34785c3cc21988d322,
-        type: 3}
-      propertyPath: _punch.Elacticity
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8037756270240806167, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1619,16 +1592,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 8037756270455719270, guid: bf560f9038124a34785c3cc21988d322,
-        type: 3}
-      propertyPath: _punchScale.Duration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8037756270455719270, guid: bf560f9038124a34785c3cc21988d322,
-        type: 3}
-      propertyPath: _punchScale.Elacticity
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8391753465146976910, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1674,12 +1637,6 @@ RectTransform:
 --- !u!224 &8037756268449434940 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5495205685505640610, guid: bf560f9038124a34785c3cc21988d322,
-    type: 3}
-  m_PrefabInstance: {fileID: 8037756268449434935}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &8037756268449434941 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8037756270455719289, guid: bf560f9038124a34785c3cc21988d322,
     type: 3}
   m_PrefabInstance: {fileID: 8037756268449434935}
   m_PrefabAsset: {fileID: 0}
