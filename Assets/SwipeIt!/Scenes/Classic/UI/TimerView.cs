@@ -5,6 +5,7 @@ using Zenject;
 
 [RequireComponent(typeof(Slider))]
 public class TimerView : MonoBehaviour {
+    [SerializeField][Range(0, 1)] private float _startShakingValue = 0.3f;
     [SerializeField] private ShakeOptions _shakeOptions;
 
     private Slider _slider;
@@ -43,7 +44,7 @@ public class TimerView : MonoBehaviour {
     }
 
     private void HandleTweening() {
-        if (_slider.value / _slider.maxValue > 0.5f) {
+        if (_slider.value / _slider.maxValue > _startShakingValue) {
             _shaking?.Complete();
         }
         else if (_shaking == null || !_shaking.active) {

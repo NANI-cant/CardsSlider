@@ -976,7 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shakeOptions:
     Duration: 10
-    Strength: 20
-    Vibrato: 10
+    Strength: 10
+    Vibrato: 50
     Randomness: 90
     FadeOut: 1
