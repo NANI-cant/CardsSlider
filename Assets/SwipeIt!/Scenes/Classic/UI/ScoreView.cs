@@ -1,11 +1,13 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreView : MonoBehaviour {
-    private TextMeshProUGUI _uGUI;
+    [SerializeField] private PunchOptions _punch;
 
+    private TextMeshProUGUI _uGUI;
     private ScoreCounter _scoreModel;
 
     [Inject]
@@ -31,5 +33,10 @@ public class ScoreView : MonoBehaviour {
 
     private void ChangeUI(int score) {
         _uGUI.text = score.ToString();
+        ExecuteTweening();
+    }
+
+    private void ExecuteTweening() {
+        transform.DOPunchScale(_punch.Punch, _punch.Duration, _punch.Vibrato, _punch.Elacticity);
     }
 }

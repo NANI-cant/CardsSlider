@@ -14,7 +14,7 @@ public class CardDragger : MonoBehaviour {
     private IInputService _input;
     private Vector2 _distanceToPointer;
 
-    public UnityAction<Card> OnCardDrop;
+    public event UnityAction<Card> OnCardDrop;
 
     private Vector2 _pointerPosition => _camera.ScreenToWorldPoint(_input.Position);
 

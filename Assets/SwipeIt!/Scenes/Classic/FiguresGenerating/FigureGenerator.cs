@@ -6,10 +6,10 @@ using Zenject;
 public class FigureGenerator : MonoBehaviour {
     [SerializeField][Range(0, 1)] private float _targetFigureOnCardChance = 0.5f;
 
-    public UnityAction<FigureData> OnFigureGenerated;
+    public event UnityAction<FigureData> OnFigureGenerated;
 
     private int _figuresCount;
-    private int _maxFiguresCount; 
+    private int _maxFiguresCount;
     private int _answersForAddFigure;
     private int _remindAnswers;
 
@@ -29,16 +29,17 @@ public class FigureGenerator : MonoBehaviour {
     }
 
     private void OnEnable() {
-        AnswerChecker.OnAnswerCheck += HandleAnswer;
-        _timer.OnTimesUp += ReGenerate;
+        AnswerChecker.AnswerChecked += HandleAnswer;
+        _timer.OnTimesUp += Generate;
     }
 
     private void OnDisable() {
-        AnswerChecker.OnAnswerCheck -= HandleAnswer;
-        _timer.OnTimesUp -= ReGenerate;
+        AnswerChecker.AnswerChecked -= HandleAnswer;
+        _timer.OnTimesUp -= Generate;
     }
 
     private void Start() {
+        _remindAnswers = _answersForAddFigure;
         Generate();
     }
 
@@ -74,10 +75,5 @@ public class FigureGenerator : MonoBehaviour {
 
         OnFigureGenerated?.Invoke(_targetFigure);
         _spawner.Spawn(new List<FigureData>(chosenFigures));
-    }
-
-    private void ReGenerate() {
-        _spawner.DestroyCard();
-        Generate();
     }
 }

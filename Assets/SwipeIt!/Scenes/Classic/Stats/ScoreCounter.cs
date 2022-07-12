@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 
 public class ScoreCounter : MonoBehaviour {
-    public UnityAction<int> OnScoreChanged;
+    public event UnityAction<int> OnScoreChanged;
 
     private int _score = 0;
 

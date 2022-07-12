@@ -27,13 +27,13 @@ public class AnswerHandler : MonoBehaviour {
     }
 
     private void OnEnable() {
-        AnswerChecker.OnAnswerCheck += ReactToAnswer;
+        AnswerChecker.AnswerChecked += ReactToAnswer;
         _score.OnScoreChanged += OnScoreChanged;
         _timer.OnTimesUp += OnTimesUp;
     }
 
     private void OnDisable() {
-        AnswerChecker.OnAnswerCheck -= ReactToAnswer;
+        AnswerChecker.AnswerChecked -= ReactToAnswer;
         _score.OnScoreChanged -= OnScoreChanged;
         _timer.OnTimesUp -= OnTimesUp;
     }

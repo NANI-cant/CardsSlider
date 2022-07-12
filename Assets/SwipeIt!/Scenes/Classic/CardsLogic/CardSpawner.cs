@@ -11,20 +11,22 @@ public class CardSpawner : MonoBehaviour {
     [SerializeField] private Color _debugColor;
     [SerializeField] private Vector2 _debugCardSize;
 
-    public UnityAction<Card> CardSpawned;
+    public event UnityAction<Card> CardSpawned;
 
     private Card _currentCard;
 
     public void Spawn(List<FigureData> figures) {
+        HideOldCard();
+
         _currentCard = Instantiate(_cardTemplate, _spawnPosition, Quaternion.identity, transform);
         _currentCard.Initialize(figures);
         CardSpawned?.Invoke(_currentCard);
-        
+
         this.Do(() => Debug.Log("Card spawned"), when: _shouldLog);
     }
 
-    public void DestroyCard() {
-        _currentCard.Destroy();
+    public void HideOldCard() {
+        _currentCard?.Hide(false);
     }
 
     private void OnDrawGizmos() {

@@ -17,7 +17,7 @@ MonoBehaviour:
   _convertMultiplier: 0.5
   _startFiguresCount: 1
   _maxFiguresCount: 8
-  _answersForAddFigure: 3
+  _answersForAddFigure: 8
   _addingScore: 1
   _takingLifes: 1
   _timeOverScore:

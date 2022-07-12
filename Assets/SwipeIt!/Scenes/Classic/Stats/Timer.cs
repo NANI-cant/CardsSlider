@@ -5,8 +5,8 @@ using Zenject;
 public class Timer : MonoBehaviour {
     private const float ACCURACITY = 0.001f;
 
-    public UnityAction OnTimesUp;
-    public UnityAction OnTimeChange;
+    public event UnityAction OnTimesUp;
+    public event UnityAction OnTimeChange;
 
     private float _settedTime;
     private Game _game;

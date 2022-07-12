@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CardView : MonoBehaviour {
     [SerializeField] private Vector2 _gridCenter;
-    [Min(0)]
     [SerializeField] private Vector2 _cellSize;
     [SerializeField] private SpriteRenderer _figureTemplate;
 

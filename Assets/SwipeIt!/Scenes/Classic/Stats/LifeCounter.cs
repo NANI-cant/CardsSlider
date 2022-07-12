@@ -3,8 +3,8 @@ using UnityEngine.Events;
 using Zenject;
 
 public class LifeCounter : MonoBehaviour {
-    public UnityAction OnLifesOver;
-    public UnityAction<int> OnLifesChange;
+    public event UnityAction OnLifesOver;
+    public event UnityAction<int> OnLifesChange;
 
     private int _lifes;
 
