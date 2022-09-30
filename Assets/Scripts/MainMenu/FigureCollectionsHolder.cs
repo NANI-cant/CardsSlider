@@ -1,12 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 public class FigureCollectionsHolder : MonoBehaviour {
-    public UnityAction<FiguresCollection> CollectionChanged;
+    public event Action<FiguresCollection> CollectionChanged;
 
     private FiguresCollection _selectedCollection;
     private GameSettings _gameSettings;
+
+    public FiguresCollection SelectedCollection => _selectedCollection;
 
     [Inject]
     public void Construct(GameSettings gameSettings) {
@@ -15,11 +17,11 @@ public class FigureCollectionsHolder : MonoBehaviour {
     }
 
     private void Start() {
-        SelectBank(_selectedCollection);
+        SelectCollection(_selectedCollection);
     }
 
-    public void SelectBank(FiguresCollection bank) {
-        _selectedCollection = bank;
+    public void SelectCollection(FiguresCollection collection) {
+        _selectedCollection = collection;
         _gameSettings.SelectedFiguresCollection = _selectedCollection;
         CollectionChanged?.Invoke(_selectedCollection);
     }

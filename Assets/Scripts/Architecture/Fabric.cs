@@ -16,9 +16,9 @@ public class Fabric {
         template.gameObject.SetActive(false);
         ShopItem instance = GameObject.Instantiate(template, parent);
         template.gameObject.SetActive(true);
-        
+
         instance.Construct(_bank, _figureCollectionHolder, _playerProgress, itemData);
-        instance.GetComponent<ShopItemView>().Construct(_bank);
+        instance.GetComponent<ShopItemView>().Construct(instance, _bank, _figureCollectionHolder);
         instance.gameObject.SetActive(true);
         return instance;
     }
