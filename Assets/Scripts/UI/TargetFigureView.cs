@@ -33,7 +33,7 @@ public class TargetFigureView : MonoBehaviour {
     }
 
     private void ExecuteTweening() {
-        Color endColor = _image.color;
+        Color endColor = Color.white;
         Color transparentColor = endColor;
         transparentColor.a = 0f;
 
