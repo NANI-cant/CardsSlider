@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -8,7 +9,7 @@ namespace StartMenu {
         [SerializeField] private ShopItem _shopItem;
         [SerializeField] private TextMeshProUGUI _nameUGUI;
         [SerializeField] private TextMeshProUGUI _priceUGUI;
-        [SerializeField] private Image _image;
+        [SerializeField] private SVGImage _image;
         [SerializeField] private Button _buyButton;
         [SerializeField] private Button _selectButton;
 
@@ -16,10 +17,6 @@ namespace StartMenu {
 
         public void Construct(Bank bank) {
             _bank = bank;
-        }
-
-        private void Awake() {
-            _image.useSpriteMesh = true;
         }
 
         private void OnEnable() {

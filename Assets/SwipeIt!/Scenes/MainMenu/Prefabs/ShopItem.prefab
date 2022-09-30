@@ -180,7 +180,7 @@ MonoBehaviour:
   _shopItem: {fileID: 6321201032410383529}
   _nameUGUI: {fileID: 6321201034125966740}
   _priceUGUI: {fileID: 6321201033552251862}
-  _image: {fileID: 6321201033399365728}
+  _image: {fileID: 3975078082705735055}
   _buyButton: {fileID: 6321201033363980896}
   _selectButton: {fileID: 6321201032249846975}
 --- !u!1 &6321201032676935906
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6321201033399365729}
   - component: {fileID: 6321201033399365735}
-  - component: {fileID: 6321201033399365728}
+  - component: {fileID: 3975078082705735055}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -407,7 +407,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6321201033399365730}
   m_CullTransparentMesh: 0
---- !u!114 &6321201033399365728
+--- !u!114 &3975078082705735055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6321201033399365730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: ef8b96895a0ec4ba685178a052544251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -426,16 +426,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 3286163911610860551, guid: 71a8b1fe7f3349f4082a4ea18da6bc32,
+    type: 3}
   m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 1
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6321201033552251856
 GameObject:
   m_ObjectHideFlags: 0

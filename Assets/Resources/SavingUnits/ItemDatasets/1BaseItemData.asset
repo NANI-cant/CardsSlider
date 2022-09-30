@@ -17,4 +17,4 @@ MonoBehaviour:
   _localizationKey: Base
   _basePrice: 10
   _figuresCollection: {fileID: 11400000, guid: 30e3072687b8e6545a7d23787294b3e3, type: 2}
-  _icon: {fileID: 21300000, guid: a81d4346140a309418f57f973f3af73b, type: 3}
+  _icon: {fileID: 3286163911610860551, guid: 14b9927d96aab5c47a5c3c738ab9f79c, type: 3}
