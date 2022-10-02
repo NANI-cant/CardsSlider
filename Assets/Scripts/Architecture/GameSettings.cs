@@ -19,7 +19,7 @@ public class GameSettings : ScriptableObject {
         get => _musicVolume;
         set {
             _musicVolume = Mathf.Clamp(value, 0, 1);
-            _mixer.SetFloat(MusicVolumeKey, Mathf.Lerp(-80, 0, _musicVolume));
+            _mixer.SetFloat(MusicVolumeKey, Mathf.Lerp(-60, 0, _musicVolume));
         }
     }
 
@@ -27,7 +27,7 @@ public class GameSettings : ScriptableObject {
         get => _soundsVolume;
         set {
             _soundsVolume = Mathf.Clamp(value, 0, 1);
-            _mixer.SetFloat(SoundsVolumeKey, Mathf.Lerp(-80, 0, _soundsVolume));
+            _mixer.SetFloat(SoundsVolumeKey, Mathf.Lerp(-60, 0, _soundsVolume));
         }
     }
 }

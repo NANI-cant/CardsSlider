@@ -31,6 +31,7 @@ public class BootstrapperClassic : MonoInstaller {
     private AudioMixer _audioMixer;
     private IInputService _inputService;
     private DynamicMusic _dynamicMusic;
+    private AudioEffectHandler _audioEffectHandler;
 
     [Inject]
     public void Construct(PlayerProgress playerProgress, AudioMixer audioMixer) {
@@ -54,6 +55,7 @@ public class BootstrapperClassic : MonoInstaller {
             _inputService
         );
         _dynamicMusic = new DynamicMusic(_audioMixer, _scoreCounter, _settings, _game);
+        _audioEffectHandler = new AudioEffectHandler(_game, _audioMixer);
 
         BindInstanceSingle<Game>(_game);
         BindInstanceSingle<IInputService>(_inputService);
