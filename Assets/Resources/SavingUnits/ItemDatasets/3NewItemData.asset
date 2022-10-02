@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27a8092cbc3a2f1419773f585eccd072, type: 3}
-  m_Name: 2NewItemData
+  m_Name: 3NewItemData
   m_EditorClassIdentifier: 
-  _id: 1
+  _id: 2
   IsAvailable: 0
-  _localizationKey: New
+  _localizationKey: Default
   _basePrice: 20
-  _figuresCollection: {fileID: 11400000, guid: b9c69793c5b4bf442b5727a1efcf1b99, type: 2}
-  _icon: {fileID: 3286163911610860551, guid: 4c80f2e2d15db7c418854b691067ee3a, type: 3}
+  _figuresCollection: {fileID: 11400000, guid: b76b63e67fe20074f943ecfcf90df95c, type: 2}
+  _icon: {fileID: 3286163911610860551, guid: bcc77adda88716242913c10b02feb699, type: 3}
