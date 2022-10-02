@@ -25,13 +25,13 @@ public class Timer : MonoBehaviour {
     }
 
     private void OnEnable() {
-        _game.GameOver += Stop;
+        _game.GameOvered += Stop;
         _game.GamePaused += Stop;
         _game.GameStarted += Run;
     }
 
     private void OnDisable() {
-        _game.GameOver -= Stop;
+        _game.GameOvered -= Stop;
         _game.GamePaused -= Stop;
         _game.GameStarted -= Run;
     }

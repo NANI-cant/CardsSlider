@@ -1,30 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 [CreateAssetMenu(fileName = "GameSettings", menuName = "ScriptableObjects/GameSettings")]
 public class GameSettings : ScriptableObject {
     [Range(0, 1)]
     [SerializeField] private float _musicVolume;
     [Range(0, 1)]
-    [SerializeField] private float _soundsVolume; 
+    [SerializeField] private float _soundsVolume;
+    [SerializeField] private AudioMixer _mixer;
+
     [SerializeField] public FiguresCollection SelectedFiguresCollection;
     [SerializeField] public int SelectedLanguage;
 
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SoundsVolumeKey = "SoundsVolume";
 
     public float MusicVolume {
-        get { return _musicVolume; }
+        get => _musicVolume;
         set {
-            float rightValue = Mathf.Max(0f, value);
-            rightValue = Mathf.Min(rightValue, 1f);
-            _musicVolume = rightValue;
+            _musicVolume = Mathf.Clamp(value, 0, 1);
+            _mixer.SetFloat(MusicVolumeKey, Mathf.Lerp(-80, 0, _musicVolume));
         }
     }
 
     public float SoundsVolume {
-        get { return _soundsVolume; }
+        get => _soundsVolume;
         set {
-            float rightValue = Mathf.Max(0f, value);
-            rightValue = Mathf.Min(rightValue, 1f);
-            _soundsVolume = rightValue;
+            _soundsVolume = Mathf.Clamp(value, 0, 1);
+            _mixer.SetFloat(SoundsVolumeKey, Mathf.Lerp(-80, 0, _soundsVolume));
         }
     }
 }

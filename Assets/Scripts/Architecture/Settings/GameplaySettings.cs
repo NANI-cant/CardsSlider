@@ -19,6 +19,9 @@ public abstract class GameplaySettings : ScriptableObject {
     [Min(1)][SerializeField] private int _maxFiguresCount = 8;
     [Min(1)][SerializeField] private int _answersForAddFigure = 3;
 
+    [Header("Audio")]
+    [SerializeField] private AnimationCurve _musicSpeedOverScore;
+
     public float StartTime => _startTime;
     public int StartLifes => _startLifes;
     public float ConvertMultiplier => _convertMultiplier;
@@ -28,6 +31,8 @@ public abstract class GameplaySettings : ScriptableObject {
     public int AnswersForAddFigure => _answersForAddFigure;
 
     public abstract GameMode Mode { get; }
+
+    public float MusicSpeedOverScore(int score) => _musicSpeedOverScore.Evaluate(score);
 
     protected virtual void OnValidate() {
         if (_startFiguresCount > _maxFiguresCount) _startFiguresCount = _maxFiguresCount;

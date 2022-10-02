@@ -31,6 +31,7 @@ public class GamePauseState : IState, IEnterState, IExitState {
     }
 
     private void OnGameInterrupted() {
+        _game.GameInterrupted?.Invoke();
         _scenesLoader.LoadMenu(true);
     }
 }

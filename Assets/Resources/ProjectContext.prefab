@@ -75,3 +75,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSettings: {fileID: 11400000, guid: 0322062f01d1ebe4caedf23cf0c16fd7, type: 2}
   _localizationXML: {fileID: 4900000, guid: 254cb611b160a504bb1f856779a95bba, type: 3}
+  _audioMixer: {fileID: 24100000, guid: 8158fa5de0afaf349ad32fe78b63ff34, type: 2}
