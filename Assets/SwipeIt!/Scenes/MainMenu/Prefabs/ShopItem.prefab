@@ -178,7 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebb60624bc38b44db98c8ca7b3ff454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopItem: {fileID: 6321201032410383529}
   _nameUGUI: {fileID: 6321201034125966740}
   _priceUGUI: {fileID: 6321201033552251862}
   _image: {fileID: 3975078082705735055}
