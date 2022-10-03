@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using Zenject;
 
@@ -27,17 +28,20 @@ public class BootstrapperClassic : MonoInstaller {
     private Game _game;
     private ScenesLoader _scenesLoader;
     private PlayerProgress _playerProgress;
+    private AudioMixer _audioMixer;
     private IInputService _inputService;
+    private DynamicMusic _dynamicMusic;
+    private AudioEffectHandler _audioEffectHandler;
 
     [Inject]
-    public void Construct(PlayerProgress playerProgress) {
+    public void Construct(PlayerProgress playerProgress, AudioMixer audioMixer) {
         _playerProgress = playerProgress;
+        _audioMixer = audioMixer;
     }
 
     public override void InstallBindings() {
         _scenesLoader = new ScenesLoader(_settings.Mode, _scoreCounter);
         _inputService = new PointerInput();
-
         _game = new Game(
             _lifeCounter,
             _scenesLoader,
@@ -50,6 +54,8 @@ public class BootstrapperClassic : MonoInstaller {
             _toMenuButton,
             _inputService
         );
+        _dynamicMusic = new DynamicMusic(_audioMixer, _scoreCounter, _settings, _game);
+        _audioEffectHandler = new AudioEffectHandler(_game, _audioMixer);
 
         BindInstanceSingle<Game>(_game);
         BindInstanceSingle<IInputService>(_inputService);
@@ -67,7 +73,7 @@ public class BootstrapperClassic : MonoInstaller {
         BindInstanceSingle<ScoreCounter>(_scoreCounter);
         BindInstanceSingle<Timer>(_timer);
     }
-    
+
     private void OnDestroy() {
         (_inputService as IDisposable).Dispose();
     }

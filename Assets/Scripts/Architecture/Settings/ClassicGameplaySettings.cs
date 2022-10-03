@@ -9,9 +9,8 @@ public class ClassicGameplaySettings : GameplaySettings {
 
     public int AddingScore => _addingScore;
     public int TakingLifes => _takingLifes;
-    public float SettingTimeOverScore(int score) {
-        return _timeOverScore.Evaluate(score);
-    }
+
+    public float SettingTimeOverScore(int score) => _timeOverScore.Evaluate(score);
 
     public override GameMode Mode => GameMode.Classic;
 }

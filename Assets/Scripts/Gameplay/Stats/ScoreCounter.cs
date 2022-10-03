@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour {
-    public event UnityAction<int> OnScoreChanged;
+    public event Action<int> ScoreChanged;
 
     private int _score = 0;
 
@@ -12,7 +12,7 @@ public class ScoreCounter : MonoBehaviour {
         if (score <= 0) return false;
 
         _score += score;
-        OnScoreChanged?.Invoke(Score);
+        ScoreChanged?.Invoke(Score);
         return true;
     }
 }

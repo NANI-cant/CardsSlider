@@ -20,11 +20,11 @@ public class ScoreView : MonoBehaviour {
     }
 
     private void OnEnable() {
-        _scoreModel.OnScoreChanged += ChangeUI;
+        _scoreModel.ScoreChanged += ChangeUI;
     }
 
     private void OnDisable() {
-        _scoreModel.OnScoreChanged -= ChangeUI;
+        _scoreModel.ScoreChanged -= ChangeUI;
     }
 
     private void Start() {

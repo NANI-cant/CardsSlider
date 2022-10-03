@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 public class AnswerChecker : MonoBehaviour {
@@ -13,7 +13,7 @@ public class AnswerChecker : MonoBehaviour {
     [Header("Debug")]
     [SerializeField] private bool _shouldLog = false;
 
-    public static event UnityAction<bool> AnswerChecked;
+    public static event Action<bool> AnswerChecked;
 
     private CardDragger _cardDragger;
     private FigureGenerator _figureGenerator;

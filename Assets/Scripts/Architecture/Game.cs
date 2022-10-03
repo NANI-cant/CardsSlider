@@ -1,11 +1,12 @@
-﻿using UnityEngine.Events;
+﻿using System;
 using UnityEngine.UI;
 
 public class Game {
-    public UnityAction SceneLoaded;
-    public UnityAction GamePaused;
-    public UnityAction GameStarted;
-    public UnityAction GameOver;
+    public Action SceneLoaded;
+    public Action GamePaused;
+    public Action GameStarted;
+    public Action GameOvered;
+    public Action GameInterrupted;
 
     private GameStateMachine _gameStateMachine;
 

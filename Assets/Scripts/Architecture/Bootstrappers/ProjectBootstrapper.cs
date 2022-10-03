@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 public class ProjectBootstrapper : MonoInstaller {
     [SerializeField] private GameSettings _gameSettings;
     [SerializeField] private TextAsset _localizationXML;
+    [SerializeField] private AudioMixer _audioMixer;
 
     private Localization _localization;
     private PlayerProgress _playerProgress;
@@ -19,6 +20,7 @@ public class ProjectBootstrapper : MonoInstaller {
         BindInstanceSingle<GameSettings>(_gameSettings);
         BindInstanceSingle<PlayerProgress>(_playerProgress);
         BindInstanceSingle<AssetsAccess>(_assetsAccess);
+        BindInstanceSingle<AudioMixer>(_audioMixer);
     }
 
     private T BindInstanceSingle<T>(T instance) {

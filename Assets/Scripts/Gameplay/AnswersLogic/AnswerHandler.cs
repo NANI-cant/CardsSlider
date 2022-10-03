@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 public class AnswerHandler : MonoBehaviour {
@@ -28,13 +27,13 @@ public class AnswerHandler : MonoBehaviour {
 
     private void OnEnable() {
         AnswerChecker.AnswerChecked += ReactToAnswer;
-        _score.OnScoreChanged += OnScoreChanged;
+        _score.ScoreChanged += OnScoreChanged;
         _timer.OnTimesUp += OnTimesUp;
     }
 
     private void OnDisable() {
         AnswerChecker.AnswerChecked -= ReactToAnswer;
-        _score.OnScoreChanged -= OnScoreChanged;
+        _score.ScoreChanged -= OnScoreChanged;
         _timer.OnTimesUp -= OnTimesUp;
     }
 

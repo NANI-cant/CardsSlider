@@ -18,6 +18,39 @@ MonoBehaviour:
   _startFiguresCount: 1
   _maxFiguresCount: 8
   _answersForAddFigure: 8
+  _musicSpeedOverScore:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.00009815996
+      outSlope: 0.00009815996
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0961775
+    - serializedVersion: 3
+      time: 50
+      value: 1
+      inSlope: 0.0001153395
+      outSlope: 0.0001153395
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20314032
+      outWeight: 0.06305047
+    - serializedVersion: 3
+      time: 200
+      value: 2
+      inSlope: 0.020487912
+      outSlope: 0.020487912
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.050761413
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _addingScore: 1
   _takingLifes: 1
   _timeOverScore:
