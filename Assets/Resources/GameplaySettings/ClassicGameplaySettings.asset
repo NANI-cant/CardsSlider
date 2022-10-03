@@ -51,6 +51,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _rightAnswerSound: {fileID: 8300000, guid: 8775359fbccb0a147b697d74b1ba274a, type: 3}
+  _wrongAnswerSound: {fileID: 8300000, guid: a0075bfdab0a3594eadaf1bbf80be39d, type: 3}
+  _gameOverSound: {fileID: 8300000, guid: 2d73d533e7da34d4f9539be97f7ae51a, type: 3}
   _addingScore: 1
   _takingLifes: 1
   _timeOverScore:
