@@ -13,16 +13,17 @@ public class AudioEffectHandler {
         _game = game;
         _audioMixer = audioMixer;
 
-        _game.GamePaused += OnGamePaused;
-        _game.GameStarted += OnGameStarted;
+        _game.GamePaused += SetLowpass;
+        _game.GameStarted += SetDefault;
+        _game.GameInterrupted += SetDefault;
         _audioMixer.GetFloat(GameplayLowpassKey, out _defaultLowpass);
     }
 
-    private void OnGameStarted() {
+    private void SetDefault() {
         _audioMixer.SetFloat(GameplayLowpassKey, _defaultLowpass);
     }
 
-    private void OnGamePaused() {
+    private void SetLowpass() {
         _audioMixer.SetFloat(GameplayLowpassKey, _pausedLowpass);
     }
 }

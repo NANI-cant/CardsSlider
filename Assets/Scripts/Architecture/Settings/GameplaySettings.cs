@@ -21,6 +21,9 @@ public abstract class GameplaySettings : ScriptableObject {
 
     [Header("Audio")]
     [SerializeField] private AnimationCurve _musicSpeedOverScore;
+    [SerializeField] private AudioClip _rightAnswerSound;
+    [SerializeField] private AudioClip _wrongAnswerSound;
+    [SerializeField] private AudioClip _gameOverSound;
 
     public float StartTime => _startTime;
     public int StartLifes => _startLifes;
@@ -29,6 +32,10 @@ public abstract class GameplaySettings : ScriptableObject {
     public int StartFiguresCount => _startFiguresCount;
     public int MaxFiguresCount => _maxFiguresCount;
     public int AnswersForAddFigure => _answersForAddFigure;
+
+    public AudioClip RightAnswerSound => _rightAnswerSound;
+    public AudioClip WrongAnswerSound => _wrongAnswerSound;
+    public AudioClip GameOverSound => _gameOverSound;
 
     public abstract GameMode Mode { get; }
 
