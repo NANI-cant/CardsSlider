@@ -10,7 +10,7 @@ namespace StartMenu {
         [SerializeField] private GameModePanel _gameModePanel;
         [SerializeField] private SwipeHandler _swipeHandler;
 
-        private Fabric _fabric;
+        private ShopItemFactory _shopItemFactory;
         private PlayerProgress _playerProgress;
         private IInputService _inputService;
 
@@ -20,11 +20,11 @@ namespace StartMenu {
         }
 
         public override void InstallBindings() {
-            _fabric = new Fabric(_bank, _figureCollectionsHolder, _playerProgress);
+            _shopItemFactory = new ShopItemFactory(_bank, _figureCollectionsHolder, _playerProgress);
             _inputService = new PointerInput();
 
             BindInstanceSingle<IInputService>(_inputService);
-            BindInstanceSingle<Fabric>(_fabric);
+            BindInstanceSingle<ShopItemFactory>(_shopItemFactory);
             BindInstanceSingle<Bank>(_bank);
             BindInstanceSingle<FigureCollectionsHolder>(_figureCollectionsHolder);
             BindInstanceSingle<Camera>(_mainCamera);

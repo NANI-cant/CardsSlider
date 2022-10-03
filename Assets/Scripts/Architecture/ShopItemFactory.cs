@@ -1,12 +1,12 @@
 using StartMenu;
 using UnityEngine;
 
-public class Fabric {
+public class ShopItemFactory {
     private Bank _bank;
     private FigureCollectionsHolder _figureCollectionHolder;
     private PlayerProgress _playerProgress;
 
-    public Fabric(Bank bank, FigureCollectionsHolder figureCollectionsHolder, PlayerProgress playerProgress) {
+    public ShopItemFactory(Bank bank, FigureCollectionsHolder figureCollectionsHolder, PlayerProgress playerProgress) {
         _bank = bank;
         _figureCollectionHolder = figureCollectionsHolder;
         _playerProgress = playerProgress;
