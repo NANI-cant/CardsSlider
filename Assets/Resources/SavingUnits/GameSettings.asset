@@ -15,6 +15,6 @@ MonoBehaviour:
   _musicVolume: 1
   _soundsVolume: 1
   _mixer: {fileID: 24100000, guid: 8158fa5de0afaf349ad32fe78b63ff34, type: 2}
-  SelectedFiguresCollection: {fileID: 11400000, guid: b9c69793c5b4bf442b5727a1efcf1b99,
+  SelectedFiguresCollection: {fileID: 11400000, guid: b76b63e67fe20074f943ecfcf90df95c,
     type: 2}
   SelectedLanguage: 0

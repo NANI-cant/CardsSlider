@@ -1563,7 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c943c60db5eec9849b56ddbd5b1ae93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetFigureOnCardChance: 1
+  _targetFigureOnCardChance: 0.5
 --- !u!4 &2091208234
 Transform:
   m_ObjectHideFlags: 0
