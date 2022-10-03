@@ -13,8 +13,11 @@ namespace StartMenu {
 
         private ShopItem _model;
 
-        public void Construct(ShopItem model, Bank bank, FigureCollectionsHolder collectionsHolder) {
+        public void Construct(ShopItem model, Bank bank, FigureCollectionsHolder collectionsHolder, Localization localization) {
             _model = model;
+            foreach (var text in GetComponentsInChildren<LocalizedText>(true)) {
+                text.Construct(localization);
+            }
         }
 
         private void OnEnable() {

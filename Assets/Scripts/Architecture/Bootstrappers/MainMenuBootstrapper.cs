@@ -12,15 +12,17 @@ namespace StartMenu {
 
         private ShopItemFactory _shopItemFactory;
         private PlayerProgress _playerProgress;
+        private Localization _localization;
         private IInputService _inputService;
 
         [Inject]
-        public void Construct(PlayerProgress playerProgress) {
+        public void Construct(PlayerProgress playerProgress, Localization localization) {
             _playerProgress = playerProgress;
+            _localization = localization;
         }
 
         public override void InstallBindings() {
-            _shopItemFactory = new ShopItemFactory(_bank, _figureCollectionsHolder, _playerProgress);
+            _shopItemFactory = new ShopItemFactory(_bank, _figureCollectionsHolder, _playerProgress, _localization);
             _inputService = new PointerInput();
 
             BindInstanceSingle<IInputService>(_inputService);

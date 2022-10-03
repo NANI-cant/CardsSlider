@@ -84,4 +84,10 @@
 			<ru>ок</ru>
 		</Translates>
 	</Key>
+	<Key Name="Select">
+		<Translates>
+			<en-us>select</en-us>
+			<ru>выбрать</ru>
+		</Translates>
+	</Key>
 </Keys>
