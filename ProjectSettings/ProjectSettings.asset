@@ -173,7 +173,7 @@ PlayerSettings:
   buildNumber: {}
   AndroidBundleVersionCode: 5
   AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 30
+  AndroidTargetSdkVersion: 31
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1

@@ -12,10 +12,10 @@ public class LocalizedText : MonoBehaviour {
     [Inject]
     public void Construct(Localization localization) {
         _localization = localization;
-        _localization.LanguageChanged += ChangeLanguage;
     }
 
     private void Awake() {
+        _localization.LanguageChanged += ChangeLanguage;
         _uGUI = GetComponent<TextMeshProUGUI>();
     }
 
@@ -27,12 +27,8 @@ public class LocalizedText : MonoBehaviour {
         _localization.LanguageChanged -= ChangeLanguage;
     }
 
-    public void SetKey(string key) {
-        _localizationKey = key;
-        ChangeLanguage();
-    }
-
     private void ChangeLanguage() {
+        Debug.Log("ChangeLanguageText: " + _localization != null);
         if (_localization == null) return;
         GetComponent<TextMeshProUGUI>().text = _localization.GetLocalizedText(_localizationKey);
     }

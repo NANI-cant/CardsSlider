@@ -41,6 +41,7 @@ public class Localization {
     }
 
     public void ChangeLanguage(int language) {
+        Debug.Log("ChangeLanguage: "+ language);
         _selectedLanguage = language;
         _gameSettings.SelectedLanguage = language;
         LanguageChanged?.Invoke();

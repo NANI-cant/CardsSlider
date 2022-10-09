@@ -28,6 +28,7 @@ public class ChangeGameLanguage : MonoBehaviour
     }
 
     private void OnDropdownValueChanged(int value){
+        Debug.Log("OnDropdownValueChanged: "+ value);
         _localization.ChangeLanguage(value);
     }
 }
