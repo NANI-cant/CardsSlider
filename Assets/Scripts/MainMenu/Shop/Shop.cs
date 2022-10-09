@@ -13,11 +13,11 @@ namespace StartMenu {
         private List<ItemData> _itemsData;
         private List<ShopItem> _itemsInstances = new List<ShopItem>();
 
-        private Fabric _fabric;
+        private ShopItemFactory _fabric;
 
 
         [Inject]
-        public void Construct(AssetsAccess assetsAccess, Fabric fabric) {
+        public void Construct(AssetsAccess assetsAccess, ShopItemFactory fabric) {
             _itemsData = assetsAccess.ShopItemDataset;
             _fabric = fabric;
         }

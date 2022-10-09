@@ -1,5 +1,4 @@
 public enum ItemId {
-    BaseFigureCollection,
-    NewFigureCollection,
-    DefaultCollection,
+    Flowers,
+    Default,
 }
