@@ -18,15 +18,8 @@ public class MusicVolumeSlider : MonoBehaviour
         _slider.value = _gameSettings.MusicVolume;
     }
 
-    private void OnEnable(){
-        _slider.onValueChanged.AddListener(OnSliderValueChanged);
-    }
+    private void OnEnable() => _slider.onValueChanged.AddListener(OnSliderValueChanged);
+    private void OnDisable() => _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
 
-    private void OnDisable(){
-        _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
-    }
-
-    private void OnSliderValueChanged(float value){
-        _gameSettings.MusicVolume = value;
-    }
+    private void OnSliderValueChanged(float value) => _gameSettings.MusicVolume = value;
 }

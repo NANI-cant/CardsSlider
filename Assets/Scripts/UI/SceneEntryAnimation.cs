@@ -14,24 +14,29 @@ public class SceneEntryAnimation : MonoBehaviour {
     [SerializeField] private Vector3 _endScale;
     [SerializeField] private float _durationAnimation;
 
+    private Sequence _tweenSequence;
+
     private void Start() {
         Prepare();
         Execute();
     }
 
-    private void Prepare(){
+    private void OnDestroy() => _tweenSequence?.Kill();
+
+    private void Prepare() {
         _timer.localScale = _startScale;
         _lifes.localScale = _startScale;
         _score.localScale = _startScale;
         _pauseButton.localScale = _startScale;
-        _hud.DOFade(0, 0f);
+        _hud.alpha = 0;
     }
 
-    private void Execute(){
-        _score.DOScale(_endScale, _durationAnimation);
-        _lifes.DOScale(_endScale, _durationAnimation);
-        _pauseButton.DOScale(_endScale, _durationAnimation);
-        _timer.DOScale(_endScale, _durationAnimation);
-        _hud.DOFade(1, _durationAnimation);
+    private void Execute() {
+        _tweenSequence = DOTween.Sequence();
+        _tweenSequence.Join(_score.DOScale(_endScale, _durationAnimation));
+        _tweenSequence.Join(_lifes.DOScale(_endScale, _durationAnimation));
+        _tweenSequence.Join(_pauseButton.DOScale(_endScale, _durationAnimation));
+        _tweenSequence.Join(_timer.DOScale(_endScale, _durationAnimation));
+        _tweenSequence.Join(_hud.DOFade(1, _durationAnimation));
     }
 }
