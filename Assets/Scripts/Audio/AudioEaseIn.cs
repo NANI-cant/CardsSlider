@@ -6,6 +6,7 @@ public class AudioEaseIn : MonoBehaviour {
     [SerializeField] private float _duration = 1f;
 
     private AudioSource _source;
+    private Tweener _tweener;
 
     private void Awake() {
         _source = GetComponent<AudioSource>();
@@ -14,6 +15,10 @@ public class AudioEaseIn : MonoBehaviour {
     private void Start() {
         float targetVolume = _source.volume;
         _source.volume = 0;
-        _source.DOFade(targetVolume, _duration).SetEase(Ease.InQuad);
+        _tweener = _source.DOFade(targetVolume, _duration).SetEase(Ease.InQuad);
+    }
+
+    private void OnDestroy() {
+        _tweener?.Kill();
     }
 }

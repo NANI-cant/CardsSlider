@@ -3,30 +3,22 @@ using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(Slider))]
-public class SoundsVolumeSlider : MonoBehaviour
-{
+public class SoundsVolumeSlider : MonoBehaviour {
     private Slider _slider;
     private GameSettings _gameSettings;
 
     [Inject]
-    public void Construct(GameSettings gameSettings){
+    public void Construct(GameSettings gameSettings) {
         _gameSettings = gameSettings;
     }
 
-    private void Awake(){
-        _slider = GetComponent<Slider>(); 
+    private void Awake() {
+        _slider = GetComponent<Slider>();
         _slider.value = _gameSettings.SoundsVolume;
     }
 
-    private void OnEnable(){
-        _slider.onValueChanged.AddListener(OnSliderValueChanged);
-    }
+    private void OnEnable() => _slider.onValueChanged.AddListener(OnSliderValueChanged);
+    private void OnDisable() => _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
 
-    private void OnDisable(){
-        _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
-    }
-
-    private void OnSliderValueChanged(float value){
-        _gameSettings.SoundsVolume = value;
-    }
+    private void OnSliderValueChanged(float value) => _gameSettings.SoundsVolume = value;
 }

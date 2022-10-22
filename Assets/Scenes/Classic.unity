@@ -1563,7 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c943c60db5eec9849b56ddbd5b1ae93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetFigureOnCardChance: 0.5
+  _targetFigureOnCardChance: 1
 --- !u!4 &2091208234
 Transform:
   m_ObjectHideFlags: 0
@@ -1904,6 +1904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037756270455719270, guid: bf560f9038124a34785c3cc21988d322,
+        type: 3}
+      propertyPath: _punchScale.Punch.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8391753465146976910, guid: bf560f9038124a34785c3cc21988d322,
         type: 3}

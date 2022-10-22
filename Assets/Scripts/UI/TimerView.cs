@@ -17,21 +17,11 @@ public class TimerView : MonoBehaviour {
         _timerModel = timer;
     }
 
-    private void Awake() {
-        _slider = GetComponent<Slider>();
-    }
-
-    private void OnEnable() {
-        _timerModel.OnTimeChange += ChangeUI;
-    }
-
-    private void OnDisable() {
-        _timerModel.OnTimeChange -= ChangeUI;
-    }
-
-    private void Start() {
-        ChangeUI();
-    }
+    private void Awake() => _slider = GetComponent<Slider>();
+    private void OnEnable() => _timerModel.OnTimeChange += ChangeUI;
+    private void OnDisable() => _timerModel.OnTimeChange -= ChangeUI;
+    private void Start() => ChangeUI();
+    private void OnDestroy() => _shaking?.Kill();
 
     private void ChangeUI() {
         float currentTime = _timerModel.RemaindedTime;
@@ -46,9 +36,13 @@ public class TimerView : MonoBehaviour {
     private void HandleTweening() {
         if (_slider.value / _slider.maxValue > _startShakingValue) {
             _shaking?.Complete();
+            _shaking?.Kill();
+            return;
         }
-        else if (_shaking == null || !_shaking.active) {
+
+        if (_shaking == null || !_shaking.active) {
             _shaking = transform.DOShakePosition(_shakeOptions.Duration, _shakeOptions.Strength, _shakeOptions.Vibrato, _shakeOptions.Randomness, false, _shakeOptions.FadeOut);
+            return;
         }
     }
 }

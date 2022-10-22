@@ -12,6 +12,7 @@ public class LifeView : MonoBehaviour {
 
     private LifeCounter _lifeModel;
     private Stack<RectTransform> _lifes = new Stack<RectTransform>();
+    private Sequence _tweenSequence;
 
     private int CurrentLifes => _lifes.Count;
 
@@ -20,17 +21,10 @@ public class LifeView : MonoBehaviour {
         _lifeModel = lifeCounter;
     }
 
-    private void OnEnable() {
-        _lifeModel.OnLifesChange += ChangeUI;
-    }
-
-    private void OnDisable() {
-        _lifeModel.OnLifesChange -= ChangeUI;
-    }
-
-    private void Start() {
-        DrawLifes(_lifeModel.Lifes);
-    }
+    private void OnEnable() => _lifeModel.OnLifesChange += ChangeUI;
+    private void OnDisable() => _lifeModel.OnLifesChange -= ChangeUI;
+    private void Start() => DrawLifes(_lifeModel.Lifes);
+    private void OnDestroy() => _tweenSequence?.Kill();
 
     private void ChangeUI(int lifes) {
         int lifesDelta = CurrentLifes - lifes;
@@ -59,15 +53,11 @@ public class LifeView : MonoBehaviour {
     }
 
     private void TweenLifes() {
+        _tweenSequence?.Complete();
+        _tweenSequence?.Kill();
+        _tweenSequence = DOTween.Sequence();
         foreach (var life in _lifes) {
-            life
-                .DOShakeRotation(_shakeRotation.Duration, _shakeRotation.Strength, _shakeRotation.Vibrato)
-                .onUpdate += () => {
-                    Vector3 eulerRotation = life.rotation.eulerAngles;
-                    eulerRotation.x = 0f;
-                    eulerRotation.y = 0f;
-                    life.rotation = Quaternion.Euler(eulerRotation);
-                };
+            _tweenSequence.Join(life.DOShakeRotation(_shakeRotation.Duration, _shakeRotation.Strength * new Vector3(0, 0, 1), _shakeRotation.Vibrato));
         }
     }
 }

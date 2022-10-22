@@ -9,27 +9,18 @@ public class ScoreView : MonoBehaviour {
 
     private TextMeshProUGUI _uGUI;
     private ScoreCounter _scoreModel;
+    private Tweener _tweener;
 
     [Inject]
     public void Construct(ScoreCounter scoreCounter) {
         _scoreModel = scoreCounter;
     }
 
-    private void Awake() {
-        _uGUI = GetComponent<TextMeshProUGUI>();
-    }
-
-    private void OnEnable() {
-        _scoreModel.ScoreChanged += ChangeUI;
-    }
-
-    private void OnDisable() {
-        _scoreModel.ScoreChanged -= ChangeUI;
-    }
-
-    private void Start() {
-        ChangeUI(_scoreModel.Score);
-    }
+    private void Awake() => _uGUI = GetComponent<TextMeshProUGUI>();
+    private void OnEnable() => _scoreModel.ScoreChanged += ChangeUI;
+    private void OnDisable() => _scoreModel.ScoreChanged -= ChangeUI;
+    private void Start() => ChangeUI(_scoreModel.Score);
+    private void OnDestroy() => _tweener?.Kill();
 
     private void ChangeUI(int score) {
         _uGUI.text = score.ToString();
@@ -37,6 +28,9 @@ public class ScoreView : MonoBehaviour {
     }
 
     private void ExecuteTweening() {
-        transform.DOPunchScale(_punch.Punch, _punch.Duration, _punch.Vibrato, _punch.Elacticity);
+        _tweener?.Complete();
+        _tweener?.Kill();
+
+        _tweener = transform.DOPunchScale(_punch.Punch, _punch.Duration, _punch.Vibrato, _punch.Elacticity);
     }
 }
